@@ -1,0 +1,23 @@
+<app-heder1></app-heder1>
+
+
+<div class="col-md-6 col-md-offset-3">
+  <!--<form name="form" #f (submit)="login(email.value, lozinka.value)" >-->
+
+    <div class="form-group">
+      <label>E-mail</label>
+      <input #email type="email" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+      <label>Lozinka</label>
+      <input #lozinka type="password" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+      <button  class="btn btn-primary" (click)="login(email.value, lozinka.value)" >Uloguj se</button>
+      <a [routerLink]="['/']" class="btn btn-link">Cancel</a>
+    </div>
+
+  <!--</form>-->
+</div>
