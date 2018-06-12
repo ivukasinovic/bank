@@ -38,8 +38,7 @@ export class RegisterComponent implements OnInit {
     this.korisnik.username = username;
     this.korisnik.number = broj;
     this.korisnik.activated = false;
-   // this.korisnik.role = 'USER';
-
+      // this.korisnik.role = 'USER';
     this.korisnikService.registerNewUser(this.korisnik);
     this.router.navigateByUrl('/pocetna');       // /home-page');
   }

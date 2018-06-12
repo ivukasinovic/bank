@@ -77,9 +77,6 @@ public class HelloController {
             return  new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
         }
 
-//        newUser.setBodovi(0L);
-//        newUser.setTipskale(TipSkala.OSNOVNI);
-    //    newUser.setRole("USER"); //
         newUser.setRole("USER");
         User savedRegisteredUser = userService.save(newUser);
         //regPosetilacService.sendEmai(savedRegisteredUser);
