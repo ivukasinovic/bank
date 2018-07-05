@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Adresa implements Serializable  {
 
+
+    
     private Long id;
 
     private String broj;
