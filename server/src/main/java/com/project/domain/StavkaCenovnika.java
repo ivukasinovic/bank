@@ -21,5 +21,35 @@ public class StavkaCenovnika implements Serializable {
 
     public StavkaCenovnika(){}
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getCena() {
+        return cena;
+    }
+
+    public void setCena(double cena) {
+        this.cena = cena;
+    }
+
+    public Cenovnik getCenovnik() {
+        return cenovnik;
+    }
+
+    public void setCenovnik(Cenovnik cenovnik) {
+        this.cenovnik = cenovnik;
+    }
+
+    public Proizvod getProizvod() {
+        return proizvod;
+    }
+
+    public void setProizvod(Proizvod proizvod) {
+        this.proizvod = proizvod;
+    }
 }

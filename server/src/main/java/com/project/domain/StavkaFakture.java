@@ -35,6 +35,10 @@ public class StavkaFakture implements Serializable {
     @ManyToOne
     @JoinColumn(name = "faktura_id", nullable = false)
     private Faktura faktura;
+    
+    @ManyToOne
+    @JoinColumn(name = "proizvod_id", nullable = false)
+    private Proizvod proizvod;
 
     public StavkaFakture(){}
 
