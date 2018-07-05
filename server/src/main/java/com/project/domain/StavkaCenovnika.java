@@ -1,33 +1,25 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
 public class StavkaCenovnika implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double ocena;
+    @Column(columnDefinition = "Decimal(10,2)")
+    private double cena;
+
+    @ManyToOne
+    @JoinColumn(name = "cenovnik_id", nullable = false)
+    private Cenovnik cenovnik;
+
+    @ManyToOne
+    @JoinColumn(name = "proizvod_id", nullable = false)
+    private Proizvod proizvod;
 
     public StavkaCenovnika(){}
 
-    public StavkaCenovnika(Long id, double ocena) {
-        this.id = id;
-        this.ocena = ocena;
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public double getOcena() {
-        return ocena;
-    }
-
-    public void setOcena(double ocena) {
-        this.ocena = ocena;
-    }
 }

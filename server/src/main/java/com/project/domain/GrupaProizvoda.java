@@ -1,22 +1,24 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
 public class GrupaProizvoda implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nazivGrupe;
+    @Column(length = 50)
+    private String naziv;
 
-    private String opisGrupe;
+    @Column(length = 100)
+    private String opis;
+
+    @ManyToOne
+    @JoinColumn(name = "pdv_id", nullable = false)
+    private PDV pdv;
 
     public GrupaProizvoda(){}
-
-    public GrupaProizvoda(Long id, String nazivGrupe, String opisGrupe) {
-        this.id = id;
-        this.nazivGrupe = nazivGrupe;
-        this.opisGrupe = opisGrupe;
-    }
 
     public Long getId() {
         return id;
@@ -26,19 +28,27 @@ public class GrupaProizvoda implements Serializable {
         this.id = id;
     }
 
-    public String getNazivGrupe() {
-        return nazivGrupe;
+    public String getNaziv() {
+        return naziv;
     }
 
-    public void setNazivGrupe(String nazivGrupe) {
-        this.nazivGrupe = nazivGrupe;
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
     }
 
-    public String getOpisGrupe() {
-        return opisGrupe;
+    public String getOpis() {
+        return opis;
     }
 
-    public void setOpisGrupe(String opisGrupe) {
-        this.opisGrupe = opisGrupe;
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
+
+    public PDV getPdv() {
+        return pdv;
+    }
+
+    public void setPdv(PDV pdv) {
+        this.pdv = pdv;
     }
 }

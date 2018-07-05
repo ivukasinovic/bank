@@ -1,12 +1,20 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+@Entity
 public class PDV implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String naziv;
+
+    @OneToMany(mappedBy = "pdv")
+    private  List<StopaPDV> stopaPDVList;
 
     public PDV() {}
 
@@ -29,5 +37,13 @@ public class PDV implements Serializable {
 
     public void setNaziv(String naziv) {
         this.naziv = naziv;
+    }
+
+    public List<StopaPDV> getStopaPDVList() {
+        return stopaPDVList;
+    }
+
+    public void setStopaPDVList(List<StopaPDV> stopaPDVList) {
+        this.stopaPDVList = stopaPDVList;
     }
 }

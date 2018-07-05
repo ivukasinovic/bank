@@ -1,21 +1,34 @@
 package com.project.domain;
 
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 public class Adresa implements Serializable  {
 
 
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false,length = 4)
     private String broj;
 
+    @Column(nullable = false, length = 50)
     private String ulica;
 
+    @Column(nullable = false, length = 30)
     private String grad;
 
+    @Column(nullable = false)
     private Long postanskiBroj;
 
+    @Column(nullable = false)
     private Long drzava;
 
     public Adresa() {

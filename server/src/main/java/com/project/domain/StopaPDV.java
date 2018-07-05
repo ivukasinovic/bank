@@ -1,23 +1,26 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
+@Entity
 public class StopaPDV implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double stopaPdv;
+    @Column(columnDefinition = "Decimal(5,2)")
+    private double stopa;
 
+    @Column
+    @Temporal(TemporalType.DATE)
     private Date datumVazenja;
 
-    public StopaPDV(){}
+    @ManyToOne
+    @JoinColumn(name = "pdv_id", nullable = false)
+    private PDV pdv;
 
-    public StopaPDV(Long id, double stopaPdv, Date datumVazenja) {
-        this.id = id;
-        this.stopaPdv = stopaPdv;
-        this.datumVazenja = datumVazenja;
-    }
+    public StopaPDV(){}
 
     public Long getId() {
         return id;
@@ -27,12 +30,12 @@ public class StopaPDV implements Serializable {
         this.id = id;
     }
 
-    public double getStopaPdv() {
-        return stopaPdv;
+    public double getStopa() {
+        return stopa;
     }
 
-    public void setStopaPdv(double stopaPdv) {
-        this.stopaPdv = stopaPdv;
+    public void setStopa(double stopa) {
+        this.stopa = stopa;
     }
 
     public Date getDatumVazenja() {
@@ -41,5 +44,13 @@ public class StopaPDV implements Serializable {
 
     public void setDatumVazenja(Date datumVazenja) {
         this.datumVazenja = datumVazenja;
+    }
+
+    public PDV getPdv() {
+        return pdv;
+    }
+
+    public void setPdv(PDV pdv) {
+        this.pdv = pdv;
     }
 }

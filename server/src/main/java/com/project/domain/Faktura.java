@@ -1,44 +1,66 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+@Entity
 public class Faktura implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long brojFakture;
+    @Column
+    private Long broj;
 
-    private Date datumFakture;
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date datum;
 
+    @Column
+    @Temporal(TemporalType.DATE)
     private Date datumValute;
 
+    @Column (columnDefinition = "Decimal(15,2)")
     private double ukupanRabat;
 
+    @Column (columnDefinition = "Decimal(15,2)")
     private double bezPDV;
 
+    @Column (columnDefinition = "Decimal(15,2)")
     private double ukupanPDV;
 
+    @Column (columnDefinition = "Decimal(15,2)")
     private double ukupnoZaPlacanje;
 
-    private String tepFakture;
+    @Column
+    private String tip;
 
+    @Column(columnDefinition = "boolean default false")
     private boolean zatvorena;
 
-    public Faktura() {}
+    // moze null jer se faktura moze kreirati bez narudzbenice
+    @ManyToOne
+    @JoinColumn(name = "narudzbenica_id", nullable = true)
+    private Narudzbenica narudzbenica;
 
-    public Faktura(Long id, Long brojFakture, Date datumFakture, Date datumValute, double ukupanRabat, double bezPDV, double ukupanPDV, double ukupnoZaPlacanje, String tepFakture, boolean zatvorena) {
-        this.id = id;
-        this.brojFakture = brojFakture;
-        this.datumFakture = datumFakture;
-        this.datumValute = datumValute;
-        this.ukupanRabat = ukupanRabat;
-        this.bezPDV = bezPDV;
-        this.ukupanPDV = ukupanPDV;
-        this.ukupnoZaPlacanje = ukupnoZaPlacanje;
-        this.tepFakture = tepFakture;
-        this.zatvorena = zatvorena;
-    }
+    @ManyToOne
+    @JoinColumn(name = "preduzece_id", nullable = false)
+    private Preduzece preduzece;
+
+    @ManyToOne
+    @JoinColumn(name = "poslovnaGodina_id", nullable = false)
+    private PoslovnaGodina poslovnaGodina;
+
+    @ManyToOne
+    @JoinColumn(name = "poslovniPartner_id", nullable = false)
+    private PoslovniPartner poslovniPartner;
+
+    @OneToMany(mappedBy = "faktura")
+    private List<StavkaFakture> stavkaFaktureList;
+
+    public Faktura() {}
 
     public Long getId() {
         return id;
@@ -48,20 +70,20 @@ public class Faktura implements Serializable {
         this.id = id;
     }
 
-    public Long getBrojFakture() {
-        return brojFakture;
+    public Long getBroj() {
+        return broj;
     }
 
-    public void setBrojFakture(Long brojFakture) {
-        this.brojFakture = brojFakture;
+    public void setBroj(Long broj) {
+        this.broj = broj;
     }
 
-    public Date getDatumFakture() {
-        return datumFakture;
+    public Date getDatum() {
+        return datum;
     }
 
-    public void setDatumFakture(Date datumFakture) {
-        this.datumFakture = datumFakture;
+    public void setDatum(Date datum) {
+        this.datum = datum;
     }
 
     public Date getDatumValute() {
@@ -104,12 +126,12 @@ public class Faktura implements Serializable {
         this.ukupnoZaPlacanje = ukupnoZaPlacanje;
     }
 
-    public String getTepFakture() {
-        return tepFakture;
+    public String getTip() {
+        return tip;
     }
 
-    public void setTepFakture(String tepFakture) {
-        this.tepFakture = tepFakture;
+    public void setTip(String tip) {
+        this.tip = tip;
     }
 
     public boolean isZatvorena() {
@@ -118,5 +140,45 @@ public class Faktura implements Serializable {
 
     public void setZatvorena(boolean zatvorena) {
         this.zatvorena = zatvorena;
+    }
+
+    public Narudzbenica getNarudzbenica() {
+        return narudzbenica;
+    }
+
+    public void setNarudzbenica(Narudzbenica narudzbenica) {
+        this.narudzbenica = narudzbenica;
+    }
+
+    public Preduzece getPreduzece() {
+        return preduzece;
+    }
+
+    public void setPreduzece(Preduzece preduzece) {
+        this.preduzece = preduzece;
+    }
+
+    public PoslovnaGodina getPoslovnaGodina() {
+        return poslovnaGodina;
+    }
+
+    public void setPoslovnaGodina(PoslovnaGodina poslovnaGodina) {
+        this.poslovnaGodina = poslovnaGodina;
+    }
+
+    public PoslovniPartner getPoslovniPartner() {
+        return poslovniPartner;
+    }
+
+    public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
+        this.poslovniPartner = poslovniPartner;
+    }
+
+    public List<StavkaFakture> getStavkaFaktureList() {
+        return stavkaFaktureList;
+    }
+
+    public void setStavkaFaktureList(List<StavkaFakture> stavkaFaktureList) {
+        this.stavkaFaktureList = stavkaFaktureList;
     }
 }

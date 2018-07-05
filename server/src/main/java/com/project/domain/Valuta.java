@@ -1,13 +1,17 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
 public class Valuta implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 10)
     private String naziv;
 
+    @Column(length = 3)
     private String oznaka;
 
     public Valuta() {

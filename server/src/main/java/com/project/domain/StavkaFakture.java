@@ -1,37 +1,42 @@
 package com.project.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
+@Entity
 public class StavkaFakture implements Serializable {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "Decimal(10,2)")
     private double osnovica;
 
+    @Column(columnDefinition = "Decimal(12,2)")
     private double iznosRabata;
 
+    @Column(columnDefinition = "Decimal(5,2)")
+    private double procenatRabata;
+
+    @Column(columnDefinition = "Decimal(5,2)")
     private double stopaPdv;
 
+    @Column(columnDefinition = "Decimal(12,2)")
     private double iznosPdv;
 
+    @Column(columnDefinition = "Decimal(10,2)")
     private double jedinicnaCena;
 
+    @Column(columnDefinition = "Decimal(10,2)")
     private double kolicinaStavkeFakture;
 
+    @Column(columnDefinition = "Decimal(12,2)")
     private double ukupanIznos;
 
-    public StavkaFakture(){}
+    @ManyToOne
+    @JoinColumn(name = "faktura_id", nullable = false)
+    private Faktura faktura;
 
-    public StavkaFakture(Long id, double osnovica, double iznosRabata, double stopaPdv, double iznosPdv, double jedinicnaCena, double kolicinaStavkeFakture, double ukupanIznos) {
-        this.id = id;
-        this.osnovica = osnovica;
-        this.iznosRabata = iznosRabata;
-        this.stopaPdv = stopaPdv;
-        this.iznosPdv = iznosPdv;
-        this.jedinicnaCena = jedinicnaCena;
-        this.kolicinaStavkeFakture = kolicinaStavkeFakture;
-        this.ukupanIznos = ukupanIznos;
-    }
+    public StavkaFakture(){}
 
     public Long getId() {
         return id;
@@ -55,6 +60,14 @@ public class StavkaFakture implements Serializable {
 
     public void setIznosRabata(double iznosRabata) {
         this.iznosRabata = iznosRabata;
+    }
+
+    public double getProcenatRabata() {
+        return procenatRabata;
+    }
+
+    public void setProcenatRabata(double procenatRabata) {
+        this.procenatRabata = procenatRabata;
     }
 
     public double getStopaPdv() {
@@ -95,5 +108,13 @@ public class StavkaFakture implements Serializable {
 
     public void setUkupanIznos(double ukupanIznos) {
         this.ukupanIznos = ukupanIznos;
+    }
+
+    public Faktura getFaktura() {
+        return faktura;
+    }
+
+    public void setFaktura(Faktura faktura) {
+        this.faktura = faktura;
     }
 }
