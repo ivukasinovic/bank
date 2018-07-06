@@ -1,5 +1,7 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,30 +13,33 @@ public class Faktura implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private Long broj;
 
-    @Column
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date datum;
 
-    @Column
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date datumValute;
 
-    @Column (columnDefinition = "Decimal(15,2)")
+    @Column (columnDefinition = "Decimal(15,2)", nullable = false)
     private double ukupanRabat;
 
-    @Column (columnDefinition = "Decimal(15,2)")
+    @Column (columnDefinition = "Decimal(15,2)", nullable = false)
     private double bezPDV;
 
-    @Column (columnDefinition = "Decimal(15,2)")
+    @Column (columnDefinition = "Decimal(15,2)", nullable = false)
     private double ukupanPDV;
 
-    @Column (columnDefinition = "Decimal(15,2)")
+    @Column (columnDefinition = "Decimal(15,2)", nullable = false)
     private double ukupnoZaPlacanje;
 
-    @Column
+    @Column (columnDefinition = "Decimal(15,2)", nullable = false)
+    private double preostaliIznos;
+
+    @Column(nullable = false)
     private String tip;
 
     @Column(columnDefinition = "boolean default false")
@@ -76,6 +81,14 @@ public class Faktura implements Serializable {
 
     public void setBroj(Long broj) {
         this.broj = broj;
+    }
+
+    public double getPreostaliIznos() {
+        return preostaliIznos;
+    }
+
+    public void setPreostaliIznos(double preostaliIznos) {
+        this.preostaliIznos = preostaliIznos;
     }
 
     public Date getDatum() {
