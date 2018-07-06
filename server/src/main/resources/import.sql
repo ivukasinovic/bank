@@ -89,22 +89,6 @@ INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (6,10,5
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (7,10,5,5);
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (8,10,1,3);
 
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (1,'0651222111','123-9876543211234-45', 'NARUCILAC','partner1@gmail.com',1);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (2,'0621222111','223-9876543211231-47', 'ISPORUCILAC','partner2@gmail.com',1);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (3,'0612341112','323-9876543211232-46', 'NARUCILAC','partner3@gmail.com',1);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (4,'0651222154','423-9876543211233-45', 'NARUCILAC','partner4@gmail.com',2);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (5,'0651222114','523-9876543211235-47', 'NARUCILAC','partner5@gmail.com',2);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (6,'0651222115','553-9876543211236-46', 'ISPORUCILAC','partner6@gmail.com',2);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (7,'0651222116','623-9876543211237-45', 'ISPORUCILAC','partner7@gmail.com',3);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (8,'0651222118','723-9876543211238-44', 'ISPORUCILAC','partner8@gmail.com',3);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (9,'0651222199','823-9876543211239-45', 'ISPORUCILAC','partner@9gmail.com',3);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (10,'0634222111','923-9876543211230-48', 'NARUCILAC','partner10@gmail.com',4);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (11,'0651227711','023-9876543211224-47', 'ISPORUCILAC','partner11@gmail.com',4);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (12,'0651229911','193-9876543211214-45', 'ISPORUCILAC','partner12@gmail.com',4);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (13,'0651220011','173-9876543211244-46', 'NARUCILAC','partner13@gmail.com',5);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (14,'0651222333','103-9876543211264-45', 'ISPORUCILAC','partner14@gmail.com',5);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (15,'0651222175','145-9876543211254-47', 'NARUCILAC','partner15@gmail.com',5);
-
 INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj, poslovni_partner_id) VALUES (1,'2018-07-01',1,1);
 INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj,  poslovni_partner_id) VALUES (2,'2018-07-02',2,2);
 INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj,  poslovni_partner_id) VALUES (3,'2018-07-05',3,7);

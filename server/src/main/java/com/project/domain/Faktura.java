@@ -51,16 +51,16 @@ public class Faktura implements Serializable {
     private Narudzbenica narudzbenica;
 
     @ManyToOne
-    @JoinColumn(name = "preduzece_id", nullable = false)
-    private Preduzece preduzece;
+    @JoinColumn(name = "duznik_id", nullable = false)
+    private Preduzece duznik;
 
     @ManyToOne
     @JoinColumn(name = "poslovnaGodina_id", nullable = false)
     private PoslovnaGodina poslovnaGodina;
 
     @ManyToOne
-    @JoinColumn(name = "poslovniPartner_id", nullable = false)
-    private PoslovniPartner poslovniPartner;
+    @JoinColumn(name = "primalac_id", nullable = false)
+    private Preduzece primalac;
 
     @OneToMany(mappedBy = "faktura")
     private List<StavkaFakture> stavkaFaktureList;
@@ -163,14 +163,6 @@ public class Faktura implements Serializable {
         this.narudzbenica = narudzbenica;
     }
 
-    public Preduzece getPreduzece() {
-        return preduzece;
-    }
-
-    public void setPreduzece(Preduzece preduzece) {
-        this.preduzece = preduzece;
-    }
-
     public PoslovnaGodina getPoslovnaGodina() {
         return poslovnaGodina;
     }
@@ -179,13 +171,6 @@ public class Faktura implements Serializable {
         this.poslovnaGodina = poslovnaGodina;
     }
 
-    public PoslovniPartner getPoslovniPartner() {
-        return poslovniPartner;
-    }
-
-    public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
-        this.poslovniPartner = poslovniPartner;
-    }
 
     public List<StavkaFakture> getStavkaFaktureList() {
         return stavkaFaktureList;
@@ -193,5 +178,21 @@ public class Faktura implements Serializable {
 
     public void setStavkaFaktureList(List<StavkaFakture> stavkaFaktureList) {
         this.stavkaFaktureList = stavkaFaktureList;
+    }
+
+    public Preduzece getDuznik() {
+        return duznik;
+    }
+
+    public void setDuznik(Preduzece duznik) {
+        this.duznik = duznik;
+    }
+
+    public Preduzece getPrimalac() {
+        return primalac;
+    }
+
+    public void setPrimalac(Preduzece primalac) {
+        this.primalac = primalac;
     }
 }

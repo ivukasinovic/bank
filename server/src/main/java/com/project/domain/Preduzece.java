@@ -27,13 +27,12 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false)
     private String lozinka;
 
-
     @ManyToOne
     private Adresa adresa;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "preduzece")
-    private List<PoslovniPartner> poslovniPartneri;
+    @OneToMany(mappedBy = "preduzece1")
+    private List<Partnerstvo> partnerstva;
 
     @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
@@ -97,12 +96,20 @@ public class Preduzece  implements Serializable {
         this.lozinka = lozinka;
     }
 
-    public List<PoslovniPartner> getPoslovniPartneri() {
-        return poslovniPartneri;
+    public List<Partnerstvo> getPartnerstva() {
+        return partnerstva;
     }
 
-    public void setPoslovniPartneri(List<PoslovniPartner> poslovniPartneri) {
-        this.poslovniPartneri = poslovniPartneri;
+    public void setPartnerstva(List<Partnerstvo> partnerstva) {
+        this.partnerstva = partnerstva;
+    }
+
+    public String getBrojRacuna() {
+        return brojRacuna;
+    }
+
+    public void setBrojRacuna(String brojRacuna) {
+        this.brojRacuna = brojRacuna;
     }
 
     public Adresa getAdresa() {

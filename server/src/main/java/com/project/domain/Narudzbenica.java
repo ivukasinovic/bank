@@ -21,7 +21,7 @@ public class Narudzbenica  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "poslovni_partner_id", nullable = false)
-    private PoslovniPartner poslovniPartner;
+    private Preduzece poslovniPartner;
 
 
     @OneToMany(mappedBy = "narudzbenica")
@@ -59,11 +59,11 @@ public class Narudzbenica  implements Serializable {
         this.datumKreiranja = datumKreiranja;
     }
 
-    public PoslovniPartner getPoslovniPartner() {
+    public Preduzece getPoslovniPartner() {
         return poslovniPartner;
     }
 
-    public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
+    public void setPoslovniPartner(Preduzece poslovniPartner) {
         this.poslovniPartner = poslovniPartner;
     }
 
