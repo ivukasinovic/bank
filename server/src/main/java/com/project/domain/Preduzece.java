@@ -51,6 +51,9 @@ public class Preduzece  implements Serializable {
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovnaGodina> poslovnaGodinaList;
 
+    @Column
+    private String brojRacuna;
+
     public Preduzece(){}
 
 

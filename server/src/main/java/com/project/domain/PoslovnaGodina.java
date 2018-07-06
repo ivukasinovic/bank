@@ -9,7 +9,7 @@ public class PoslovnaGodina implements Serializable {
     private Long id;
 
     @Column
-    private Long godina;
+    private Integer godina;
 
     @Column(columnDefinition =  "boolean default true")
     private boolean zakljucana;
@@ -28,8 +28,7 @@ public class PoslovnaGodina implements Serializable {
     }
 
 
-
-    public PoslovnaGodina(Long id, Long godina, boolean zakljucana) {
+    public PoslovnaGodina(Long id, int godina, boolean zakljucana) {
         this.id = id;
         this.godina = godina;
         this.zakljucana = zakljucana;
@@ -43,11 +42,11 @@ public class PoslovnaGodina implements Serializable {
         this.id = id;
     }
 
-    public Long getGodina() {
+    public int getGodina() {
         return godina;
     }
 
-    public void setGodina(Long godina) {
+    public void setGodina(int godina) {
         this.godina = godina;
     }
 
