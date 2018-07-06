@@ -14,10 +14,10 @@ public class PoslovniPartner implements Serializable {
     private Long id;
 
     @Column
-    private String vrsta;
+    private String vrsta; //NARUCILAC ili ISPORUCILAC
 
     @Column
-    private String broTelefona;
+    private String brojTelefona;
 
     @Column
     private String email;
@@ -33,10 +33,10 @@ public class PoslovniPartner implements Serializable {
 
     public  PoslovniPartner(){}
 
-    public PoslovniPartner(Long id, String vrsta, String broTelefona, String email, String brojRacuna) {
+    public PoslovniPartner(Long id, String vrsta, String brojTelefona, String email, String brojRacuna) {
         this.id = id;
         this.vrsta = vrsta;
-        this.broTelefona = broTelefona;
+        this.brojTelefona = brojTelefona;
         this.email = email;
         this.brojRacuna = brojRacuna;
     }
@@ -57,12 +57,12 @@ public class PoslovniPartner implements Serializable {
         this.vrsta = vrsta;
     }
 
-    public String getBroTelefona() {
-        return broTelefona;
+    public String getBrojTelefonaTelefona() {
+        return brojTelefona;
     }
 
-    public void setBroTelefona(String broTelefona) {
-        this.broTelefona = broTelefona;
+    public void setBrojTelefona(String brojTelefona) {
+        this.brojTelefona = brojTelefona;
     }
 
     public String getEmail() {

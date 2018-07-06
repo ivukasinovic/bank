@@ -20,12 +20,9 @@ public class Narudzbenica  implements Serializable {
     private Date datumKreiranja;
 
     @ManyToOne
-    @JoinColumn(name = "narucilac_id", nullable = false)
-    private PoslovniPartner narucilac;
+    @JoinColumn(name = "poslovni_partner_id", nullable = false)
+    private PoslovniPartner poslovniPartner;
 
-    @ManyToOne
-    @JoinColumn(name = "isporucilac_id", nullable = false)
-    private PoslovniPartner isporucilac;
 
     @OneToMany(mappedBy = "narudzbenica")
     private List<StavkaNarudzbenice> stavkaNarudzbeniceList;
@@ -62,20 +59,12 @@ public class Narudzbenica  implements Serializable {
         this.datumKreiranja = datumKreiranja;
     }
 
-    public PoslovniPartner getNarucilac() {
-        return narucilac;
+    public PoslovniPartner getPoslovniPartner() {
+        return poslovniPartner;
     }
 
-    public void setNarucilac(PoslovniPartner narucilac) {
-        this.narucilac = narucilac;
-    }
-
-    public PoslovniPartner getIsporucilac() {
-        return isporucilac;
-    }
-
-    public void setIsporucilac(PoslovniPartner isporucilac) {
-        this.isporucilac = isporucilac;
+    public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
+        this.poslovniPartner = poslovniPartner;
     }
 
     public List<StavkaNarudzbenice> getStavkaNarudzbeniceList() {

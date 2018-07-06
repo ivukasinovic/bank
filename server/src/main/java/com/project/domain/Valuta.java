@@ -8,7 +8,7 @@ public class Valuta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10)
+    @Column(length = 20)
     private String naziv;
 
     @Column(length = 3)

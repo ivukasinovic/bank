@@ -16,7 +16,7 @@ public class Preduzece  implements Serializable {
     @Column(length = 30)
     private String naziv;
 
-    @Column(columnDefinition="CHAR",length=11)
+    @Column(columnDefinition="CHAR(11)")
     private String pib;
 
     @Email

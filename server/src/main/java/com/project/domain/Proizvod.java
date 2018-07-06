@@ -22,7 +22,7 @@ public class Proizvod implements Serializable {
     private Preduzece preduzece;
 
     @ManyToOne
-    private GrupaProizvoda grupaProizvod;
+    private GrupaProizvoda grupaProizvoda;
 
     @ManyToOne
     private JedinicaMere jedinicaMere;
@@ -62,12 +62,12 @@ public class Proizvod implements Serializable {
         this.preduzece = preduzece;
     }
 
-    public GrupaProizvoda getGrupaProizvod() {
-        return grupaProizvod;
+    public GrupaProizvoda getGrupaProizvoda() {
+        return grupaProizvoda;
     }
 
-    public void setGrupaProizvod(GrupaProizvoda grupaProizvod) {
-        this.grupaProizvod = grupaProizvod;
+    public void setGrupaProizvoda(GrupaProizvoda grupaProizvoda) {
+        this.grupaProizvoda = grupaProizvoda;
     }
 
     public JedinicaMere getJedinicaMere() {

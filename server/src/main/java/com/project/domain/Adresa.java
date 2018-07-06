@@ -29,12 +29,12 @@ public class Adresa implements Serializable  {
     private Long postanskiBroj;
 
     @Column(nullable = false)
-    private Long drzava;
+    private String drzava;
 
     public Adresa() {
     }
 
-    public Adresa(Long id, String broj, String ulica, String grad, Long postanskiBroj, Long drzava) {
+    public Adresa(Long id, String broj, String ulica, String grad, Long postanskiBroj, String drzava) {
         this.id = id;
         this.broj = broj;
         this.ulica = ulica;
@@ -83,11 +83,11 @@ public class Adresa implements Serializable  {
         this.postanskiBroj = postanskiBroj;
     }
 
-    public Long getDrzava() {
+    public String getDrzava() {
         return drzava;
     }
 
-    public void setDrzava(Long drzava) {
+    public void setDrzava(String drzava) {
         this.drzava = drzava;
     }
 }
