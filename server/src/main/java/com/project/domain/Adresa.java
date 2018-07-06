@@ -26,7 +26,7 @@ public class Adresa implements Serializable  {
     private String grad;
 
     @Column(nullable = false)
-    private Long postanskiBroj;
+    private Integer  postanskiBroj;
 
     @Column(nullable = false)
     private String drzava;
@@ -34,7 +34,7 @@ public class Adresa implements Serializable  {
     public Adresa() {
     }
 
-    public Adresa(Long id, String broj, String ulica, String grad, Long postanskiBroj, String drzava) {
+    public Adresa(Long id, String broj, String ulica, String grad, int postanskiBroj, String drzava) {
         this.id = id;
         this.broj = broj;
         this.ulica = ulica;
@@ -75,11 +75,12 @@ public class Adresa implements Serializable  {
         this.grad = grad;
     }
 
-    public Long getPostanskiBroj() {
+
+    public int getPostanskiBroj() {
         return postanskiBroj;
     }
 
-    public void setPostanskiBroj(Long postanskiBroj) {
+    public void setPostanskiBroj(Integer postanskiBroj) {
         this.postanskiBroj = postanskiBroj;
     }
 

@@ -50,11 +50,11 @@ INSERT INTO grupa_proizvoda (id, naziv, opis, pdv_id) VALUES (6, 'Gradjevinski',
 INSERT INTO grupa_proizvoda (id, naziv, opis, pdv_id) VALUES (7, 'Tehnika', 'Bela tehnika i ostali uredjaji',2);
 INSERT INTO grupa_proizvoda (id, naziv, opis, pdv_id) VALUES (8, 'Gradjevinski', 'Gradjevinski materijal',2);
 
-INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id) VALUES (1, 'sdd@email.com','sdd','12121212120', 'SDD Technology Group',6);
-INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id) VALUES (2, 'v@v.com','v','12121212121', 'Victoria Oil',2);
-INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id) VALUES (3, 'i@i.com','i','12121212122', 'TIM Izolirka',3);
-INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id) VALUES (4, 'flora@flora.com','flora','12121212123', 'Flora',1);
-INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id) VALUES (5, 'a@a.com','a','12121212125', 'Arcus Health',5);
+INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (1, 'sdd@email.com','sdd','12121212120', 'SDD Technology Group',6,'123-9876543211234-45');
+INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (2, 'v@v.com','v','12121212121', 'Victoria Oil',2,'123-9876543211234-48');
+INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (3, 'i@i.com','i','12121212122', 'TIM Izolirka',3,'123-9876543211234-49');
+INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (4, 'flora@flora.com','flora','12121212123', 'Flora',1,'123-9876543211234-45');
+INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (5, 'a@a.com','a','12121212125', 'Arcus Health',5,'123-9876543211234-11');
 
 INSERT INTO proizvod (id, naziv, opis, grupa_proizvoda_id, jedinica_mere_id, preduzece_id) VALUES (1, 'Papir','A4 format',2, 3, 1);
 INSERT INTO proizvod (id, naziv, opis, grupa_proizvoda_id, jedinica_mere_id, preduzece_id) VALUES (2, 'Kabl','Presek 13mm',4, 2, 3);
