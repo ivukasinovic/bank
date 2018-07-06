@@ -1,8 +1,10 @@
 package com.project.controller;
 
+import com.project.domain.Adresa;
 import com.project.domain.Preduzece;
 import com.project.domain.Role;
 import com.project.domain.User;
+import com.project.service.AdresaService;
 import com.project.service.MessageService;
 import com.project.service.PreduzeceService;
 import com.project.service.UserService;
@@ -31,6 +33,9 @@ public class HelloController {
 
     @Autowired
     private PreduzeceService preduzeceService;
+
+    @Autowired
+    private AdresaService adresaService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> getMessage(){
@@ -69,23 +74,23 @@ public class HelloController {
     }
 
     @RequestMapping(
-            value = "/register",
+            value = "/register/{id}",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createRegisteredUser(@Validated @RequestBody Preduzece newUser, Errors errors ) {
+    public ResponseEntity<?> createRegisteredUser(@PathVariable("id") Long id,@Validated @RequestBody Preduzece newUser, Errors errors ) {
         // newUser.setEmail(newUser.getEmail());
         //newUser.setRole("USER"); // Samo za obicne korisnike
-
 
         if(errors.hasErrors())
         {
             return  new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
         }
 
-//        newUser.setRole("USER");
-//        User savedRegisteredUser = userService.save(newUser);
-        //regPosetilacService.sendEmai(savedRegisteredUser);
+        Adresa adres =  adresaService.findOne(id);      // ako se bira vec postojece adrese !!!
+        newUser.setAdresa(adres);
+
+
         Preduzece savedRegisteredUser = preduzeceService.save(newUser);
 
         String poruka = "http://localhost:8080/user/potvrdaMaila/"+savedRegisteredUser.getId();

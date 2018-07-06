@@ -27,6 +27,7 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false)
     private String lozinka;
 
+
     @ManyToOne
     private Adresa adresa;
 
