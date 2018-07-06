@@ -25,10 +25,52 @@
       <label for="ime">Pib:</label>
       <input #pib name="ime" type="text" class="form-control" id="ime" required/>
     </div>
-    <div class="form-group">
-      <label for="prezime">Adresa:</label>
-      <input #adresa name="prezime" type="text" class="form-control" id="prezime" required/>
-    </div>
+
+    <!--<div class="form-group">-->
+      <!--<label for="prezime">Adresa:</label>-->
+      <!--<input #adresa name="adresa" type="text" class="form-control" id="prezime" required/>-->
+    <!--</div>-->
+  <!--<details>-->
+    <!--<summary><b>  Postojece adrese: </b></summary>-->
+  <label> <b>  Postojece adrese: </b> </label>
+  <div class="form-group">
+    <select  class="form-control"  (ngModelChange)="employeeSelected($event)" name="adresa" #adresa >  <!--  name = "typeOfLodging" formControlName="typeOfLodging" -->
+    <option *ngFor="let t1 of postojeceAdrese" [value]="t1.id"  >{{t1.drzava}} , {{ t1.ulica }} , {{ t1.broj}}</option>
+    </select>
+  </div>
+  <!--</details>-->
+
+  <div class="form-group">
+    <details>
+      <summary><b>  Add new Adress </b></summary>
+      <br>
+      <table>
+        <tr >
+          <td><label class="pull-left"> Drzava </label></td>
+          <td><input class="form-control pull-right" type="text"></td>
+        </tr>
+        <tr >
+          <td><label class="pull-left"> Grad </label></td>
+          <td><input class="form-control pull-right" type="text"></td>
+        </tr>
+        <tr >
+          <td><label class="pull-left"> Postanski-broj </label></td>
+          <td><input class="form-control pull-right" type="text"></td>
+        </tr>
+        <tr >
+          <td><label class="pull-left"> Ulica </label></td>
+          <td><input class="form-control pull-right" type="text"></td>
+        </tr>
+
+        <tr >
+          <td><label class="pull-left"> Postanski broj </label></td>
+          <td><input class="form-control pull-right" type="number"></td>
+        </tr>
+
+      </table>
+    </details>
+  </div>
+
     <!--<div class="form-group">-->
       <!--<label for="grad">Grad:</label>-->
       <!--<input #grad name="grad" type="text" class="form-control" id="grad" required/>-->

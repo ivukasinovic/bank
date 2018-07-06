@@ -8,9 +8,14 @@ export class KorisnikServiceService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  registerNewUser(korisnik: Preduzece) {
-    return this.http.post('api/user/register', korisnik).subscribe();
+  registerNewUser(idAdrese: number, korisnik: Preduzece) {
+    return this.http.post('api/user/register/' + idAdrese, korisnik).subscribe();
   }
+
+  allAdress() {
+    return this.http.get('api/adresa');
+  }
+
 
   loginUser(email: string, lozinka: string) {
     return this.http.post('api/user/logIn', {email: email, lozinka: lozinka})
