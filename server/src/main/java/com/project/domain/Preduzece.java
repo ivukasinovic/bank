@@ -1,5 +1,6 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -29,18 +30,23 @@ public class Preduzece  implements Serializable {
     @ManyToOne
     private Adresa adresa;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovniPartner> poslovniPartneri;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<Cenovnik> cenovnikList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<Proizvod> proizvodList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<Faktura> fakturaList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovnaGodina> poslovnaGodinaList;
 

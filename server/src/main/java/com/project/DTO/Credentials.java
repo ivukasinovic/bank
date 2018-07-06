@@ -2,7 +2,7 @@ package com.project.DTO;
 
 public class Credentials {
     private String email;
-    private String password;
+    private String lozinka;
 
     public Credentials(){}
 
@@ -14,12 +14,12 @@ public class Credentials {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getLozinka() {
+        return lozinka;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLozinka(String lozinka) {
+        this.lozinka = lozinka;
     }
 }
 
