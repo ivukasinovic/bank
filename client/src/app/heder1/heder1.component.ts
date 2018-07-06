@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../model/korisnik';
+import {Preduzece, User} from '../model/korisnik';
 import {KorisnikServiceService} from '../korisnik-service.service';
 import {Router} from '@angular/router';
 
@@ -14,11 +14,13 @@ export class Heder1Component implements OnInit {
   tip: boolean;
   sisTip: boolean;
   regTip: boolean;
-
+  preduzece: Preduzece;
 
 
   constructor(private korisnikService: KorisnikServiceService, private router: Router) {
-    this.korisnik = JSON.parse(localStorage.getItem('ulogovaniKorisnik'));
+    // this.korisnik = JSON.parse(localStorage.getItem('ulogovaniKorisnik'));
+    this.preduzece = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
+
   }
 
 

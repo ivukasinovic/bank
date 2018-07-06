@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KorisnikServiceService} from '../korisnik-service.service';
 import {Router} from '@angular/router';
-import {User} from '../model/korisnik';
+import {Preduzece, User} from '../model/korisnik';
 
 @Component({
   selector: 'app-register',
@@ -11,17 +11,19 @@ import {User} from '../model/korisnik';
 export class RegisterComponent implements OnInit {
 
   private korisnik: User;
+  private preduzece: Preduzece;
 
   constructor(private korisnikService: KorisnikServiceService, private router: Router) {
-    this.korisnik = new User();
+  //  this.korisnik = new User();
+    this.preduzece = new Preduzece();
   }
 
   ngOnInit() {
   }
-  register( username: string , email: string, lozinka1: string, lozinka2: string, ime: string,
-            prezime: string, grad: string, broj: string) {
-    if ( username === '' || email === '' || lozinka1 === '' || lozinka2 === '' || ime === '' ||
-      prezime === '' || grad === '' || broj === '') {
+  register( naziv: string , email: string, lozinka1: string, lozinka2: string, pib: string,
+            adresa: string) {
+    if ( naziv === '' || email === '' || lozinka1 === '' || lozinka2 === '' || pib === '' ||
+      adresa === '' ) {
       alert('Morate popuniti sva polja!');
       return;
     }
@@ -30,16 +32,15 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.korisnik.email = email;
-    this.korisnik.city = grad;
-    this.korisnik.name = ime;
-    this.korisnik.surname = prezime;
-    this.korisnik.password = lozinka1;
-    this.korisnik.username = username;
-    this.korisnik.number = broj;
-    this.korisnik.activated = false;
+    this.preduzece.email = email;
+    this.preduzece.naziv = naziv;
+    this.preduzece.pib = pib;
+    this.preduzece.lozinka = lozinka1;
+    this.preduzece.adress = adresa;
+
+  //  this.korisnik.activated = false;
       // this.korisnik.role = 'USER';
-    this.korisnikService.registerNewUser(this.korisnik);
+    this.korisnikService.registerNewUser(this.preduzece);  // this.korisnik);
     this.router.navigateByUrl('/pocetna');       // /home-page');
   }
 

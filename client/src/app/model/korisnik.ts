@@ -12,3 +12,13 @@ export class User {
   password: string;
   activated: boolean;
 }
+
+export class Preduzece {
+  id: number;
+  naziv: string;
+  pib: string;
+  lozinka: string;
+  email: string;
+  adress: string;
+  // activated: boolean;
+}
