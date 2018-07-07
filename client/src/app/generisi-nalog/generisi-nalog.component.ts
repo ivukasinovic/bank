@@ -16,6 +16,7 @@ export class GenerisiNalogComponent implements OnInit {
   ngOnInit() {
     this.fakturaService.getNeplacene().subscribe((result: Faktura[]) => {
         this.neplacene = result;
+        console.log('done');
       },
       error1 => {
         alert('Doslo je do greske');

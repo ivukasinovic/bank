@@ -65,13 +65,14 @@ public class FakturaController {
 
     @GetMapping(value = "/neplacene", produces = MediaType.APPLICATION_JSON_VALUE)
    public ResponseEntity<List<Faktura>> getNeplacene(){
-        //todo: kada povezem na front uzeti ulogovano preduzece
-//        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//                                HttpSession session= attr.getRequest().getSession(true);
-//                                        Preduzece preduzece = (Preduzece)session.getAttribute("preduzece");
-                                               Preduzece preduzece = preduzeceRepository.findOne(1l);
-               List<Faktura> fakture = fakturaService.getNeplacene(preduzece);
 
-                     return  new ResponseEntity<>(fakture, HttpStatus.OK);
-            }
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session= attr.getRequest().getSession(true);
+        Preduzece preduzece = (Preduzece)session.getAttribute("preduzece");
+
+        List<Faktura> fakture = fakturaService.getNeplacene(preduzece);
+
+        return  new ResponseEntity<>(fakture, HttpStatus.OK);
+
+    }
 }
