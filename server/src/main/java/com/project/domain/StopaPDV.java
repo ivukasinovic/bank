@@ -1,5 +1,9 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,6 +20,8 @@ public class StopaPDV implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datumVazenja;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "pdv_id", nullable = false)
     private PDV pdv;

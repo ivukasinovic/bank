@@ -13,6 +13,7 @@ public class PDV implements Serializable {
     @Column
     private String naziv;
 
+
     @OneToMany(mappedBy = "pdv")
     private  List<StopaPDV> stopaPDVList;
 

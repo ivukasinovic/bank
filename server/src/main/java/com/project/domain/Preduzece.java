@@ -24,16 +24,19 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column
+    private String brojRacuna;
+
+    @JsonIgnore
     @Column(nullable = false)
     private String lozinka;
-
 
     @ManyToOne
     private Adresa adresa;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "preduzece")
-    private List<PoslovniPartner> poslovniPartneri;
+    @OneToMany(mappedBy = "preduzece1")
+    private List<Partnerstvo> partnerstva;
 
     @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
@@ -44,15 +47,16 @@ public class Preduzece  implements Serializable {
     private List<Proizvod> proizvodList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "preduzece")
-    private List<Faktura> fakturaList;
+    @OneToMany(mappedBy = "duznik")
+    private List<Faktura> listaDuznikFktura;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "primalac")
+    private List<Faktura> listaPrimalacFaktura;
 
     @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovnaGodina> poslovnaGodinaList;
-
-    @Column
-    private String brojRacuna;
 
     public Preduzece(){}
 
@@ -97,12 +101,20 @@ public class Preduzece  implements Serializable {
         this.lozinka = lozinka;
     }
 
-    public List<PoslovniPartner> getPoslovniPartneri() {
-        return poslovniPartneri;
+    public List<Partnerstvo> getPartnerstva() {
+        return partnerstva;
     }
 
-    public void setPoslovniPartneri(List<PoslovniPartner> poslovniPartneri) {
-        this.poslovniPartneri = poslovniPartneri;
+    public void setPartnerstva(List<Partnerstvo> partnerstva) {
+        this.partnerstva = partnerstva;
+    }
+
+    public String getBrojRacuna() {
+        return brojRacuna;
+    }
+
+    public void setBrojRacuna(String brojRacuna) {
+        this.brojRacuna = brojRacuna;
     }
 
     public Adresa getAdresa() {
@@ -129,13 +141,6 @@ public class Preduzece  implements Serializable {
         this.proizvodList = proizvodList;
     }
 
-    public List<Faktura> getFakturaList() {
-        return fakturaList;
-    }
-
-    public void setFakturaList(List<Faktura> fakturaList) {
-        this.fakturaList = fakturaList;
-    }
 
     public List<PoslovnaGodina> getPoslovnaGodinaList() {
         return poslovnaGodinaList;
@@ -143,6 +148,22 @@ public class Preduzece  implements Serializable {
 
     public void setPoslovnaGodinaList(List<PoslovnaGodina> poslovnaGodinaList) {
         this.poslovnaGodinaList = poslovnaGodinaList;
+    }
+
+    public List<Faktura> getListaDuznikFktura() {
+        return listaDuznikFktura;
+    }
+
+    public void setListaDuznikFktura(List<Faktura> listaDuznikFktura) {
+        this.listaDuznikFktura = listaDuznikFktura;
+    }
+
+    public List<Faktura> getListaPrimalacFaktura() {
+        return listaPrimalacFaktura;
+    }
+
+    public void setListaPrimalacFaktura(List<Faktura> listaPrimalacFaktura) {
+        this.listaPrimalacFaktura = listaPrimalacFaktura;
     }
 
 

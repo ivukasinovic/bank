@@ -11,13 +11,13 @@ public class NalogZaPlacanje {
     private Long id;
 
     @Column(nullable = false)
-    private  String duznik;
+    private  Preduzece duznik;
+
+    @Column(nullable = false)
+    private  Preduzece primalac;
 
     @Column(nullable = false)
     private  String svrha;
-
-    @Column(nullable = false)
-    private  String primalac;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
@@ -62,12 +62,20 @@ public class NalogZaPlacanje {
         this.id = id;
     }
 
-    public String getDuznik() {
+    public Preduzece getDuznik() {
         return duznik;
     }
 
-    public void setDuznik(String duznik) {
+    public void setDuznik(Preduzece duznik) {
         this.duznik = duznik;
+    }
+
+    public Preduzece getPrimalac() {
+        return primalac;
+    }
+
+    public void setPrimalac(Preduzece primalac) {
+        this.primalac = primalac;
     }
 
     public String getSvrha() {
@@ -76,14 +84,6 @@ public class NalogZaPlacanje {
 
     public void setSvrha(String svrha) {
         this.svrha = svrha;
-    }
-
-    public String getPrimalac() {
-        return primalac;
-    }
-
-    public void setPrimalac(String primalac) {
-        this.primalac = primalac;
     }
 
     public Date getDatumNaloga() {

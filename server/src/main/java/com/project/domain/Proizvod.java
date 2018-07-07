@@ -1,8 +1,9 @@
 package com.project.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -18,12 +19,18 @@ public class Proizvod implements Serializable {
     @Column(length = 100)
     private String opis;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     private Preduzece preduzece;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     private GrupaProizvoda grupaProizvoda;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "skracenica")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     private JedinicaMere jedinicaMere;
 

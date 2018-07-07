@@ -1,6 +1,8 @@
 package com.project.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -39,30 +41,32 @@ public class Faktura implements Serializable {
     @Column (columnDefinition = "Decimal(15,2)", nullable = false)
     private double preostaliIznos;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String tip;
-
-    @Column(columnDefinition = "boolean default false")
-    private boolean zatvorena;
+    private FakturaStatus status;
 
     // moze null jer se faktura moze kreirati bez narudzbenice
-    @ManyToOne
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "redniBroj")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "narudzbenica_id", nullable = true)
     private Narudzbenica narudzbenica;
 
     @ManyToOne
-    @JoinColumn(name = "preduzece_id", nullable = false)
-    private Preduzece preduzece;
+    @JoinColumn(name = "duznik_id", nullable = false)
+    private Preduzece duznik;
 
+    @ManyToOne
+    @JoinColumn(name = "primalac_id", nullable = false)
+    private Preduzece primalac;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "godina") // godina
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "poslovnaGodina_id", nullable = false)
     private PoslovnaGodina poslovnaGodina;
 
-    @ManyToOne
-    @JoinColumn(name = "poslovniPartner_id", nullable = false)
-    private PoslovniPartner poslovniPartner;
-
-    @OneToMany(mappedBy = "faktura")
+    @OneToMany(mappedBy = "faktura", cascade = CascadeType.REMOVE)
     private List<StavkaFakture> stavkaFaktureList;
 
     public Faktura() {}
@@ -139,20 +143,12 @@ public class Faktura implements Serializable {
         this.ukupnoZaPlacanje = ukupnoZaPlacanje;
     }
 
-    public String getTip() {
-        return tip;
+    public FakturaStatus getStatus() {
+        return status;
     }
 
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
-
-    public boolean isZatvorena() {
-        return zatvorena;
-    }
-
-    public void setZatvorena(boolean zatvorena) {
-        this.zatvorena = zatvorena;
+    public void setStatus(FakturaStatus status) {
+        this.status = status;
     }
 
     public Narudzbenica getNarudzbenica() {
@@ -163,14 +159,6 @@ public class Faktura implements Serializable {
         this.narudzbenica = narudzbenica;
     }
 
-    public Preduzece getPreduzece() {
-        return preduzece;
-    }
-
-    public void setPreduzece(Preduzece preduzece) {
-        this.preduzece = preduzece;
-    }
-
     public PoslovnaGodina getPoslovnaGodina() {
         return poslovnaGodina;
     }
@@ -179,13 +167,6 @@ public class Faktura implements Serializable {
         this.poslovnaGodina = poslovnaGodina;
     }
 
-    public PoslovniPartner getPoslovniPartner() {
-        return poslovniPartner;
-    }
-
-    public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
-        this.poslovniPartner = poslovniPartner;
-    }
 
     public List<StavkaFakture> getStavkaFaktureList() {
         return stavkaFaktureList;
@@ -193,5 +174,21 @@ public class Faktura implements Serializable {
 
     public void setStavkaFaktureList(List<StavkaFakture> stavkaFaktureList) {
         this.stavkaFaktureList = stavkaFaktureList;
+    }
+
+    public Preduzece getDuznik() {
+        return duznik;
+    }
+
+    public void setDuznik(Preduzece duznik) {
+        this.duznik = duznik;
+    }
+
+    public Preduzece getPrimalac() {
+        return primalac;
+    }
+
+    public void setPrimalac(Preduzece primalac) {
+        this.primalac = primalac;
     }
 }

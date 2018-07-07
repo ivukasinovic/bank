@@ -1,5 +1,9 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -14,6 +18,8 @@ public class GrupaProizvoda implements Serializable {
     @Column(length = 100)
     private String opis;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "pdv_id", nullable = false)
     private PDV pdv;

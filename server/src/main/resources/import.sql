@@ -1,11 +1,3 @@
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('ADMIN', 'Novi Sad', 'admin@admin.com', 'Ivan', '0635569989', 'admin', 'Vukasinovic', 'admin', true,'' );
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('AGENT', 'Beograd', 'agent@agent.com','Agent', '0641569989', 'agent', 'Agentic', 'agent', true,'');
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('User', 'Vranje', 'user@user.com','User', '0641569589', 'user', 'Useric', 'user', true,'Futoska 38');
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('User', 'Beograd', 'mironikos94@gmail.com', 'Dejan', '0615565239', 'dejan', 'Stojkic', 'dejan', true,'Becejska 38');
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('User', 'Novi Sad', 'milanovicstefann@gmail.com', 'Stefan', '0645565239', 'stefan', 'Milanovic', 'stefan', true,'Celopecka 38');
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('User', 'Novi Sad', 'jovananovakovic404@gmail.com', 'Jovana', '0645565239', 'jovana', 'Novakovic', 'jovana', true,'Francuska 38');
-INSERT INTO user (role, city, email, name, number, password, surname, username, activated,adress) VALUES ('User', 'Becej', 'ivan.becej@gmail.com', 'Ivan', '0645565239', 'ivan', 'Vukasinovic', 'ivan', true,'Niska 38');
-
 INSERT INTO adresa (id, broj, drzava, grad, postanski_broj, ulica) VALUES (1, '22', 'Srbija', 'Becej', 21220, 'Cara Dusana');
 INSERT INTO adresa (id, broj, drzava, grad, postanski_broj, ulica) VALUES (2,'21', 'Srbija', 'Sid', 22240, 'Jelice Stanivukovic');
 INSERT INTO adresa (id, broj, drzava, grad, postanski_broj, ulica) VALUES (3,'1', 'Srbija', 'Sid', 22240, 'Kneza Milosa');
@@ -74,11 +66,11 @@ INSERT INTO poslovna_godina (id, godina,zakljucana,preduzece_id) VALUES (7, 2018
 INSERT INTO poslovna_godina (id, godina,zakljucana,preduzece_id) VALUES (8, 2018,false,4);
 INSERT INTO poslovna_godina (id, godina,zakljucana,preduzece_id) VALUES (9, 2018,false,5);
 
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (1,'2018-10-23',1,2);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (2,'2018-09-23',2,1);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (3,'2018-07-30',3,1);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (4,'2018-08-13',4,1);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (5,'2018-10-22',5,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (1,'2018-10-23',1,2);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (2,'2018-09-23',2,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (3,'2018-07-30',3,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (4,'2018-08-13',4,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (5,'2018-10-22',5,1);
 
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (1,2,1,1);
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (2,10,2,7);
@@ -89,26 +81,10 @@ INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (6,10,5
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (7,10,5,5);
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (8,10,1,3);
 
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (1,'0651222111','123-9876543211234-45', 'NARUCILAC','partner1@gmail.com',1);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (2,'0621222111','223-9876543211231-47', 'ISPORUCILAC','partner2@gmail.com',1);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (3,'0612341112','323-9876543211232-46', 'NARUCILAC','partner3@gmail.com',1);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (4,'0651222154','423-9876543211233-45', 'NARUCILAC','partner4@gmail.com',2);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (5,'0651222114','523-9876543211235-47', 'NARUCILAC','partner5@gmail.com',2);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (6,'0651222115','553-9876543211236-46', 'ISPORUCILAC','partner6@gmail.com',2);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (7,'0651222116','623-9876543211237-45', 'ISPORUCILAC','partner7@gmail.com',3);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (8,'0651222118','723-9876543211238-44', 'ISPORUCILAC','partner8@gmail.com',3);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (9,'0651222199','823-9876543211239-45', 'ISPORUCILAC','partner@9gmail.com',3);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (10,'0634222111','923-9876543211230-48', 'NARUCILAC','partner10@gmail.com',4);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (11,'0651227711','023-9876543211224-47', 'ISPORUCILAC','partner11@gmail.com',4);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (12,'0651229911','193-9876543211214-45', 'ISPORUCILAC','partner12@gmail.com',4);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (13,'0651220011','173-9876543211244-46', 'NARUCILAC','partner13@gmail.com',5);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (14,'0651222333','103-9876543211264-45', 'ISPORUCILAC','partner14@gmail.com',5);
-INSERT INTO poslovni_partner (id, broj_telefona, broj_racuna, vrsta, email, preduzece_id) VALUES (15,'0651222175','145-9876543211254-47', 'NARUCILAC','partner15@gmail.com',5);
-
-INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj, poslovni_partner_id) VALUES (1,'2018-07-01',1,1);
-INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj,  poslovni_partner_id) VALUES (2,'2018-07-02',2,2);
-INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj,  poslovni_partner_id) VALUES (3,'2018-07-05',3,7);
-INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj, poslovni_partner_id) VALUES (4,'2018-07-11',33,15);
+INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj, dobavljac_id, potrazivac_id) VALUES (1,'2018-07-01',1,1, 2);
+INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj,  dobavljac_id, potrazivac_id) VALUES (2,'2018-07-02',2,2, 1);
+INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj,  dobavljac_id, potrazivac_id) VALUES (3,'2018-07-05',3,5, 2);
+INSERT INTO narudzbenica (id, datum_kreiranja, redni_broj, dobavljac_id, potrazivac_id) VALUES (4,'2018-07-11',33,5, 1);
 
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (1,10,1,1);
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (2,2,1,2);
@@ -121,12 +97,12 @@ INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALU
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (9,12,4,4);
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (10,3,4,1);
 --ako narudzbenica nije null ona se po njoj gleda ko su preduzece i poslovni partner ? PROVERI
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'ULAZNA',25,10,200,true,1,5,1,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (2,20,101,'2018-07-05','2018-07-14',400,'IZLAZNA',26,100,400,true,2,4,2,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (3,21,102,'2018-07-06','2018-07-19',122,'ULAZNA',27,80,122,true,3,5,6,2);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (4,22,103,'2018-07-07','2018-07-04',40,'IZLAZNA',28,0,40,true,4,5,7,3);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (5,23,104,'2018-07-08','2018-07-22',510,'ULAZNA',29,0,510,true,null,5,8,3);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (6,24,105,'2018-07-09','2018-07-23',480,'IZLAZNA',30,12,480,true,null,9,3,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'FAZAFORMIRANJA',25,10,200,1,5,1,2);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (2,20,101,'2018-07-05','2018-07-14',400,'FAZAFORMIRANJA',26,100,400,2,4,2,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (3,21,102,'2018-07-06','2018-07-19',122,'FAZAFORMIRANJA',27,80,122,3,5,5,2);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (4,22,103,'2018-07-07','2018-07-04',40,'FAZAFORMIRANJA',28,0,40,4,5,4,3);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (5,23,104,'2018-07-08','2018-07-22',510,'POSLATA',29,0,510,null,5,5,3);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (6,24,105,'2018-07-09','2018-07-23',480,'POSLATA',30,12,480,null,9,3,1);
 
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (1,20,22,2,5,50,12,10,200,1,1);
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (2,21,21,60,5,50,12,10,200,1,3);

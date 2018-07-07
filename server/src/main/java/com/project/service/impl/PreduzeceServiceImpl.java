@@ -1,7 +1,8 @@
-package com.project.service;
+package com.project.service.impl;
 
 import com.project.domain.Preduzece;
 import com.project.repository.PreduzeceRepository;
+import com.project.service.PreduzeceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

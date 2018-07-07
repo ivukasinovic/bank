@@ -19,12 +19,15 @@ public class Narudzbenica  implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datumKreiranja;
 
-    @ManyToOne
-    @JoinColumn(name = "poslovni_partner_id", nullable = false)
-    private PoslovniPartner poslovniPartner;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "dobavljac_id")
+    private Preduzece dobavljac;
 
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "potrazivac_id")
+    private Preduzece potrazivac;
 
-    @OneToMany(mappedBy = "narudzbenica")
+    @OneToMany(mappedBy = "narudzbenica", cascade = CascadeType.REMOVE)
     private List<StavkaNarudzbenice> stavkaNarudzbeniceList;
 
     public Narudzbenica() {}
@@ -59,19 +62,27 @@ public class Narudzbenica  implements Serializable {
         this.datumKreiranja = datumKreiranja;
     }
 
-    public PoslovniPartner getPoslovniPartner() {
-        return poslovniPartner;
-    }
-
-    public void setPoslovniPartner(PoslovniPartner poslovniPartner) {
-        this.poslovniPartner = poslovniPartner;
-    }
-
     public List<StavkaNarudzbenice> getStavkaNarudzbeniceList() {
         return stavkaNarudzbeniceList;
     }
 
     public void setStavkaNarudzbeniceList(List<StavkaNarudzbenice> stavkaNarudzbeniceList) {
         this.stavkaNarudzbeniceList = stavkaNarudzbeniceList;
+    }
+
+    public Preduzece getDobavljac() {
+        return dobavljac;
+    }
+
+    public void setDobavljac(Preduzece dobavljac) {
+        this.dobavljac = dobavljac;
+    }
+
+    public Preduzece getPotrazivac() {
+        return potrazivac;
+    }
+
+    public void setPotrazivac(Preduzece potrazivac) {
+        this.potrazivac = potrazivac;
     }
 }
