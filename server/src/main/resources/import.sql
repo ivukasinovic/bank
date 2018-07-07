@@ -74,11 +74,11 @@ INSERT INTO poslovna_godina (id, godina,zakljucana,preduzece_id) VALUES (7, 2018
 INSERT INTO poslovna_godina (id, godina,zakljucana,preduzece_id) VALUES (8, 2018,false,4);
 INSERT INTO poslovna_godina (id, godina,zakljucana,preduzece_id) VALUES (9, 2018,false,5);
 
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (1,'2018-10-23',1,2);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (2,'2018-09-23',2,1);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (3,'2018-07-30',3,1);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (4,'2018-08-13',4,1);
-INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_id) VALUES (5,'2018-10-22',5,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (1,'2018-10-23',1,2);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (2,'2018-09-23',2,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (3,'2018-07-30',3,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (4,'2018-08-13',4,1);
+INSERT INTO cenovnik (id, datum_vazenja,preduzece_id,valuta_oznaka) VALUES (5,'2018-10-22',5,1);
 
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (1,2,1,1);
 INSERT INTO stavka_cenovnika (id, cena, cenovnik_id, proizvod_id) VALUES (2,10,2,7);
@@ -105,12 +105,12 @@ INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALU
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (9,12,4,4);
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (10,3,4,1);
 --ako narudzbenica nije null ona se po njoj gleda ko su preduzece i poslovni partner ? PROVERI
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'ULAZNA',25,10,200,true,1,5,1,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (2,20,101,'2018-07-05','2018-07-14',400,'IZLAZNA',26,100,400,true,2,4,2,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (3,21,102,'2018-07-06','2018-07-19',122,'ULAZNA',27,80,122,true,3,5,6,2);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (4,22,103,'2018-07-07','2018-07-04',40,'IZLAZNA',28,0,40,true,4,5,7,3);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (5,23,104,'2018-07-08','2018-07-22',510,'ULAZNA',29,0,510,true,null,5,8,3);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,poslovni_partner_id,preduzece_id) VALUES (6,24,105,'2018-07-09','2018-07-23',480,'IZLAZNA',30,12,480,true,null,9,3,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'ULAZNA',25,10,200,true,1,5,1,2);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (2,20,101,'2018-07-05','2018-07-14',400,'IZLAZNA',26,100,400,true,2,4,2,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (3,21,102,'2018-07-06','2018-07-19',122,'ULAZNA',27,80,122,true,3,5,5,2);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (4,22,103,'2018-07-07','2018-07-04',40,'IZLAZNA',28,0,40,true,4,5,4,3);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (5,23,104,'2018-07-08','2018-07-22',510,'ULAZNA',29,0,510,true,null,5,5,3);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,tip,ukupanpdv, ukupan_rabat,ukupno_za_placanje,zatvorena,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id) VALUES (6,24,105,'2018-07-09','2018-07-23',480,'IZLAZNA',30,12,480,true,null,9,3,1);
 
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (1,20,22,2,5,50,12,10,200,1,1);
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (2,21,21,60,5,50,12,10,200,1,3);

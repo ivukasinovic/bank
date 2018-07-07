@@ -1,5 +1,10 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -32,10 +37,13 @@ public class StavkaFakture implements Serializable {
     @Column(columnDefinition = "Decimal(12,2)")
     private double ukupanIznos;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "faktura_id", nullable = false)
     private Faktura faktura;
-    
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "proizvod_id", nullable = false)
     private Proizvod proizvod;

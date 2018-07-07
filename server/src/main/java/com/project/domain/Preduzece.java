@@ -43,12 +43,26 @@ public class Preduzece  implements Serializable {
     private List<Proizvod> proizvodList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "preduzece")
-    private List<Faktura> fakturaList;
+    @OneToMany(mappedBy = "duznik")
+    private List<Faktura> listaDuznikFktura;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "primalac")
+    private List<Faktura> listaPrimalacFaktura;
 
     @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovnaGodina> poslovnaGodinaList;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "dobavljac")
+    private List<Narudzbenica> dobavljaci ;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "potrazivac")
+    private List<Narudzbenica> potrazivaci;
+
 
     @Column
     private String brojRacuna;
@@ -136,13 +150,6 @@ public class Preduzece  implements Serializable {
         this.proizvodList = proizvodList;
     }
 
-    public List<Faktura> getFakturaList() {
-        return fakturaList;
-    }
-
-    public void setFakturaList(List<Faktura> fakturaList) {
-        this.fakturaList = fakturaList;
-    }
 
     public List<PoslovnaGodina> getPoslovnaGodinaList() {
         return poslovnaGodinaList;
@@ -152,5 +159,36 @@ public class Preduzece  implements Serializable {
         this.poslovnaGodinaList = poslovnaGodinaList;
     }
 
+    public List<Faktura> getListaDuznikFktura() {
+        return listaDuznikFktura;
+    }
 
+    public void setListaDuznikFktura(List<Faktura> listaDuznikFktura) {
+        this.listaDuznikFktura = listaDuznikFktura;
+    }
+
+    public List<Faktura> getListaPrimalacFaktura() {
+        return listaPrimalacFaktura;
+    }
+
+    public void setListaPrimalacFaktura(List<Faktura> listaPrimalacFaktura) {
+        this.listaPrimalacFaktura = listaPrimalacFaktura;
+    }
+
+
+    public List<Narudzbenica> getDobavljaci() {
+        return dobavljaci;
+    }
+
+    public void setDobavljaci(List<Narudzbenica> dobavljaci) {
+        this.dobavljaci = dobavljaci;
+    }
+
+    public List<Narudzbenica> getPotrazivaci() {
+        return potrazivaci;
+    }
+
+    public void setPotrazivaci(List<Narudzbenica> potrazivaci) {
+        this.potrazivaci = potrazivaci;
+    }
 }

@@ -1,5 +1,9 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,10 +20,14 @@ public class Cenovnik implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datumVazenja;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
-    @JoinColumn(name = "valuta_id", nullable = false)
+    @JoinColumn(name = "valuta_oznaka", nullable = false)
     private  Valuta valuta;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "preduzece_id", nullable = false)
     private Preduzece preduzece;
