@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Preduzece, User} from './model/korisnik';
+import {Preduzece, User} from '../model/model';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 

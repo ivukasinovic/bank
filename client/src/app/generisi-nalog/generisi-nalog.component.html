@@ -1,0 +1,20 @@
+<div class="container">
+  <h3>Neplacene fakture:</h3>
+
+
+  <div class="col-md-9" class="list-group-item clearfix" *ngFor="let faktura of neplacene">
+
+    <div class="pull-center" >
+
+
+      <br/><b>Broj: </b>  {{faktura.broj}}
+
+
+      <span class="pull-right">
+        <button  type="button" class="btn btn-warning">Plati</button>
+      </span>
+    </div>
+
+  </div>
+
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {KorisnikServiceService} from '../korisnik-service.service';
-import {User} from '../model/korisnik';
+import {KorisnikServiceService} from '../service/korisnik-service.service';
+import {User} from '../model/model';
 
 @Component({
   selector: 'app-login',

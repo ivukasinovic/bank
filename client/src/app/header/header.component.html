@@ -4,24 +4,23 @@
       <span class="navbar-brand"  style="color: black"> Site </span>
     </div>
     <ul class="nav navbar-nav">
-      <!--<li><a routerLink="/rezervacija-mjesta" style="color: blue">Rezervacija mjesta</a></li>-->
-      <li> <button class="btn btn-primary" style="height: 54px;width: 85px ;color: red" >  Stranica 1 </button> </li>
-      <li><button class="btn btn-primary" style="height: 54px;width: 85px ;color: red" >Stranica 2</button></li>
-      <!--<li><a style="color: blue"> Stranica 2</a></li>-->
-      <!--<li><a routerLink="/fan-zone" style="color: blue">Fan Zona</a></li>-->
+
+      <li> <a class="btn btn-link" routerLink="/generisi-nalog">  Generisi nalog za placanje </a> </li>
+
+
     </ul>
 
-    <ul class="nav navbar-nav navbar-collapse">
+    <ul class="nav navbar-nav navbar-collapse pull-right">
       <div class="row">
         <div class="col">
           <div ngbDropdown class="d-inline-block">
-            <button style="height: 54px;width: 85px ;color: aqua;" class="btn btn-primary"
+            <button class="btn btn-primary"
                     id="dropdownKorisnik" ngbDropdownToggle>Korisnik
             </button>
 
             <div ngbDropdownMenu>
               <button (click)="logOut()"  class="btn btn-danger" style="font-size: large"> Odjava</button>
-              <!--<button (click)="getMyAds()" class="zaDropDown" style="font-size: large"> Oglasi (koje ste objavili)</button>-->
+
             </div>
           </div>
         </div>
@@ -29,12 +28,7 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-
       <li><a href="/home-page" style="color: darkblue;"><p>Dato preduzece: <b> {{ preduzece.naziv }} </b></p></a></li>
-      <!--<li *ngIf="sisTip"><a href="/admin-profil" style="color: deepskyblue"> <b> Admin Profil </b> </a></li>-->
-      <!--<li *ngIf="tip"><a href="/adminsis/admin-sis" style="color: deepskyblue"> <b> Profil agenta (radnika banke) </b> </a>-->
-      <!--</li> <li *ngIf="regTip"><a href="/profil-reg-korisnika" style="color: deepskyblue"> <b> Moj profil (Obicnog korisnika) </b> </a>-->
-    <!--</li>-->
     </ul>
 
   </div>

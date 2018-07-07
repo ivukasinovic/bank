@@ -34,3 +34,8 @@ export class Preduzece {
 
 }
 
+export class Faktura {
+  id: number;
+  broj: number;
+}
+

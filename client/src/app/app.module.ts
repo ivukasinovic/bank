@@ -10,10 +10,12 @@ import { AppRoutingModule } from './/app-routing.module';
 import {RouterModule} from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
-import {KorisnikServiceService} from './korisnik-service.service';
+import {KorisnikServiceService} from './service/korisnik-service.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PocetnaComponent } from './pocetna/pocetna.component';
+import { GenerisiNalogComponent } from './generisi-nalog/generisi-nalog.component';
+import {FakturaService} from './service/faktura.service';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { PocetnaComponent } from './pocetna/pocetna.component';
     HeaderComponent,
     RegisterComponent,
     HomePageComponent,
-    PocetnaComponent
+    PocetnaComponent,
+    GenerisiNalogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { PocetnaComponent } from './pocetna/pocetna.component';
     RouterModule,
     HttpClientModule
   ],
-  providers: [KorisnikServiceService],
+  providers: [KorisnikServiceService, FakturaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
