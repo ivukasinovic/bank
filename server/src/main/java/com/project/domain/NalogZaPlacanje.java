@@ -27,7 +27,7 @@ public class NalogZaPlacanje {
     @Temporal(TemporalType.DATE)
     private Date datumValute;
 
-    @Column(length = 18)
+    @Column(length = 20)
     private  String racunDuznika;
 
     @Column(length = 2)
@@ -36,7 +36,7 @@ public class NalogZaPlacanje {
     @Column(length = 20,nullable = false)
     private  String pozivNaBrojZaduzenja;
 
-    @Column(length = 18,nullable = false)
+    @Column(length = 20,nullable = false)
     private  String racunPoverioca;
 
     @Column(length = 2,nullable = false)

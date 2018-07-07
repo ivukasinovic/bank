@@ -114,3 +114,18 @@ INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicin
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (8,14,15,20,2,140,14,11,420,6,3);
 
 
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (1, '2018-07-07', '2018-07-07', 1, true, 10, 20, 'RSD', '11', '222-1234567890123-22', 2, '123-9876543211234-45', '123-9876543211234-48', 'naplata duga');
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (2, '2018-06-06', '2018-06-06', 2, false, 30, 40, 'RSD', '22', '333-1234567890123-33', 3, '123-9876543211234-48', '123-9876543211234-49', 'naplata duga');
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (3, '2018-05-05', '2018-05-05', 1, false, 50, 60, 'EUR', '33', '444-1234567890123-44', 3, '123-9876543211234-45', '123-9876543211234-49', 'naplata duga');
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (4, '2018-04-04', '2018-04-04', 5, true, 70, 80, 'USD', '44', '555-1234567890123-55', 1, '123-9876543211234-11', '123-9876543211234-45', 'naplata duga');
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (5, '2018-03-03', '2018-03-03', 3, true, 90, 10, 'EUR', '55', '666-1234567890123-66', 4, '123-9876543211234-49', '123-9876543211234-45', 'naplata duga');
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (6, '2018-02-02', '2018-02-02', 4, false, 20, 30, 'CHF', '66', '777-1234567890123-77', 5, '123-9876543211234-45', '123-9876543211234-11', 'naplata duga');
+INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, racun_duznika, racun_poverioca, svrha) values (7, '2018-01-01', '2018-01-01', 5, true, 40, 50, 'RSD', '77', '888-1234567890123-88', 2, '123-9876543211234-11', '123-9876543211234-48', 'naplata duga');
+
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (1, '2018-05-05', 1, 2);
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (2, '2018-03-03', 1, 4);
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (3, '2018-04-04', 5, 2);
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (4, '2018-01-01', 4, 3);
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (5, '2018-02-02', 2, 3);
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (6, '2018-07-07', 3, 1);
+INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (7, '2018-06-06', 3, 5);

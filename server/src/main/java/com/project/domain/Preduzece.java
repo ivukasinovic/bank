@@ -24,7 +24,7 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
+    @Column(length = 20)
     private String brojRacuna;
 
     @JsonIgnore
