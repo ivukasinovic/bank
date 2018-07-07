@@ -1,7 +1,8 @@
-package com.project.service;
+package com.project.service.impl;
 
 import com.project.domain.Adresa;
 import com.project.repository.AdresaRepository;
+import com.project.service.AdresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * Created by Dejan Stojkic (Smek) on 7/6/2018.
  */
 @Service
-public class AdresaServiceImpl implements AdresaService{
+public class AdresaServiceImpl implements AdresaService {
 
     @Autowired
     private AdresaRepository adresaRepository;

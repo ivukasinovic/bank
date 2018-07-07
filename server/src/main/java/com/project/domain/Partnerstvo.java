@@ -17,6 +17,7 @@ public class Partnerstvo {
     @Temporal(TemporalType.DATE)
     private Date datum;
 
+    @ManyToOne
     private Preduzece preduzece1;
 
     private Preduzece preduzece2;

@@ -19,17 +19,15 @@ public class Narudzbenica  implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datumKreiranja;
 
-    @ManyToOne
-    @JoinColumn(name = "dobavljac_id", nullable = false)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "dobavljac_id")
     private Preduzece dobavljac;
 
-    @ManyToOne
-    @JoinColumn(name = "potrazivac_id", nullable = false)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "potrazivac_id")
     private Preduzece potrazivac;
 
-
-
-    @OneToMany(mappedBy = "narudzbenica")
+    @OneToMany(mappedBy = "narudzbenica", cascade = CascadeType.REMOVE)
     private List<StavkaNarudzbenice> stavkaNarudzbeniceList;
 
     public Narudzbenica() {}

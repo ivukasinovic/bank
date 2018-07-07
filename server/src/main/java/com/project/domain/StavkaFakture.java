@@ -42,7 +42,7 @@ public class StavkaFakture implements Serializable {
     @JoinColumn(name = "faktura_id", nullable = false)
     private Faktura faktura;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "proizvod_id", nullable = false)

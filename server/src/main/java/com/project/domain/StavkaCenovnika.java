@@ -21,7 +21,7 @@ public class StavkaCenovnika implements Serializable {
     @JoinColumn(name = "cenovnik_id", nullable = false)
     private Cenovnik cenovnik;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "proizvod_id", nullable = false)

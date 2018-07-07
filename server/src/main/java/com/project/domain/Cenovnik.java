@@ -20,19 +20,19 @@ public class Cenovnik implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date datumVazenja;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "oznaka")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "valuta_oznaka", nullable = false)
     private  Valuta valuta;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "preduzece_id", nullable = false)
     private Preduzece preduzece;
 
-    @OneToMany(mappedBy = "cenovnik")
+    @OneToMany(mappedBy = "cenovnik", cascade = CascadeType.REMOVE)
     private List<StavkaCenovnika> stavkaCenovnikaList;
 
     public Cenovnik() {

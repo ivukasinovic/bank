@@ -24,6 +24,10 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column
+    private String brojRacuna;
+
+    @JsonIgnore
     @Column(nullable = false)
     private String lozinka;
 
@@ -53,19 +57,6 @@ public class Preduzece  implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovnaGodina> poslovnaGodinaList;
-
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "dobavljac")
-    private List<Narudzbenica> dobavljaci ;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "potrazivac")
-    private List<Narudzbenica> potrazivaci;
-
-
-    @Column
-    private String brojRacuna;
 
     public Preduzece(){}
 
@@ -176,19 +167,4 @@ public class Preduzece  implements Serializable {
     }
 
 
-    public List<Narudzbenica> getDobavljaci() {
-        return dobavljaci;
-    }
-
-    public void setDobavljaci(List<Narudzbenica> dobavljaci) {
-        this.dobavljaci = dobavljaci;
-    }
-
-    public List<Narudzbenica> getPotrazivaci() {
-        return potrazivaci;
-    }
-
-    public void setPotrazivaci(List<Narudzbenica> potrazivaci) {
-        this.potrazivaci = potrazivaci;
-    }
 }

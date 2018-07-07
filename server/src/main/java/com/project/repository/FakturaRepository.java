@@ -1,0 +1,11 @@
+package com.project.repository;
+
+import com.project.domain.Faktura;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+/**
+ * Created by Ivan V. on 07-Jul-18
+ */
+public interface FakturaRepository extends JpaRepository<Faktura, Long> {
+
+}
