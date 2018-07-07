@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping(value = "user")
-public class HelloController {
+public class AuthenticationController {
 
 
     @Autowired
