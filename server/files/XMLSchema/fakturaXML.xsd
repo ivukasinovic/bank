@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://poslovna.com/soap-example" xmlns:all="http://poslovna.com/soap-example" xmlns:tns="http://poslovna.com/soap-example" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="adresa" type="tns:adresa"/>
+
+  <xs:element name="faktura" type="tns:faktura"/>
+
+  <xs:element name="narudzbenica" type="tns:narudzbenica"/>
+
+  <xs:element name="preduzece" type="tns:preduzece"/>
+
+  <xs:element name="stavkaFakture" type="tns:stavkaFakture"/>
+
+  <xs:element name="stavkaNarudzbenice" type="tns:stavkaNarudzbenice"/>
+
+  <xs:complexType name="preduzece">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="naziv" type="xs:string"/>
+      <xs:element name="pib" type="xs:string"/>
+      <xs:element name="brojRacuna" type="xs:string"/>
+      <xs:element ref="tns:adresa"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="adresa">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="broj" type="xs:string"/>
+      <xs:element name="ulica" type="xs:string"/>
+      <xs:element name="grad" type="xs:string"/>
+      <xs:element name="postanskiBroj" type="xs:int"/>
+      <xs:element name="drzava" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stavkaNarudzbenice">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="kolicina" type="xs:double"/>
+      <xs:element name="proizvod" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="narudzbenica">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element ref="tns:stavkaNarudzbenice" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="faktura">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="broj" type="xs:long"/>
+      <xs:element name="datum" type="xs:dateTime"/>
+      <xs:element name="datumValute" type="xs:dateTime"/>
+      <xs:element name="ukupanRabat" type="xs:double"/>
+      <xs:element name="bezPDV" type="xs:double"/>
+      <xs:element name="ukupanPDV" type="xs:double"/>
+      <xs:element name="ukupnoZaPlacanje" type="xs:double"/>
+      <xs:element name="preostaliIznos" type="xs:double"/>
+      <xs:element ref="tns:narudzbenica"/>
+      <xs:element name="duznik" type="tns:preduzece"/>
+      <xs:element name="primalac" type="tns:preduzece"/>
+      <xs:element name="poslovnaGodina" type="xs:int"/>
+      <xs:element name="stavkaFaktureList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:stavkaFakture" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stavkaFakture">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="osnovica" type="xs:double"/>
+      <xs:element name="iznosRabata" type="xs:double"/>
+      <xs:element name="procenatRabata" type="xs:double"/>
+      <xs:element name="stopaPdv" type="xs:double"/>
+      <xs:element name="iznosPdv" type="xs:double"/>
+      <xs:element name="jedinicnaCena" type="xs:double"/>
+      <xs:element name="kolicinaStavkeFakture" type="xs:double"/>
+      <xs:element name="ukupanIznos" type="xs:double"/>
+      <xs:element name="proizvod" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
