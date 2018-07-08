@@ -27,17 +27,11 @@ public class NalogZaPlacanje {
     @Temporal(TemporalType.DATE)
     private Date datumValute;
 
-    @Column(length = 18)
-    private  String racunDuznika;
-
     @Column(length = 2)
     private  Integer modelZaduzenja;
 
     @Column(length = 20,nullable = false)
     private  String pozivNaBrojZaduzenja;
-
-    @Column(length = 18,nullable = false)
-    private  String racunPoverioca;
 
     @Column(length = 2,nullable = false)
     private  Integer modelOdobrenja;
@@ -102,13 +96,7 @@ public class NalogZaPlacanje {
         this.datumValute = datumValute;
     }
 
-    public String getRacunDuznika() {
-        return racunDuznika;
-    }
 
-    public void setRacunDuznika(String racunDuznika) {
-        this.racunDuznika = racunDuznika;
-    }
 
     public Integer getModelZaduzenja() {
         return modelZaduzenja;
@@ -126,13 +114,6 @@ public class NalogZaPlacanje {
         this.pozivNaBrojZaduzenja = pozivNaBrojZaduzenja;
     }
 
-    public String getRacunPoverioca() {
-        return racunPoverioca;
-    }
-
-    public void setRacunPoverioca(String racunPoverioca) {
-        this.racunPoverioca = racunPoverioca;
-    }
 
     public Integer getModelOdobrenja() {
         return modelOdobrenja;

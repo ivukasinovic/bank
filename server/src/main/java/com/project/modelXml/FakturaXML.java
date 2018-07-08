@@ -6,7 +6,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "faktura")
-public class Faktura {
+public class FakturaXML {
 
 
     @XmlElement(name = "id", required = true)
@@ -39,14 +39,14 @@ public class Faktura {
 
 
     @XmlElement(name = "narudzbenica", required = true)
-    private com.project.modelXml.Narudzbenica narudzbenica;
+    private NarudzbenicaXML narudzbenica;
 
 
-    @XmlElement(name = "duznik", required = true)
-    private Preduzece duznik;// ime adresa i pib
+    @XmlElement(name = "kupac", required = true)
+    private PreduzeceXML kupac;// ime adresa i pib
 
-    @XmlElement(name = "primalac", required = true)
-    private Preduzece primalac; // primalac od duznika
+    @XmlElement(name = "prodavac", required = true)
+    private PreduzeceXML prodavac; // primalac od duznika
 
 
     @XmlElement(name = "poslovnaGodina", required = true)
@@ -54,9 +54,9 @@ public class Faktura {
 
     @XmlElementWrapper(name = "stavkaFaktureList", required = true)
     @XmlElement(name = "stavkaFakture", required = true)
-    private List<StavkaFakture> stavkaFaktureList;
+    private List<StavkaFaktureXML> stavkaFaktureList;
 
-    public Faktura() {}
+    public FakturaXML() {}
 
     public Long getId() {
         return id;
@@ -130,28 +130,28 @@ public class Faktura {
         this.preostaliIznos = preostaliIznos;
     }
 
-    public com.project.modelXml.Narudzbenica getNarudzbenica() {
+    public NarudzbenicaXML getNarudzbenica() {
         return narudzbenica;
     }
 
-    public void setNarudzbenica(com.project.modelXml.Narudzbenica narudzbenica) {
+    public void setNarudzbenica(NarudzbenicaXML narudzbenica) {
         this.narudzbenica = narudzbenica;
     }
 
-    public Preduzece getDuznik() {
-        return duznik;
+    public PreduzeceXML getKupac() {
+        return kupac;
     }
 
-    public void setDuznik(Preduzece duznik) {
-        this.duznik = duznik;
+    public void setKupac(PreduzeceXML kupac) {
+        this.kupac = kupac;
     }
 
-    public Preduzece getPrimalac() {
-        return primalac;
+    public PreduzeceXML getProdavac() {
+        return prodavac;
     }
 
-    public void setPrimalac(Preduzece primalac) {
-        this.primalac = primalac;
+    public void setProdavac(PreduzeceXML prodavac) {
+        this.prodavac = prodavac;
     }
 
     public Integer getPoslovnaGodina() {
@@ -162,11 +162,11 @@ public class Faktura {
         this.poslovnaGodina = poslovnaGodina;
     }
 
-    public List<StavkaFakture> getStavkaFaktureList() {
+    public List<StavkaFaktureXML> getStavkaFaktureList() {
         return stavkaFaktureList;
     }
 
-    public void setStavkaFaktureList(List<StavkaFakture> stavkaFaktureList) {
+    public void setStavkaFaktureList(List<StavkaFaktureXML> stavkaFaktureList) {
         this.stavkaFaktureList = stavkaFaktureList;
     }
 }

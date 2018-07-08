@@ -6,15 +6,15 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "narudzbenica")
-public class Narudzbenica {
+public class NarudzbenicaXML {
 
     @XmlElement(name = "id", required = true)
     private Long id;
 
     @XmlElement(name = "stavkaNarudzbenice", required = true)
-    private List<StavkaNarudzbenice> stavkaNarudzbeniceList;
+    private List<StavkaNarudzbeniceXML> stavkaNarudzbeniceList;
 
-    public Narudzbenica() {}
+    public NarudzbenicaXML() {}
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Narudzbenica {
         this.id = id;
     }
 
-    public List<StavkaNarudzbenice> getStavkaNarudzbeniceList() {
+    public List<StavkaNarudzbeniceXML> getStavkaNarudzbeniceList() {
         return stavkaNarudzbeniceList;
     }
 
-    public void setStavkaNarudzbeniceList(List<StavkaNarudzbenice> stavkaNarudzbeniceList) {
+    public void setStavkaNarudzbeniceList(List<StavkaNarudzbeniceXML> stavkaNarudzbeniceList) {
         this.stavkaNarudzbeniceList = stavkaNarudzbeniceList;
     }
 }

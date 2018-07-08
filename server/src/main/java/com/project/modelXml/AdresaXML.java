@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "adresa")
-public class Adresa {
+public class AdresaXML {
 
     @XmlElement(name = "id", required = true)
     private Long id;
@@ -28,7 +28,7 @@ public class Adresa {
     @XmlElement(name = "drzava", required = true)
     private String drzava;
 
-    public Adresa() {
+    public AdresaXML() {
     }
 
     public Long getId() {

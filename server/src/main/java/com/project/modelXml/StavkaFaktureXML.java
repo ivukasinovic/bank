@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "stavkaFakture")
-public class StavkaFakture {
+public class StavkaFaktureXML {
 
 
     @XmlElement(name = "id", required = true)
@@ -46,7 +46,7 @@ public class StavkaFakture {
     @XmlElement(name = "proizvod", required = true)
     private String proizvod; //samo naziv proizvoda
 
-    public StavkaFakture(){}
+    public StavkaFaktureXML(){}
 
     public Long getId() {
         return id;

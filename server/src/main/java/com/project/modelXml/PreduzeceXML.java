@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "preduzece")
-public class Preduzece {
+public class PreduzeceXML {
 
     @XmlElement(name = "id", required = true)
     private Long id;
@@ -22,9 +22,9 @@ public class Preduzece {
     private String brojRacuna;
 
     @XmlElement(name = "adresa", required = true)
-    private com.project.modelXml.Adresa adresa;
+    private AdresaXML adresa;
 
-    public Preduzece(){}
+    public PreduzeceXML(){}
 
 
     public Long getId() {
@@ -59,11 +59,11 @@ public class Preduzece {
         this.brojRacuna = brojRacuna;
     }
 
-    public com.project.modelXml.Adresa getAdresa() {
+    public AdresaXML getAdresa() {
         return adresa;
     }
 
-    public void setAdresa(com.project.modelXml.Adresa adresa) {
+    public void setAdresa(AdresaXML adresa) {
         this.adresa = adresa;
     }
 }
