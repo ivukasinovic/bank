@@ -11,10 +11,10 @@ public class NalogZaPlacanje {
     private Long id;
 
     @Column(nullable = false)
-    private  Preduzece duznik;
+    private String duznik;
 
     @Column(nullable = false)
-    private  Preduzece primalac;
+    private String primalac;
 
     @Column(nullable = false)
     private  String svrha;
@@ -27,29 +27,32 @@ public class NalogZaPlacanje {
     @Temporal(TemporalType.DATE)
     private Date datumValute;
 
-    @Column(length = 18)
+    @Column(length = 20)
     private  String racunDuznika;
 
     @Column(length = 2)
     private  Integer modelZaduzenja;
 
-    @Column(length = 20,nullable = false)
+    @Column(length = 20)
     private  String pozivNaBrojZaduzenja;
 
-    @Column(length = 18,nullable = false)
+    @Column(length = 20)
     private  String racunPoverioca;
 
-    @Column(length = 2,nullable = false)
+    @Column(length = 2)
     private  Integer modelOdobrenja;
 
-    @Column(length = 2,nullable = false)
+    @Column(length = 2)
     private  String pozivNaBrojOdobrenja;
 
-    @Column(length = 3,nullable = false)
+    @Column(length = 3)
     private  String oznakaValute;
 
     @Column(columnDefinition = "boolean default false")
     private  Boolean hitno;
+
+    @Column(columnDefinition = "Decimal(5,2)")
+    private Double iznos;
 
     public NalogZaPlacanje() {
     }
@@ -62,19 +65,19 @@ public class NalogZaPlacanje {
         this.id = id;
     }
 
-    public Preduzece getDuznik() {
+    public String getDuznik() {
         return duznik;
     }
 
-    public void setDuznik(Preduzece duznik) {
+    public void setDuznik(String duznik) {
         this.duznik = duznik;
     }
 
-    public Preduzece getPrimalac() {
+    public String getPrimalac() {
         return primalac;
     }
 
-    public void setPrimalac(Preduzece primalac) {
+    public void setPrimalac(String primalac) {
         this.primalac = primalac;
     }
 
@@ -116,6 +119,14 @@ public class NalogZaPlacanje {
 
     public void setModelZaduzenja(Integer modelZaduzenja) {
         this.modelZaduzenja = modelZaduzenja;
+    }
+
+    public Double getIznos() {
+        return iznos;
+    }
+
+    public void setIznos(Double iznos) {
+        this.iznos = iznos;
     }
 
     public String getPozivNaBrojZaduzenja() {

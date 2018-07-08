@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Preduzece, User} from '../model/korisnik';
-import {KorisnikServiceService} from '../korisnik-service.service';
+import {Preduzece, User} from '../model/model';
+import {KorisnikServiceService} from '../service/korisnik-service.service';
 import {Router} from '@angular/router';
 
 @Component({

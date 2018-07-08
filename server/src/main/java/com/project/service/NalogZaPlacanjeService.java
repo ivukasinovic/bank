@@ -15,4 +15,6 @@ public interface NalogZaPlacanjeService {
     void delete(NalogZaPlacanje nalogZaPlacanje);
 
     NalogZaPlacanje save(NalogZaPlacanje nalogZaPlacanje);
+
+    void generisiNalog(Long idFakture, Double iznos);
 }

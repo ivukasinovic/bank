@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {KorisnikServiceService} from '../korisnik-service.service';
 import {Router} from '@angular/router';
-import {Adresa, Preduzece, User} from '../model/korisnik';
+import {Adresa, Preduzece, User} from '../model/model';
+import {KorisnikServiceService} from '../service/korisnik-service.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,7 @@ public selektovanaAdresa: Adresa;
   constructor(private korisnikService: KorisnikServiceService, private router: Router) {
   //  this.korisnik = new User();
     this.preduzece = new Preduzece();
-    //this.adresa = new Adresa();
+
 
     this.korisnikService.allAdress().subscribe(
       (response: Adresa[]) => {
