@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <h3>Prijedlog placanja</h3>
+    <button class="btn btn-warning" (click)="generisiNaloge()">Plati</button>
+  </div>
+  <br/>
+
+  <div class="col-md-9" class="list-group-item clearfix" *ngFor="let p of prijedlog; let i = index">
+
+    <div class="pull-center" >
+
+      <br/><b>Broj: </b>  {{p.faktura.broj}}
+      <br/><b>Iznos: </b>  {{p.iznos}}
+
+    </div>
+
+  </div>
+
+</div>
