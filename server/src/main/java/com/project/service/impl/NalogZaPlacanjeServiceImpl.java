@@ -55,10 +55,8 @@ public class NalogZaPlacanjeServiceImpl implements NalogZaPlacanjeService {
 
         nalogZaPlacanje.setDatumNaloga(new Date());
         nalogZaPlacanje.setDuznik(faktura.getDuznik().getNaziv());
-        nalogZaPlacanje.setRacunDuznika(faktura.getDuznik().getBrojRacuna());
         nalogZaPlacanje.setHitno(false);
         nalogZaPlacanje.setPrimalac(faktura.getPrimalac().getNaziv());
-        nalogZaPlacanje.setRacunPoverioca(faktura.getPrimalac().getBrojRacuna());
         nalogZaPlacanje.setIznos(iznos);
         nalogZaPlacanje.setDatumValute(faktura.getDatumValute());
         nalogZaPlacanje.setSvrha("placanje fakture " + faktura.getBroj());
