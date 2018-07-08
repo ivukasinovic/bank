@@ -1,7 +1,7 @@
-package com.project.ws.endpoint;
+package com.project.endpoint;
 
 import com.project.service.FakturaService;
-import com.project.ws.Faktura;
+import com.project.ws.FakturaXML;
 import com.project.ws.ImportFakturaRequest;
 import com.project.ws.ImportFakturaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class BankEndpoint {
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importFakturaRequest")
     @ResponsePayload
     public ImportFakturaResponse importFakturaRequest(@RequestPayload ImportFakturaRequest importFakturaRequest){
-        List<Faktura> faktura = importFakturaRequest.getFaktura();
+        List<FakturaXML> faktura = importFakturaRequest.getFaktura();
         System.out.println("USOOO");
         ImportFakturaResponse resp = new ImportFakturaResponse();
         return resp;
