@@ -1,0 +1,46 @@
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Body>
+        <importIzvodRequest xmlns="http://poslovna.com/soap-example">
+            <izvod>
+                <id>[long]</id>
+                <brojRacuna>123-9876543211234-45</brojRacuna>
+                <datumNaloga>[dateTime]</datumNaloga>
+                <brojPreseka>[int]</brojPreseka>
+                <prethodnoStanje>420.00</prethodnoStanje>
+                <brojPromenaUKorist>1</brojPromenaUKorist>
+                <ukupnoUKorist>200.00</ukupnoUKorist>
+                <brojPromenaNaTeret>1</brojPromenaNaTeret>
+                <ukupnoNaTeret>100.00</ukupnoNaTeret>
+                <novoStanje>520.00</novoStanje>
+                <stavkaDnevnogIzvodaList>
+                    <stavkaDnevnogIzvoda>
+                        <id>[long]</id>
+                        <kupac>SDD Technology Group</kupac>
+                        <svrhaPlacanja>uplata za robu1</svrhaPlacanja>
+                        <prodavac>Victoria Oil</prodavac>
+                        <datumNaloga>[dateTime]</datumNaloga>
+                        <datumValute>[dateTime]</datumValute>
+                        <racunKupca>123-9876543211234-45</racunKupca>
+                        <model>97</model>
+                        <pozivNaBroj>100</pozivNaBroj>
+                        <racunProdavca>123-9876543211234-48</racunProdavca>
+                        <iznos>150.00</iznos>
+                    </stavkaDnevnogIzvoda>
+                    <stavkaDnevnogIzvoda>
+                        <id>[long]</id>
+                        <kupac>Victoria Oil</kupac>
+                        <svrhaPlacanja>uplata za robu1</svrhaPlacanja>
+                        <prodavac>SDD Technology Groupl</prodavac>
+                        <datumNaloga>[dateTime]</datumNaloga>
+                        <datumValute>[dateTime]</datumValute>
+                        <racunKupca>123-9876543211234-48</racunKupca>
+                        <model>97</model>
+                        <pozivNaBroj>101</pozivNaBroj>
+                        <racunProdavca>123-9876543211234-45</racunProdavca>
+                        <iznos>170.00</iznos>
+                    </stavkaDnevnogIzvoda>
+                </stavkaDnevnogIzvodaList>
+            </izvod>
+        </importIzvodRequest>
+    </Body>
+</Envelope>

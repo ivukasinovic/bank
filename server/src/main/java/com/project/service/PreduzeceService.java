@@ -13,6 +13,8 @@ public interface PreduzeceService {
 
     void confirmEmailAdress(Long id);
 
+    Preduzece findByBrojRacuna(String brojRacuna);
+
     Preduzece findOne(Long id);
 
     Preduzece save(Preduzece user);

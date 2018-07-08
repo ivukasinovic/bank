@@ -33,6 +33,11 @@ public class PreduzeceServiceImpl implements PreduzeceService {
     }
 
     @Override
+    public Preduzece findByBrojRacuna(String brojRacuna) {
+        return preduzeceRepository.findByBrojRacuna(brojRacuna);
+    }
+
+    @Override
     public Preduzece findOne(Long id) {
         return preduzeceRepository.findOne(id);
     }
