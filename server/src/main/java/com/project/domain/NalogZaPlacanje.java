@@ -1,5 +1,9 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,11 +14,15 @@ public class NalogZaPlacanje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String duznik;
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(optional = false)
+    private Preduzece duznik;
 
-    @Column(nullable = false)
-    private String primalac;
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(optional = false)
+    private Preduzece primalac;
 
     @Column(nullable = false)
     private  String svrha;
@@ -59,21 +67,7 @@ public class NalogZaPlacanje {
         this.id = id;
     }
 
-    public String getDuznik() {
-        return duznik;
-    }
 
-    public void setDuznik(String duznik) {
-        this.duznik = duznik;
-    }
-
-    public String getPrimalac() {
-        return primalac;
-    }
-
-    public void setPrimalac(String primalac) {
-        this.primalac = primalac;
-    }
 
     public String getSvrha() {
         return svrha;
@@ -157,4 +151,22 @@ public class NalogZaPlacanje {
     public void setHitno(Boolean hitno) {
         this.hitno = hitno;
     }
+
+    public Preduzece getDuznik() {
+        return duznik;
+    }
+
+    public void setDuznik(Preduzece duznik) {
+        this.duznik = duznik;
+    }
+
+    public Preduzece getPrimalac() {
+        return primalac;
+    }
+
+    public void setPrimalac(Preduzece primalac) {
+        this.primalac = primalac;
+    }
+
+
 }
