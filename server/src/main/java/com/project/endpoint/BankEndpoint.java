@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Created by Ivan V. on 08-Jul-18
-        */
+ */
 @Endpoint
 public class BankEndpoint {
 
