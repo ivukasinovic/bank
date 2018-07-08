@@ -6,6 +6,7 @@ import {RegisterComponent} from './register/register.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {PocetnaComponent} from './pocetna/pocetna.component';
 import {GenerisiNalogComponent} from './generisi-nalog/generisi-nalog.component';
+import {PrijedlogPlacanjaComponent} from './prijedlog-placanja/prijedlog-placanja.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'pocetna', component: PocetnaComponent},
-  {path: 'generisi-nalog', component: GenerisiNalogComponent}
+  {path: 'generisi-nalog', component: GenerisiNalogComponent},
+  {path: 'prijedlog-placanja', component: PrijedlogPlacanjaComponent}
 ];
 
 @NgModule({

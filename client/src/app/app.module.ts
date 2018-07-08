@@ -16,6 +16,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { GenerisiNalogComponent } from './generisi-nalog/generisi-nalog.component';
 import {FakturaService} from './service/faktura.service';
+import {FormsModule} from '@angular/forms';
+import { PrijedlogPlacanjaComponent } from './prijedlog-placanja/prijedlog-placanja.component';
 
 
 @NgModule({
@@ -27,14 +29,16 @@ import {FakturaService} from './service/faktura.service';
     RegisterComponent,
     HomePageComponent,
     PocetnaComponent,
-    GenerisiNalogComponent
+    GenerisiNalogComponent,
+    PrijedlogPlacanjaComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [KorisnikServiceService, FakturaService],
   bootstrap: [AppComponent]

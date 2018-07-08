@@ -1,3 +1,7 @@
+-- noinspection SqlDialectInspectionForFile
+
+-- noinspection SqlNoDataSourceInspectionForFile
+
 INSERT INTO adresa (id, broj, drzava, grad, postanski_broj, ulica) VALUES (1, '22', 'Srbija', 'Becej', 21220, 'Cara Dusana');
 INSERT INTO adresa (id, broj, drzava, grad, postanski_broj, ulica) VALUES (2,'21', 'Srbija', 'Sid', 22240, 'Jelice Stanivukovic');
 INSERT INTO adresa (id, broj, drzava, grad, postanski_broj, ulica) VALUES (3,'1', 'Srbija', 'Sid', 22240, 'Kneza Milosa');
@@ -113,4 +117,8 @@ INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicin
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (7,10,19,30,3,43,15,21,120,6,1);
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (8,14,15,20,2,140,14,11,420,6,3);
 
-
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (1,CURRENT_DATE ,0,0,0,0,0,1);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (1,CURRENT_DATE ,0,0,0,0,0,2);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (1,CURRENT_DATE ,0,0,0,0,0,3);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (1,CURRENT_DATE ,0,0,0,0,0,4);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (1,CURRENT_DATE ,0,0,0,0,0,5);

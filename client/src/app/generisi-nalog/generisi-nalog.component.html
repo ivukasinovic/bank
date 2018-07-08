@@ -1,18 +1,20 @@
 <div class="container">
-  <h3>Neplacene fakture:</h3>
+   <div>
+    <h3>Neplacene fakture (izaberite fakture i iznos koje zelite da platite)</h3>
+     <button class="btn btn-warning" (click)="generisiPrijedlog()">Dalje</button>
+   </div>
+   <br/>
 
-
-  <div class="col-md-9" class="list-group-item clearfix" *ngFor="let faktura of neplacene">
+  <div class="col-md-9" class="list-group-item clearfix" *ngFor="let faktura of neplacene; let i = index">
 
     <div class="pull-center" >
-
+    <input type="checkbox" [checked]="isCh[i]" (change)="isCh[i] = !isCh[i]">
 
       <br/><b>Broj: </b>  {{faktura.broj}}
+      <br/> <label>Iznos:</label>
+      <input type="number" [(ngModel)]="iznos[i]">
 
 
-      <span class="pull-right">
-        <button  type="button" class="btn btn-warning">Plati</button>
-      </span>
     </div>
 
   </div>
