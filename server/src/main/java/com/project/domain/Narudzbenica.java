@@ -1,5 +1,7 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -26,6 +28,10 @@ public class Narudzbenica  implements Serializable {
     @ManyToOne(optional = true)
     @JoinColumn(name = "potrazivac_id")
     private Preduzece potrazivac;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "narudzbenica", cascade = CascadeType.REMOVE)
+    private Faktura fakture;
 
     @OneToMany(mappedBy = "narudzbenica", cascade = CascadeType.REMOVE)
     private List<StavkaNarudzbenice> stavkaNarudzbeniceList;

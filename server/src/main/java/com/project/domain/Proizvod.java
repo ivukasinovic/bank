@@ -2,10 +2,13 @@ package com.project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 public class Proizvod implements Serializable {
 
@@ -34,6 +37,17 @@ public class Proizvod implements Serializable {
     @ManyToOne
     private JedinicaMere jedinicaMere;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "proizvod",cascade = CascadeType.REMOVE)
+    private List<StavkaFakture> stavkaFaktures;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "proizvod",cascade = CascadeType.REMOVE)
+    private List<StavkaNarudzbenice> stavkaNarudzbenice;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "proizvod",cascade = CascadeType.REMOVE)
+    private List<StavkaCenovnika> stavkaCenovnikas;
 
     public Proizvod(){}
 
