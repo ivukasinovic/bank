@@ -4,9 +4,7 @@ import com.project.domain.Faktura;
 import com.project.domain.FakturaStatus;
 import com.project.service.FakturaService;
 import com.project.service.PreduzeceService;
-import com.project.ws.FakturaXML;
-import com.project.ws.ImportFakturaRequest;
-import com.project.ws.ImportFakturaResponse;
+import com.project.ws.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -53,4 +51,23 @@ public class BankEndpoint {
         ImportFakturaResponse resp = new ImportFakturaResponse();
         return resp;
     }
+
+    @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "exportNalogaRequest")
+    @ResponsePayload
+    public ExportNalogaResponse exportNalogaRequest(@RequestPayload ExportNalogaRequest exportNalogaRequest){
+
+        ExportNalogaResponse response = new ExportNalogaResponse();
+        return  response;
+    }
+
+    @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importIzvodRequest")
+    @ResponsePayload
+    public ImportIzvodResponse importIzvodRequest(@RequestPayload ImportIzvodRequest importIzvodRequest) {
+
+        ImportIzvodResponse response = new ImportIzvodResponse();
+        return response;
+    }
+
+
+
 }

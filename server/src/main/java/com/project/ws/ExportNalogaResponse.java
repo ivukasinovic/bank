@@ -23,7 +23,7 @@ import java.util.List;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="faktura" type="{http://poslovna.com/soap-example}fakturaXML" maxOccurs="unbounded"/>
+ *         &lt;element name="nalozi" type="{http://poslovna.com/soap-example}nalogZaPlacanjeXML" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,41 +34,41 @@ import java.util.List;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "faktura"
+    "nalozi"
 })
-@XmlRootElement(name = "importFakturaRequest")
-public class ImportFakturaRequest {
+@XmlRootElement(name = "exportNalogaResponse")
+public class ExportNalogaResponse {
 
     @XmlElement(required = true)
-    protected List<FakturaXML> faktura;
+    protected List<NalogZaPlacanjeXML> nalozi;
 
     /**
-     * Gets the value of the faktura property.
+     * Gets the value of the nalozi property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the faktura property.
+     * This is why there is not a <CODE>set</CODE> method for the nalozi property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getFaktura().add(newItem);
+     *    getNalozi().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FakturaXML }
+     * {@link NalogZaPlacanjeXML }
      * 
      * 
      */
-    public List<FakturaXML> getFaktura() {
-        if (faktura == null) {
-            faktura = new ArrayList<FakturaXML>();
+    public List<NalogZaPlacanjeXML> getNalozi() {
+        if (nalozi == null) {
+            nalozi = new ArrayList<NalogZaPlacanjeXML>();
         }
-        return this.faktura;
+        return this.nalozi;
     }
 
 }

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="fakturaStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="nalog" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fakturaStatus"
+    "nalog"
 })
-@XmlRootElement(name = "importFakturaResponse")
-public class ImportFakturaResponse {
+@XmlRootElement(name = "exportNalogaRequest")
+public class ExportNalogaRequest {
 
     @XmlElement(required = true)
-    protected String fakturaStatus;
+    protected String nalog;
 
     /**
-     * Gets the value of the fakturaStatus property.
+     * Gets the value of the nalog property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFakturaStatus() {
-        return fakturaStatus;
+    public String getNalog() {
+        return nalog;
     }
 
     /**
-     * Sets the value of the fakturaStatus property.
+     * Sets the value of the nalog property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFakturaStatus(String value) {
-        this.fakturaStatus = value;
+    public void setNalog(String value) {
+        this.nalog = value;
     }
 
 }

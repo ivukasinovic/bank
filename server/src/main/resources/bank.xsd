@@ -17,6 +17,22 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="exportNalogaRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="faktura" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="exportNalogaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fakturaStatus" type="tns:"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="adresa" type="tns:adresa"/>
 
   <xs:element name="faktura" type="tns:faktura"/>

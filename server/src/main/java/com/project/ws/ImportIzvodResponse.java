@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="fakturaStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="izvodStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fakturaStatus"
+    "izvodStatus"
 })
-@XmlRootElement(name = "importFakturaResponse")
-public class ImportFakturaResponse {
+@XmlRootElement(name = "importIzvodResponse")
+public class ImportIzvodResponse {
 
     @XmlElement(required = true)
-    protected String fakturaStatus;
+    protected String izvodStatus;
 
     /**
-     * Gets the value of the fakturaStatus property.
+     * Gets the value of the izvodStatus property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFakturaStatus() {
-        return fakturaStatus;
+    public String getIzvodStatus() {
+        return izvodStatus;
     }
 
     /**
-     * Sets the value of the fakturaStatus property.
+     * Sets the value of the izvodStatus property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFakturaStatus(String value) {
-        this.fakturaStatus = value;
+    public void setIzvodStatus(String value) {
+        this.izvodStatus = value;
     }
 
 }

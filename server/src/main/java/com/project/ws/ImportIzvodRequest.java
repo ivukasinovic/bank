@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="fakturaStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="izvod" type="{http://poslovna.com/soap-example}dnevniIzvodXML"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fakturaStatus"
+    "izvod"
 })
-@XmlRootElement(name = "importFakturaResponse")
-public class ImportFakturaResponse {
+@XmlRootElement(name = "importIzvodRequest")
+public class ImportIzvodRequest {
 
     @XmlElement(required = true)
-    protected String fakturaStatus;
+    protected DnevniIzvodXML izvod;
 
     /**
-     * Gets the value of the fakturaStatus property.
+     * Gets the value of the izvod property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link DnevniIzvodXML }
      *     
      */
-    public String getFakturaStatus() {
-        return fakturaStatus;
+    public DnevniIzvodXML getIzvod() {
+        return izvod;
     }
 
     /**
-     * Sets the value of the fakturaStatus property.
+     * Sets the value of the izvod property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link DnevniIzvodXML }
      *     
      */
-    public void setFakturaStatus(String value) {
-        this.fakturaStatus = value;
+    public void setIzvod(DnevniIzvodXML value) {
+        this.izvod = value;
     }
 
 }
