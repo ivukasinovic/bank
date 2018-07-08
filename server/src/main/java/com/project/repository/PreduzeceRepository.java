@@ -9,7 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PreduzeceRepository extends JpaRepository<Preduzece,Long> {
 
     Preduzece findByEmailAndLozinka(String email, String lozinka);
+
     Preduzece findOne(Long id);
+
+    Preduzece findByNaziv(String naziv);
+
 
 
 }

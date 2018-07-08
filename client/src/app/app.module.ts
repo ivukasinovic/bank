@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { Heder1Component } from './heder1/heder1.component';
 import { HeaderComponent } from './header/header.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -18,6 +18,9 @@ import { GenerisiNalogComponent } from './generisi-nalog/generisi-nalog.componen
 import {FakturaService} from './service/faktura.service';
 import {FormsModule} from '@angular/forms';
 import { PrijedlogPlacanjaComponent } from './prijedlog-placanja/prijedlog-placanja.component';
+import { ProfilComponent } from './profil/profil.component';
+import { MojeFaktureComponent } from './moje-fakture/moje-fakture.component';
+import { PartneriComponent } from './partneri/partneri.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { PrijedlogPlacanjaComponent } from './prijedlog-placanja/prijedlog-placa
     HomePageComponent,
     PocetnaComponent,
     GenerisiNalogComponent,
-    PrijedlogPlacanjaComponent
+    PrijedlogPlacanjaComponent,
+    ProfilComponent,
+    MojeFaktureComponent,
+    PartneriComponent
   ],
   imports: [
     BrowserModule,

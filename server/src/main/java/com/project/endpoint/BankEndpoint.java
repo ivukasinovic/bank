@@ -6,6 +6,7 @@ import com.project.domain.NalogZaPlacanje;
 import com.project.domain.Preduzece;
 import com.project.service.FakturaService;
 import com.project.service.NalogZaPlacanjeService;
+import com.project.service.PoslovnaGodinaService;
 import com.project.service.PreduzeceService;
 import com.project.ws.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,14 @@ public class BankEndpoint {
 
     @Autowired
     private NalogZaPlacanjeService nalogZaPlacanjeService;
-
-
+  
+    @Autowired
+    private PoslovnaGodinaService poslovnaGodinaService;
 
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importFakturaRequest")
     @ResponsePayload
     public ImportFakturaResponse importFakturaRequest(@RequestPayload ImportFakturaRequest importFakturaRequest){
+        ImportFakturaResponse resp = new ImportFakturaResponse();
         List<FakturaXML> fakture = importFakturaRequest.getFaktura();
         for(FakturaXML fakturaXML: fakture) {
             Faktura faktura = new Faktura();
@@ -49,14 +52,19 @@ public class BankEndpoint {
             faktura.setUkupnoZaPlacanje(fakturaXML.getUkupnoZaPlacanje());
 
             //KRITICNO
-            faktura.setDuznik(preduzeceService.findOne(fakturaXML.getKupac().getId()));
-            faktura.setPrimalac(preduzeceService.findOne(fakturaXML.getProdavac().getId()));
+            faktura.setDuznik(preduzeceService.findByNaziv(fakturaXML.getKupac().getNaziv()));
+            faktura.setPrimalac(preduzeceService.findByNaziv(fakturaXML.getProdavac().getNaziv()));
             //poslovna godina
+            faktura.setPoslovnaGodina(poslovnaGodinaService.findByGodinaAndPreduzece(fakturaXML.getPoslovnaGodina(), faktura.getDuznik()));
             faktura.setDatum(new Date());
             faktura.setDatumValute(new Date());
+            Faktura novaFaktura = fakturaService.save(faktura);
+            if(novaFaktura == null){
+                resp.setFakturaStatus("Doslo je do greske, neke fakture mozda nisu importovane. ");
+                return resp;
+            }
         }
-        System.out.println("USOOO");
-        ImportFakturaResponse resp = new ImportFakturaResponse();
+        resp.setFakturaStatus("Uspesno ste importovali fakture!");
         return resp;
     }
 

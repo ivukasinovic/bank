@@ -3,7 +3,7 @@
         <importFakturaRequest xmlns="http://poslovna.com/soap-example">
             <faktura>
                 <id>[long]</id>
-                <broj>fa13</broj>
+                <broj>13</broj>
                 <datum>[dateTime]</datum>
                 <datumValute>[dateTime]</datumValute>
                 <ukupanRabat>15.5</ukupanRabat>

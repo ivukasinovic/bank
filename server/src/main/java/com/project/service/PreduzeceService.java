@@ -9,6 +9,8 @@ public interface PreduzeceService {
 
     Preduzece findByEmailAndLozinka(String email, String lozinka);
 
+    Preduzece findByNaziv(String naziv);
+
     void confirmEmailAdress(Long id);
 
     Preduzece findOne(Long id);
