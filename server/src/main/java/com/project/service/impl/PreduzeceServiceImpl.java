@@ -21,6 +21,11 @@ public class PreduzeceServiceImpl implements PreduzeceService {
     }
 
     @Override
+    public Preduzece findByNaziv(String naziv) {
+        return preduzeceRepository.findByNaziv(naziv);
+    }
+
+    @Override
     public void confirmEmailAdress(Long id) {
         Preduzece kor = preduzeceRepository.findOne(id);
       //  kor.setActivated(true);       // Dodati atribut !!!
