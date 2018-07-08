@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import com.project.domain.Faktura;
+import com.project.domain.FakturaStatus;
 import com.project.service.FakturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,4 +55,18 @@ public class FakturaController {
         Faktura noviFaktura = fakturaService.save(faktura);
         return new ResponseEntity<>(noviFaktura, HttpStatus.OK);
     }
+
+    @RequestMapping(
+            value  = "/stornirana/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Faktura> stornirati(@PathVariable Long id){       // @RequestBody Faktura faktura
+        Faktura faktura = fakturaService.findOne(id);
+
+        faktura.setStatus(FakturaStatus.STORNIRANA);
+
+        fakturaService.save(faktura);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
