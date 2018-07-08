@@ -34,3 +34,15 @@ export class Preduzece {
 
 }
 
+export class Faktura {
+  id: number;
+  broj: number;
+  preostaliIznos: number;
+  ukupnoZaPlacanje: number;
+}
+
+export class StaSePlaca {
+  faktura: Faktura;
+  iznos: number;
+
+}

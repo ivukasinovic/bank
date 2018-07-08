@@ -1,6 +1,9 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -24,13 +27,15 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
+    @Column(length = 20)
     private String brojRacuna;
 
     @JsonIgnore
     @Column(nullable = false)
     private String lozinka;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     private Adresa adresa;
 

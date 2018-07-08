@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.project.domain.Faktura;
 import com.project.domain.NalogZaPlacanje;
 import com.project.service.NalogZaPlacanjeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class NalogZaPlacanjeController {
     @RequestMapping(
             value  = "/{id}",
             method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<NalogZaPlacanje> delete(@PathVariable Long id){
         NalogZaPlacanje nalogZaPlacanje = nalogZaPlacanjeService.findOne(id);
         nalogZaPlacanjeService.delete(nalogZaPlacanje);
@@ -49,9 +50,18 @@ public class NalogZaPlacanjeController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<NalogZaPlacanje> delete(@RequestBody NalogZaPlacanje nalogZaPlacanje){
         NalogZaPlacanje noviNalogZaPlacanje = nalogZaPlacanjeService.save(nalogZaPlacanje);
         return new ResponseEntity<>(noviNalogZaPlacanje, HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value = "/generisi/{idFakture}/{iznos}",
+            method = RequestMethod.GET)
+    public ResponseEntity generisiIzPrijedloga(@PathVariable("idFakture") Long idFakture, @PathVariable("iznos") Double iznos) {
+
+        nalogZaPlacanjeService.generisiNalog(idFakture, iznos);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
