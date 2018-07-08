@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import com.project.domain.Faktura;
+import com.project.domain.FakturaStatus;
 import com.project.domain.Preduzece;
 import com.project.repository.PreduzeceRepository;
 import com.project.service.FakturaService;
@@ -61,6 +62,19 @@ public class FakturaController {
     public ResponseEntity<Faktura> delete(@RequestBody Faktura faktura){
         Faktura noviFaktura = fakturaService.save(faktura);
         return new ResponseEntity<>(noviFaktura, HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value  = "/stornirana/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Faktura> stornirati(@PathVariable Long id){       // @RequestBody Faktura faktura
+        Faktura faktura = fakturaService.findOne(id);
+
+        faktura.setStatus(FakturaStatus.STORNIRANA);
+
+        fakturaService.save(faktura);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/neplacene", produces = MediaType.APPLICATION_JSON_VALUE)
