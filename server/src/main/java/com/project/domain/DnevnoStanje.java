@@ -2,6 +2,7 @@ package com.project.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class DnevnoStanje {
@@ -31,6 +32,9 @@ public class DnevnoStanje {
 
     @ManyToOne(optional = false)
     private  Preduzece preduzece;
+
+    @OneToMany(mappedBy = "dnevnoStanje", cascade = CascadeType.REMOVE)
+    private List<StavkaIzvoda> stavkeIzvoda;
 
     public DnevnoStanje(){}
 
@@ -88,5 +92,21 @@ public class DnevnoStanje {
 
     public void setRezervisano(double rezervisano) {
         this.rezervisano = rezervisano;
+    }
+
+    public Preduzece getPreduzece() {
+        return preduzece;
+    }
+
+    public void setPreduzece(Preduzece preduzece) {
+        this.preduzece = preduzece;
+    }
+
+    public List<StavkaIzvoda> getStavkeIzvoda() {
+        return stavkeIzvoda;
+    }
+
+    public void setStavkeIzvoda(List<StavkaIzvoda> stavkeIzvoda) {
+        this.stavkeIzvoda = stavkeIzvoda;
     }
 }
