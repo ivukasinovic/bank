@@ -17,4 +17,6 @@ public interface NalogZaPlacanjeService {
     NalogZaPlacanje save(NalogZaPlacanje nalogZaPlacanje);
 
     void generisiNalog(Long idFakture, Double iznos);
+
+    List<NalogZaPlacanje> findByDuznik(Long id);
 }

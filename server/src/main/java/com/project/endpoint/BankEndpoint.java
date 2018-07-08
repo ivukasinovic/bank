@@ -2,7 +2,10 @@ package com.project.endpoint;
 
 import com.project.domain.Faktura;
 import com.project.domain.FakturaStatus;
+import com.project.domain.NalogZaPlacanje;
+import com.project.domain.Preduzece;
 import com.project.service.FakturaService;
+import com.project.service.NalogZaPlacanjeService;
 import com.project.service.PreduzeceService;
 import com.project.ws.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,11 @@ public class BankEndpoint {
 
     @Autowired
     private PreduzeceService preduzeceService;
+
+    @Autowired
+    private NalogZaPlacanjeService nalogZaPlacanjeService;
+
+
 
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importFakturaRequest")
     @ResponsePayload
@@ -55,8 +63,38 @@ public class BankEndpoint {
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "exportNalogaRequest")
     @ResponsePayload
     public ExportNalogaResponse exportNalogaRequest(@RequestPayload ExportNalogaRequest exportNalogaRequest){
-
+        //prosledju je mi id duznika
         ExportNalogaResponse response = new ExportNalogaResponse();
+        Preduzece preduzece = new Preduzece();
+        //Id iz stringa uzimam id preduzeca  od kojeg uzimam naloge za placanje
+        Long idDuznika= Long.valueOf(exportNalogaRequest.getNalog());
+        List<NalogZaPlacanje> nalozi = nalogZaPlacanjeService.findByDuznik(idDuznika);
+        //setujem respons za sve naloge za placanje
+        for(NalogZaPlacanje nalogZaPlacanje: nalozi) {
+
+            NalogZaPlacanjeXML nalogZaPlacanjeXML = new NalogZaPlacanjeXML();
+
+            nalogZaPlacanjeXML.setHitno(nalogZaPlacanje.getHitno());
+            nalogZaPlacanjeXML.setId(nalogZaPlacanje.getId());
+            nalogZaPlacanjeXML.setSvrha(nalogZaPlacanje.getSvrha());
+            nalogZaPlacanjeXML.setModelOdobrenja(nalogZaPlacanje.getModelOdobrenja());
+            nalogZaPlacanjeXML.setModelZaduzenja(nalogZaPlacanje.getModelZaduzenja());
+            nalogZaPlacanjeXML.setOznakaValute(nalogZaPlacanje.getOznakaValute());
+            nalogZaPlacanjeXML.setPozivNaBrojOdobrenja(nalogZaPlacanje.getPozivNaBrojOdobrenja());
+            nalogZaPlacanjeXML.setPozivNaBrojZaduzenja(nalogZaPlacanje.getPozivNaBrojZaduzenja());
+
+            //set jos 5 atributa
+
+
+            //  nalogZaPlacanjeXML.setDatumNaloga(nalogZaPlacanje.getDatumNaloga());
+
+
+            //response.getNalozi().add(nalogZaPlacanje);
+
+        }
+
+
+
         return  response;
     }
 

@@ -49,14 +49,22 @@ public class NalogZaPlacanjeServiceImpl implements NalogZaPlacanjeService {
     }
 
     @Override
+    public List<NalogZaPlacanje> findByDuznik(Long id) {
+        return nalogZaPlacanjeRepository.findByDuznik(id);
+    }
+
+
+    @Override
     public void generisiNalog(Long idFakture, Double iznos) {
         Faktura faktura = fakturaRepository.findOne(idFakture);
         NalogZaPlacanje nalogZaPlacanje = new NalogZaPlacanje();
 
         nalogZaPlacanje.setDatumNaloga(new Date());
-        nalogZaPlacanje.setDuznik(faktura.getDuznik().getNaziv());
+      //  nalogZaPlacanje.setDuznik(faktura.getDuznik().getNaziv());
+        nalogZaPlacanje.setDuznik(faktura.getDuznik()); //PROVERI JOVANA je l to to
         nalogZaPlacanje.setHitno(false);
-        nalogZaPlacanje.setPrimalac(faktura.getPrimalac().getNaziv());
+       // nalogZaPlacanje.setPrimalac(faktura.getPrimalac().getNaziv());
+        nalogZaPlacanje.setPrimalac(faktura.getPrimalac());
         nalogZaPlacanje.setIznos(iznos);
         nalogZaPlacanje.setDatumValute(faktura.getDatumValute());
         nalogZaPlacanje.setSvrha("placanje fakture " + faktura.getBroj());
@@ -67,4 +75,6 @@ public class NalogZaPlacanjeServiceImpl implements NalogZaPlacanjeService {
 
         nalogZaPlacanjeRepository.save(nalogZaPlacanje);
     }
+
+
 }
