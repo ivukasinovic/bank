@@ -20,7 +20,7 @@
                         <prodavac>Victoria Oil</prodavac>
                         <datumNaloga>[dateTime]</datumNaloga>
                         <datumValute>[dateTime]</datumValute>
-                        <racunDuznika>123-9876543211234-45</racunDuznika>
+                        <racunKupca>123-9876543211234-45</racunKupca>
                         <model>97</model>
                         <pozivNaBroj>100</pozivNaBroj>
                         <racunProdavca>123-9876543211234-48</racunProdavca>
@@ -33,7 +33,7 @@
                         <prodavac>SDD Technology Groupl</prodavac>
                         <datumNaloga>[dateTime]</datumNaloga>
                         <datumValute>[dateTime]</datumValute>
-                        <racunDuznika>123-9876543211234-48</racunDuznika>
+                        <racunKupca>123-9876543211234-48</racunKupca>
                         <model>97</model>
                         <pozivNaBroj>101</pozivNaBroj>
                         <racunProdavca>123-9876543211234-45</racunProdavca>

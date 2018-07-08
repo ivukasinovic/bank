@@ -14,6 +14,8 @@ public interface PreduzeceRepository extends JpaRepository<Preduzece,Long> {
 
     Preduzece findByNaziv(String naziv);
 
+    Preduzece findByBrojRacuna(String brojRacuna);
+
 
 
 }

@@ -1,13 +1,7 @@
 package com.project.endpoint;
 
-import com.project.domain.Faktura;
-import com.project.domain.FakturaStatus;
-import com.project.domain.NalogZaPlacanje;
-import com.project.domain.Preduzece;
-import com.project.service.FakturaService;
-import com.project.service.NalogZaPlacanjeService;
-import com.project.service.PoslovnaGodinaService;
-import com.project.service.PreduzeceService;
+import com.project.domain.*;
+import com.project.service.*;
 import com.project.ws.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -35,6 +29,12 @@ public class BankEndpoint {
   
     @Autowired
     private PoslovnaGodinaService poslovnaGodinaService;
+
+    @Autowired
+    private StavkaIzvodaService stavkaIzvodaService;
+
+    @Autowired
+    private DnevnoStanjeService dnevnoStanjeService;
 
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importFakturaRequest")
     @ResponsePayload
@@ -109,8 +109,32 @@ public class BankEndpoint {
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importIzvodRequest")
     @ResponsePayload
     public ImportIzvodResponse importIzvodRequest(@RequestPayload ImportIzvodRequest importIzvodRequest) {
-
         ImportIzvodResponse response = new ImportIzvodResponse();
+        DnevniIzvodXML dnevniIzvodXML = importIzvodRequest.getIzvod();
+        DnevnoStanje dnevnoStanje = new DnevnoStanje();
+        dnevnoStanje.setNovoStanje(dnevniIzvodXML.getNovoStanje());
+        dnevnoStanje.setPrethodnoStanje(dnevniIzvodXML.getPrethodnoStanje());
+        preduzeceService.findByBrojRacuna(dnevniIzvodXML.getBrojRacuna());
+        dnevnoStanje.setPreduzece(preduzeceService.findByBrojRacuna(dnevniIzvodXML.getBrojRacuna()));
+        dnevnoStanje.setRezervisano(0.00);
+        dnevnoStanje.setPrometKorist(dnevniIzvodXML.getUkupnoUKorist());
+        dnevnoStanje.setPrometTeret(dnevniIzvodXML.getUkupnoNaTeret());
+        for(StavkaDnevnogIzvodaXML stavka: dnevniIzvodXML.getStavkaDnevnogIzvodaList().getStavkaDnevnogIzvoda()){
+            StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
+            //datumNaloga
+            //datum valute
+            stavkaIzvoda.setIznos(stavka.getIznos());
+            stavkaIzvoda.setKupac(preduzeceService.findByNaziv(stavka.getKupac()));
+            stavkaIzvoda.setProdavac(preduzeceService.findByNaziv(stavka.getProdavac()));
+            stavkaIzvoda.setSvrha(stavka.getSvrhaPlacanja());
+            stavkaIzvoda.setIznos(stavka.getIznos());
+            stavkaIzvodaService.save(stavkaIzvoda);
+        }
+        DnevnoStanje novoDnevno = dnevnoStanjeService.save(dnevnoStanje);
+        if(novoDnevno == null){
+            response.setIzvodStatus("Doslo je do greske!");
+        }
+        response.setIzvodStatus("Uspesno!");
         return response;
     }
 
