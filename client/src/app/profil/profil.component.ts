@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Partnerstvo, Preduzece} from '../model/model';
-import {FakturaService} from "../service/faktura.service";
+import {FakturaService} from '../service/faktura.service';
 
 @Component({
   selector: 'app-profil',
@@ -10,13 +10,16 @@ import {FakturaService} from "../service/faktura.service";
 export class ProfilComponent implements OnInit {
 
   preduzece: Preduzece;
+  preduzece22: Preduzece;
 
-  constructor(private  fakturaService: FakturaService) { }
+  constructor(private  fakturaService: FakturaService) {
+    this.preduzece = new Preduzece();
+  }
 
   ngOnInit() {
-   // this.preduzece = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
+   this.preduzece22 = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
 
-    this.fakturaService.getPartnerstvo(this.preduzece.id).subscribe(
+    this.fakturaService.getPreduzece(this.preduzece22.id).subscribe(
       (response: Preduzece) => {
         this.preduzece = response;
       }

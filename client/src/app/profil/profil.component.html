@@ -7,23 +7,14 @@
   <br>
   <table border="2" style="..." align="center" class="table">
     <tr>
-      <th></th>
-      <th></th>
-      <th>Mi</th>
+      <th>Naziv</th>
+      <th>Pib</th>
+      <th>eamil</th>
     </tr>
-    <tr>
+    <tr >
       <td> {{ preduzece.naziv}}</td>
       <td> {{ preduzece.pib }}</td>
       <td>{{ preduzece.email }}</td>
-      <div>
-        <td>
-
-          <!--<button class="btn" (click)="activate(p.id)" *ngIf="p.activated == false">Activate</button>-->
-          <!--<button class="btn" (click)="block(p.id)" *ngIf="p.activated">Block</button>-->
-          <button class="btn" (click)="obrisii(p.id)">Delete</button>
-
-        </td>
-      </div>
     </tr>
 
   </table>
