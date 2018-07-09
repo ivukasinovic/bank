@@ -1,6 +1,7 @@
 package com.project.service.impl;
 
 import com.project.domain.Partnerstvo;
+import com.project.domain.Preduzece;
 import com.project.repository.PartnerstvoRepository;
 import com.project.service.PartnerstvoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,16 @@ public class PartnerstvoServiceImpl implements PartnerstvoService {
     @Override
     public List<Partnerstvo> findAll() {
         return partnerstvoRepository.findAll();
+    }
+
+    @Override
+    public List<Partnerstvo> findByPreduzece1_id(Long id) {
+        return partnerstvoRepository.findByPreduzece1_Id(id);
+    }
+
+    @Override
+    public List<Partnerstvo> findByPreduzece1(Preduzece preduzece) {
+        return partnerstvoRepository.findByPreduzece1(preduzece);
     }
 
     @Override

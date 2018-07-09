@@ -24,9 +24,9 @@ public selektovanaAdresa: Adresa;
 
 
     this.korisnikService.allAdress().subscribe(
-      (response: Adresa[]) => {
-        this.postojeceAdrese = response;
-      });
+        (response: Adresa[]) => {
+          this.postojeceAdrese = response;
+        });
   }
 
   ngOnInit() {

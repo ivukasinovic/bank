@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Partnerstvo, Preduzece} from '../model/model';
+import {FakturaService} from "../service/faktura.service";
 
 @Component({
   selector: 'app-profil',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() { }
+  preduzece: Preduzece;
+
+  constructor(private  fakturaService: FakturaService) { }
 
   ngOnInit() {
+   // this.preduzece = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
+
+    this.fakturaService.getPartnerstvo(this.preduzece.id).subscribe(
+      (response: Preduzece) => {
+        this.preduzece = response;
+      }
+    );
   }
 
 }

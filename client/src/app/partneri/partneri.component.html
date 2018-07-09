@@ -1,5 +1,32 @@
 <app-header></app-header>
 
-<p>
-  partneri works!
-</p>
+<div #mydiv>
+
+  <br>
+  <div align="center"><h1> Svi nasi partneri </h1></div>
+  <br>
+  <table border="2" style="..." align="center" class="table">
+    <tr>
+      <th>Datum</th>
+      <th>Partneri</th>
+      <th>Mi</th>
+      <td></td>
+    </tr>
+    <tr *ngFor="let p of partnerstvo">
+      <td> {{ p.datum }}</td>
+      <td> {{ p.preduzece2.naziv }}</td>
+      <td>{{ p.preduzece1.naziv }}</td>
+      <div>
+        <td>
+
+          <!--<button class="btn" (click)="activate(p.id)" *ngIf="p.activated == false">Activate</button>-->
+          <!--<button class="btn" (click)="block(p.id)" *ngIf="p.activated">Block</button>-->
+          <button class="btn" (click)="obrisii(p.id)">Delete</button>
+
+        </td>
+      </div>
+    </tr>
+
+  </table>
+
+</div>

@@ -131,10 +131,10 @@ INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, mo
 INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, svrha) values (6, '2018-02-02', '2018-02-02', 4, false, 20, 30, 'CHF', '66', '777-1234567890123-77', 5, 'naplata duga');
 INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac, svrha) values (7, '2018-01-01', '2018-01-01', 5, true, 40, 50, 'RSD', '77', '888-1234567890123-88', 2, 'naplata duga');
 
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (1, '2018-05-05', 1, 2);
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (2, '2018-03-03', 1, 4);
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (3, '2018-04-04', 5, 2);
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (4, '2018-01-01', 4, 3);
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (5, '2018-02-02', 2, 3);
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (6, '2018-07-07', 3, 1);
-INSERT INTO partnerstvo (id, datum, preduzece2, preduzece1_id) values (7, '2018-06-06', 3, 5);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (1, '2018-05-05', 1, 2);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (2, '2018-03-03', 1, 4);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (3, '2018-04-04', 5, 2);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (4, '2018-01-01', 4, 3);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (5, '2018-02-02', 2, 3);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (6, '2018-07-07', 3, 1);
+INSERT INTO partnerstvo (id, datum, preduzece2_id, preduzece1_id) values (7, '2018-06-06', 3, 5);
