@@ -29,6 +29,15 @@ public class PartnerstvoController {
     }
 
     @RequestMapping(
+            value = "samo-nasi/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Partnerstvo>> getMojePartnere(@PathVariable Long id){
+        List<Partnerstvo> cenovnici = partnerstvoService.findByPreduzece1_id(id);
+        return new ResponseEntity<>(cenovnici, HttpStatus.OK);
+    }
+
+    @RequestMapping(
             value  = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -54,5 +63,7 @@ public class PartnerstvoController {
         Partnerstvo noviPartnerstvo = partnerstvoService.save(partnerstvo);
         return new ResponseEntity<>(noviPartnerstvo, HttpStatus.OK);
     }
+
+
     
 }

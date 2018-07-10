@@ -1,6 +1,7 @@
 package com.project.service;
 
 import com.project.domain.Partnerstvo;
+import com.project.domain.Preduzece;
 
 import java.util.List;
 
@@ -9,6 +10,10 @@ import java.util.List;
  */
 public interface PartnerstvoService  {
     List<Partnerstvo> findAll();
+
+    List<Partnerstvo> findByPreduzece1_id(Long id);
+
+    List<Partnerstvo> findByPreduzece1(Preduzece preduzece);
 
     Partnerstvo findOne(Long id);
 

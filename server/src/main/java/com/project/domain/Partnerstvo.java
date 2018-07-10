@@ -1,5 +1,9 @@
 package com.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,9 +21,12 @@ public class Partnerstvo {
     @Temporal(TemporalType.DATE)
     private Date datum;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="preduzece1_id", referencedColumnName="id" )
     private Preduzece preduzece1;
 
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="preduzece2_id", referencedColumnName="id")
     private Preduzece preduzece2;
 
     public Long getId() {

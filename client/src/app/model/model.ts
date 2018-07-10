@@ -13,7 +13,6 @@ export class User {
   activated: boolean;
 }
 
-
 export class Adresa {
   id: number;
   broj: number;
@@ -31,7 +30,13 @@ export class Preduzece {
   email: string;
   adresa: number;   // samo broj
   // activated: boolean;
+}
 
+export class Partnerstvo {
+  id: number;
+  datum: string;
+  preduzece2: Preduzece;
+  preduzece1: Preduzece;
 }
 
 export class Faktura {
@@ -44,5 +49,5 @@ export class Faktura {
 export class StaSePlaca {
   faktura: Faktura;
   iznos: number;
-
 }
+
