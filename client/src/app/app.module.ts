@@ -21,6 +21,7 @@ import { PrijedlogPlacanjaComponent } from './prijedlog-placanja/prijedlog-placa
 import { ProfilComponent } from './profil/profil.component';
 import { MojeFaktureComponent } from './moje-fakture/moje-fakture.component';
 import { PartneriComponent } from './partneri/partneri.component';
+import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PartneriComponent } from './partneri/partneri.component';
     PrijedlogPlacanjaComponent,
     ProfilComponent,
     MojeFaktureComponent,
-    PartneriComponent
+    PartneriComponent,
+    StavkeFaktureComponent
   ],
   imports: [
     BrowserModule,

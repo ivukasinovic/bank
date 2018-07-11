@@ -10,6 +10,7 @@ import {PrijedlogPlacanjaComponent} from './prijedlog-placanja/prijedlog-placanj
 import {ProfilComponent} from './profil/profil.component';
 import {MojeFaktureComponent} from './moje-fakture/moje-fakture.component';
 import {PartneriComponent} from './partneri/partneri.component';
+import {StavkeFaktureComponent} from './stavke-fakture/stavke-fakture.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'profil', component: ProfilComponent},
   {path: 'moje-fakture', component: MojeFaktureComponent},
   {path: 'partneri', component: PartneriComponent},
-  {path: 'prijedlog-placanja', component: PrijedlogPlacanjaComponent}
+  {path: 'prijedlog-placanja', component: PrijedlogPlacanjaComponent},
+  {path: 'stavke-fakture', component: StavkeFaktureComponent}
 ];
 
 @NgModule({
