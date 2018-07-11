@@ -131,7 +131,7 @@ public class BankEndpoint {
             preduzeceKupacXML.setPib(nalogZaPlacanje.getDuznik().getPib());
             preduzeceKupacXML.setAdresa(adresaKupacXML);
 
-            nalogZaPlacanjeXML.setProdavac(preduzeceKupacXML);// PRODAVAC = PRIMALAC A DUZNIK = KUPAC
+            nalogZaPlacanjeXML.setKupac(preduzeceKupacXML);// PRODAVAC = PRIMALAC A DUZNIK = KUPAC
             //kraj kupac
 
             XMLGregorianCalendar datumNalog = null;
