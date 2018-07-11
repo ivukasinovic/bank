@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Faktura} from '../model/model';
+import {Faktura, StavkaFakture} from '../model/model';
 import {FakturaService} from '../service/faktura.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-moje-fakture',
@@ -9,30 +10,41 @@ import {FakturaService} from '../service/faktura.service';
 })
 export class MojeFaktureComponent implements OnInit {
 
-  faktura: Faktura[];
-  izlazneFakture: Faktura[];
+  ulazne: Faktura[];
+  izlazne: Faktura[];
 
-  constructor(private fakturaService: FakturaService) {
+  constructor(private fakturaService: FakturaService, private router: Router) {
 
     this.fakturaService.getUlazneFakture().subscribe(
       (response: Faktura []) => {
-        this.faktura = response;
+        this.ulazne = response;
+        this.ulazne.forEach(function (value, index, array) {
+          console.log(value.stavkaFaktureList);
+        })
+      },
+      error1 => {
+        alert('Nije uspjelo ucitavanje ulaznih faktura!');
       }
     );
-
 
     this.fakturaService.getIzlaneFakture().subscribe(
       (response: Faktura []) => {
-        this.izlazneFakture = response;
+        this.izlazne = response;
       }
     );
+
+
 
   }
 
   ngOnInit() {
   }
 
-
+  setStavke(stavke: StavkaFakture[]) {
+    console.log('stavke su ' + stavke);
+    localStorage.setItem('stavke', JSON.stringify(stavke));
+    this.router.navigateByUrl('/stavke-fakture');
+  }
 
   // activate(br: number) {
   //   this.authService.activate(br)

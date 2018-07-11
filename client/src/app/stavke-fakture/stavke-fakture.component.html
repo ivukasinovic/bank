@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<table border="2" style="..." align="center" class="table">
+
+  <tr>
+    <th>Proizvod</th>
+    <th>Osnovica</th>
+    <th>Iznos rabata</th>
+    <th>Procenat rabata</th>
+    <th>Stopa PDV-a</th>
+    <th>Iznos PDV-a</th>
+    <th>Jedinicna cena</th>
+    <th>Kolicina</th>
+    <th>Ukupan iznos</th>
+  </tr>
+
+  <tr *ngFor="let stavka of stavke">
+    <td> {{ stavka.proizvod }}</td>
+    <td> {{ stavka.osnovica }}</td>
+    <td> {{ stavka.iznosRabata }}</td>
+    <td> {{ stavka.procenatRabata }}</td>
+    <td> {{ stavka.stopaPdv }}</td>
+    <td> {{ stavka.iznosPdv }}</td>
+    <td> {{ stavka.jedinicnaCena }}</td>
+    <td> {{ stavka.kolicinaStavkeFakture }}</td>
+    <td> {{ stavka.ukupanIznos }}</td>
+
+  </tr>
+
+</table>
