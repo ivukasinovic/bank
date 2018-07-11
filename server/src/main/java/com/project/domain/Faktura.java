@@ -66,6 +66,12 @@ public class Faktura implements Serializable {
     @JoinColumn(name = "poslovnaGodina_id", nullable = false)
     private PoslovnaGodina poslovnaGodina;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "oznaka") // godina
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne
+    @JoinColumn(name = "valuta_id", nullable = false)
+    private Valuta valuta;
+
     @OneToMany(mappedBy = "faktura", cascade = CascadeType.REMOVE)
     private List<StavkaFakture> stavkaFaktureList;
 
@@ -190,5 +196,13 @@ public class Faktura implements Serializable {
 
     public void setPrimalac(Preduzece primalac) {
         this.primalac = primalac;
+    }
+
+    public Valuta getValuta() {
+        return valuta;
+    }
+
+    public void setValuta(Valuta valuta) {
+        this.valuta = valuta;
     }
 }

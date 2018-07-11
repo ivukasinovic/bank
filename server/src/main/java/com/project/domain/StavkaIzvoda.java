@@ -64,6 +64,22 @@ public class StavkaIzvoda {
         return prodavac;
     }
 
+    public Integer getModel() {
+        return model;
+    }
+
+    public void setModel(Integer model) {
+        this.model = model;
+    }
+
+    public DnevnoStanje getDnevnoStanje() {
+        return dnevnoStanje;
+    }
+
+    public void setDnevnoStanje(DnevnoStanje dnevnoStanje) {
+        this.dnevnoStanje = dnevnoStanje;
+    }
+
     public void setProdavac(Preduzece prodavac) {
         this.prodavac = prodavac;
     }

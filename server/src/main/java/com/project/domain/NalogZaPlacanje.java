@@ -44,7 +44,7 @@ public class NalogZaPlacanje {
     @Column(length = 2)
     private  Integer modelOdobrenja;
 
-    @Column(length = 2)
+    @Column(length = 20)
     private  String pozivNaBrojOdobrenja;
 
     @Column(length = 3)
