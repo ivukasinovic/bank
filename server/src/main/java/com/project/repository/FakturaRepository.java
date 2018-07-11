@@ -12,4 +12,9 @@ import java.util.List;
 public interface FakturaRepository extends JpaRepository<Faktura, Long> {
 
     List<Faktura> findByDuznikAndPreostaliIznosGreaterThan(Preduzece duznik, double iznos);
+
+    List<Faktura> findByDuznik(Preduzece duznik);
+
+    List<Faktura> findByPrimalac(Preduzece primalac);
+
 }

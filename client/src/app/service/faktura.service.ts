@@ -23,4 +23,12 @@ export class FakturaService {
     return this.http.get( 'api/preduzece/' + partnerstvo);
   }
 
+  getIzlaneFakture(){
+    return this.http.get('api/faktura/izlazne');
+  }
+
+  getUlazneFakture(){
+    return this.http.get('api/faktura/ulazne');
+  }
+
 }

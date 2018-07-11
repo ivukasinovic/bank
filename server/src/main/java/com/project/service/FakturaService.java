@@ -19,4 +19,8 @@ public interface FakturaService {
     Faktura save(Faktura faktura);
 
     List<Faktura> getNeplacene(Preduzece preduzece);
+
+    List<Faktura> findByDuznik(Preduzece duznik);
+
+    List<Faktura> findByPrimalac(Preduzece primalac);
 }

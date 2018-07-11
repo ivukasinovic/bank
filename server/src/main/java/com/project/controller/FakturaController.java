@@ -89,4 +89,35 @@ public class FakturaController {
         return  new ResponseEntity<>(fakture, HttpStatus.OK);
 
     }
+
+    @RequestMapping(
+            value  = "/ulazne",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Faktura>> ulazneFakture(){
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session= attr.getRequest().getSession(true);
+        Preduzece preduzece = (Preduzece)session.getAttribute("preduzece");
+
+       List<Faktura> faktura = fakturaService.findByPrimalac(preduzece);  // findOne(preduzece.getId());
+
+        return new ResponseEntity<>(faktura,HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value  = "/izlazne",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Faktura>> izlazneFakture(){
+
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session= attr.getRequest().getSession(true);
+        Preduzece preduzece = (Preduzece)session.getAttribute("preduzece");
+
+        List<Faktura> fakture = fakturaService.findByDuznik(preduzece);
+
+
+        return new ResponseEntity<>(fakture,HttpStatus.OK);
+    }
+
 }

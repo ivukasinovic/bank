@@ -1,5 +1,64 @@
 <app-header></app-header>
 
-<p>
-  moje-fakture works!
-</p>
+
+<div #mydiv>
+
+  <br>
+  <div align="center"><h1> Ulazne fakture </h1></div>
+  <br>
+  <table border="2" style="..." align="center" class="table">
+    <tr>
+      <th>id</th>
+      <th>Broj fakture</th>
+      <th>Preostali iznos</th>
+      <th> Ukupno za placanje </th>
+      <td></td>
+    </tr>
+    <tr *ngFor="let p of faktura">
+      <td> {{ p.id }}</td>
+      <td> {{ p.broj }}</td>
+      <td> {{ p.preostaliIznos }}</td>
+      <td>{{ p.ukupnoZaPlacanje }}</td>
+      <div>
+        <td>
+
+          <button class="btn" (click)="activate(p.id)" >Storniraj</button>
+          <!--<button class="btn" (click)="block(p.id)" >Block</button>-->
+          <!--<button class="btn" (click)="obrisii(p.id)">Delete</button>-->
+
+        </td>
+      </div>
+    </tr>
+
+  </table>
+
+  <!-- nananan !!!!-->
+  <br>
+  <br>
+  <hr>
+  <br>
+  <br>
+
+  <div align="center"><h1> Izlazne fakture </h1></div>
+  <br>
+  <table border="2" style="..." align="center" class="table">
+    <tr>
+      <th>Broj fakture</th>
+      <th>Preostali iznos</th>
+      <th> Ukupno za placanje </th>
+    </tr>
+    <tr *ngFor="let p of izlazneFakture">
+      <td > {{ p.broj }}</td>
+      <td > {{ p.preostaliIznos }}</td>
+      <td > {{ p.ukupnoZaPlacanje }}</td>
+        <td>
+          <button class="btn" (click)="activate(p.id)" >Storniraj</button>
+          <!--<button class="btn" (click)="block(p.id)" >Block</button>-->
+          <!--<button class="btn" (click)="obrisii(p.id)">Delete</button>-->
+        </td>
+
+    </tr>
+
+  </table>
+
+</div>

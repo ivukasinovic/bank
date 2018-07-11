@@ -42,4 +42,14 @@ public class FakturaServiceImpl implements FakturaService {
         return fakturaRepository.findByDuznikAndPreostaliIznosGreaterThan(preduzece,0.0);
 
     }
+
+    @Override
+    public List<Faktura> findByDuznik(Preduzece duznik) {
+        return fakturaRepository.findByDuznik(duznik);
+    }
+
+    @Override
+    public List<Faktura> findByPrimalac(Preduzece primalac) {
+        return fakturaRepository.findByPrimalac(primalac);
+    }
 }
