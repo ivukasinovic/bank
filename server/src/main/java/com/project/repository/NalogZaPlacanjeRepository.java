@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface NalogZaPlacanjeRepository extends JpaRepository<NalogZaPlacanje, Long> {
 
-    List<NalogZaPlacanje> findByDuznik(Long id);
+    List<NalogZaPlacanje> findByDuznik_Id(Long id);
 }

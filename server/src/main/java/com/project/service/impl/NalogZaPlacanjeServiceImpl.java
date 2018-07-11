@@ -48,10 +48,10 @@ public class NalogZaPlacanjeServiceImpl implements NalogZaPlacanjeService {
         return nalogZaPlacanjeRepository.save(nalogZaPlacanje);
     }
 
-    @Override
-    public List<NalogZaPlacanje> findByDuznik(Long id) {
-        return nalogZaPlacanjeRepository.findByDuznik(id);
-    }
+//    @Override
+//    public List<NalogZaPlacanje> findByDuznik(Long id) {
+//        return nalogZaPlacanjeRepository.findByDuznik(id);
+//    }
 
 
     @Override
@@ -74,6 +74,11 @@ public class NalogZaPlacanjeServiceImpl implements NalogZaPlacanjeService {
         dnevnoStanjeRepository.save(dnevnoStanje);
 
         nalogZaPlacanjeRepository.save(nalogZaPlacanje);
+    }
+
+    @Override
+    public List<NalogZaPlacanje> findByDuznik_Id(Long id) {
+        return nalogZaPlacanjeRepository.findByDuznik_Id(id);
     }
 
 

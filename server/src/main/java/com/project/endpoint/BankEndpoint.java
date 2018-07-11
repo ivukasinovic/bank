@@ -81,7 +81,7 @@ public class BankEndpoint {
         Long idDuznika= Long.valueOf(exportNalogaRequest.getNalog());
         System.out.println("\n Broj .. " + idDuznika);
         //  NalogZaPlacanje nalozi = nalogZaPlacanjeService.findOne(5L);
-        List<NalogZaPlacanje> nalozi = nalogZaPlacanjeService.findByDuznik(idDuznika);
+        List<NalogZaPlacanje> nalozi = nalogZaPlacanjeService.findByDuznik_Id(idDuznika);
         //setujem respons za sve naloge za placanje
         for(NalogZaPlacanje nalogZaPlacanje: nalozi) {
 
