@@ -11,6 +11,9 @@ import {ProfilComponent} from './profil/profil.component';
 import {MojeFaktureComponent} from './moje-fakture/moje-fakture.component';
 import {PartneriComponent} from './partneri/partneri.component';
 import {StavkeFaktureComponent} from './stavke-fakture/stavke-fakture.component';
+import {CenovniciComponent} from './cenovnici/cenovnici.component';
+import {StavkaCenovnika} from './model/model';
+import {StavkeCenovnikaComponent} from './stavke-cenovnika/stavke-cenovnika.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full' },
@@ -23,7 +26,9 @@ const routes: Routes = [
   {path: 'moje-fakture', component: MojeFaktureComponent},
   {path: 'partneri', component: PartneriComponent},
   {path: 'prijedlog-placanja', component: PrijedlogPlacanjaComponent},
-  {path: 'stavke-fakture', component: StavkeFaktureComponent}
+  {path: 'stavke-fakture', component: StavkeFaktureComponent},
+  {path: 'cenovnici', component: CenovniciComponent},
+  {path: 'stavke-cenovnika', component: StavkeCenovnikaComponent}
 ];
 
 @NgModule({

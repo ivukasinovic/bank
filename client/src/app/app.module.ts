@@ -22,6 +22,9 @@ import { ProfilComponent } from './profil/profil.component';
 import { MojeFaktureComponent } from './moje-fakture/moje-fakture.component';
 import { PartneriComponent } from './partneri/partneri.component';
 import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.component';
+import { CenovniciComponent } from './cenovnici/cenovnici.component';
+import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.component';
+import {CenovnikService} from './service/cenovnik.service';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.componen
     ProfilComponent,
     MojeFaktureComponent,
     PartneriComponent,
-    StavkeFaktureComponent
+    StavkeFaktureComponent,
+    CenovniciComponent,
+    StavkeCenovnikaComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.componen
     HttpClientModule,
     FormsModule
   ],
-  providers: [KorisnikServiceService, FakturaService],
+  providers: [KorisnikServiceService, FakturaService, CenovnikService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
