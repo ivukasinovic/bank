@@ -74,6 +74,7 @@ export class PdvComponent implements OnInit {
     if (flag === 0) {
       this.pdvIzmenjen = pdvObj;
       this.pdvIzmenjen.naziv = izmeniPdvPolje;
+      this.pdvIzmenjen.stopaPDVList = null;
       this.pdvService.updatePdv(this.pdvIzmenjen)
         .subscribe(response => {
             alert('Uspesno ste izmenili!');

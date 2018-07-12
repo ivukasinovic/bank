@@ -46,13 +46,13 @@ public class PDVController {
     }
 
     @RequestMapping(
-            value  = "/{id}",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PDV> save(@RequestBody PDV pdv, @PathVariable Long id){
+    public ResponseEntity<PDV> save(@RequestBody PDV pdv){
         //pdv.setStopaPDVList(null);
-        System.out.println("\nId:" + id);
-        PDV p = pdvService.findOne(id);
+        System.out.println("\nId:" + pdv.getId());
+        PDV p = pdvService.findOne(pdv.getId());
+        p.setNaziv(pdv.getNaziv());
         PDV noviPdv = pdvService.save(p);
         return new ResponseEntity<>(noviPdv, HttpStatus.OK);
     }

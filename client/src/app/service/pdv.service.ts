@@ -21,6 +21,6 @@ export class PdvService {
     return this.http.get( 'api/grupaProizvoda/');
   }
   updatePdv(pdv: PDV) {
-    return this.http.post('api/pdv/' + pdv.id , null);
+    return this.http.post('api/pdv', pdv);
   }
 }
