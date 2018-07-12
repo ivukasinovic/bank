@@ -129,4 +129,12 @@ public class StavkaFakture implements Serializable {
     public void setFaktura(Faktura faktura) {
         this.faktura = faktura;
     }
+
+    public Proizvod getProizvod() {
+        return proizvod;
+    }
+
+    public void setProizvod(Proizvod proizvod) {
+        this.proizvod = proizvod;
+    }
 }

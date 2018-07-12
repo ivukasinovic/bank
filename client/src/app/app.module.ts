@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {KorisnikServiceService} from './service/korisnik-service.service';
 import { HomePageComponent } from './home-page/home-page.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { GenerisiNalogComponent } from './generisi-nalog/generisi-nalog.component';
 import {FakturaService} from './service/faktura.service';
@@ -25,6 +25,8 @@ import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.componen
 import { CenovniciComponent } from './cenovnici/cenovnici.component';
 import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.component';
 import {CenovnikService} from './service/cenovnik.service';
+import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
+import {ModalModule} from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import {CenovnikService} from './service/cenovnik.service';
     PartneriComponent,
     StavkeFaktureComponent,
     CenovniciComponent,
-    StavkeCenovnikaComponent
+    StavkeCenovnikaComponent,
+    NoviCenovnikComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import {CenovnikService} from './service/cenovnik.service';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [KorisnikServiceService, FakturaService, CenovnikService],
   bootstrap: [AppComponent]

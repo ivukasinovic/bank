@@ -87,3 +87,16 @@ export class Cenovnik {
   stavkaCenovnikaList: StavkaCenovnika[];
 }
 
+export class Valuta {
+  id: number;
+  oznaka: string;
+  naziv: string;
+}
+
+export class Proizvod {
+  id: number;
+  naziv: string;
+  opis: string;
+  jedinicaMere: string;
+}
+

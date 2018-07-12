@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<div class="container">
+     <span class="pull-right">
+
+      <button class="btn" (click)="kreiraj()" >Kreiraj</button>
+    </span>
+  <form>
+    <label>Datum vazenja * </label>
+    <input class="form-control" required="required" name="datumVazenja" [ngModel]="cenovnik.datumVazenja |  date:'yyyy-MM-dd'"  type="date">
+    <br>
+    <label for="sel">Valuta</label>
+    <select required="required" class="form-control" id="sel">
+      <option *ngFor="let valuta of valute" value="{{valuta.id}}">{{valuta.naziv}} ( {{valuta.oznaka}} )</option>
+    </select>
+    <br>
+
+    <button class="btn-primary" (click)="openModal(template)">
+      Dodaj stavku
+    </button>
+
+  </form>
+
+  <table *ngIf="cenovnik.stavkaCenovnikaList.length > 0" border="2" style="..." align="center" class="table">
+    <tr>
+
+      <th>Naziv</th>
+      <th>Cena</th>
+
+      <th></th>
+    </tr>
+
+    <tr *ngFor="let stavka of cenovnik.stavkaCenovnikaList">
+      <td> {{ stavka.proizvod}}</td>
+      <td>{{stavka.cena}}</td>
+      <td><button class="btn-link" (click)="ukloniStavku(stavka)">Ukloni</button></td>
+    </tr>
+
+  </table>
+
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj stavku</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label for="sel">Proizvod</label>
+    <select required="required" class="form-control" id="sel2" [(ngModel)]="stavka.proizvod" >
+      <option *ngFor="let proizvod of proizvodi" value="{{proizvod.naziv}}">{{proizvod.naziv}}</option>
+    </select>
+    <br>
+    <label>Cena</label>
+    <input [(ngModel)]= "stavka.cena" type="number">
+    <br>
+    <button class="btn-warning" (click)="dodajStavku()">Dodaj</button>
+  </div>
+</ng-template>
+

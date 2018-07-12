@@ -31,4 +31,18 @@ export class CenovniciComponent implements OnInit {
     this.router.navigateByUrl('/stavke-cenovnika');
   }
 
+  obrisi(id: number) {
+    this.cenovnikService.obrisi(id).subscribe(
+      (response: any ) => {
+          this.cenovnici.forEach( function (value, index, array) {
+            if (value.id === id) {
+              array.splice(index, 1);
+            }
+          });
+      },
+      error1 => {
+        alert('Nije uspjelo brisanje cenovnika!');
+      }
+    );
+  }
 }

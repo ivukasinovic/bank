@@ -1,6 +1,7 @@
 package com.project.service;
 
 import com.project.domain.Cenovnik;
+import com.project.domain.Preduzece;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface CenovnikService {
     void delete(Cenovnik cenovnik);
 
     Cenovnik save(Cenovnik cenovnik);
+
+    List<Cenovnik> findByPreduzece(Preduzece preduzece);
 }
