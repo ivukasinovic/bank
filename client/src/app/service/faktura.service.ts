@@ -34,4 +34,8 @@ export class FakturaService {
     return this.http.get('api/faktura');
   }
 
+  storniraj(fakturaId: number) {
+    return this.http.get('api/faktura/stornirana/' + fakturaId);
+  }
+
 }

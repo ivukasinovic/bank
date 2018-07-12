@@ -75,6 +75,12 @@ public class Faktura implements Serializable {
     @OneToMany(mappedBy = "faktura", cascade = CascadeType.REMOVE)
     private List<StavkaFakture> stavkaFaktureList;
 
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") // godina
+//    @JsonIdentityReference(alwaysAsId = true)
+//    @ManyToOne
+//    @JoinColumn(name = "dnevno_id")
+//    private DnevnoStanje dnevnoStanje;
+
     public Faktura() {}
 
     public Long getId() {
@@ -205,4 +211,12 @@ public class Faktura implements Serializable {
     public void setValuta(Valuta valuta) {
         this.valuta = valuta;
     }
+
+//    public DnevnoStanje getDnevnoStanje() {
+//        return dnevnoStanje;
+//    }
+//
+//    public void setDnevnoStanje(DnevnoStanje dnevnoStanje) {
+//        this.dnevnoStanje = dnevnoStanje;
+//    }
 }
