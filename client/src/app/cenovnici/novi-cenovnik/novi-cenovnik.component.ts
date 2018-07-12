@@ -51,6 +51,7 @@ export class NoviCenovnikComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  
   dodajStavku(stavka: StavkaCenovnika) {
      this.proizvodi.forEach( function (value, index, array) {
       if ( value.id == stavka.proizvod.id) {
