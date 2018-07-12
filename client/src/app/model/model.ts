@@ -77,14 +77,14 @@ export class StavkaFakture {
 export class StavkaCenovnika {
   id: number;
   cena: number;
-  proizvod: string;
+  proizvod: Proizvod;
 }
+
 
 export class Cenovnik {
   id: number;
-  datumVazenja: string;
+  datumVazenja: Date;
   valuta: string;
-  stavkaCenovnikaList: StavkaCenovnika[];
 }
 
 export class Valuta {

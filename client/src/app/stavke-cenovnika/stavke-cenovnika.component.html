@@ -1,3 +1,17 @@
-<p>
-  stavke-cenovnika works!
-</p>
+<app-header></app-header>
+<table *ngIf="stavkeList.length > 0" border="2" style="..." align="center" class="table">
+  <tr>
+
+    <th>Naziv</th>
+    <th>Cena</th>
+
+  </tr>
+
+  <tr *ngFor="let stavka of stavkeList">
+    <td> {{stavka.proizvod}}</td>
+    <td>{{stavka.cena}}</td>
+
+  </tr>
+
+</table>
+
