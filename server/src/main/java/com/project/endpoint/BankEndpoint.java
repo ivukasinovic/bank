@@ -12,6 +12,9 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -56,13 +59,19 @@ public class BankEndpoint {
             faktura.setUkupanPDV(fakturaXML.getUkupanPDV());
             faktura.setUkupanRabat(fakturaXML.getUkupanRabat());
             faktura.setUkupnoZaPlacanje(fakturaXML.getUkupnoZaPlacanje());
-
+            DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+            try {
+                Date d = df.parse(fakturaXML.getDatum());
+                Date dv = df.parse(fakturaXML.getDatumValute());
+                faktura.setDatum(d);
+                faktura.setDatumValute(dv);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             //KRITICNO
             faktura.setDuznik(preduzeceService.findByNaziv(fakturaXML.getKupac().getNaziv()));
             faktura.setPrimalac(preduzeceService.findByNaziv(fakturaXML.getProdavac().getNaziv()));
             faktura.setPoslovnaGodina(poslovnaGodinaService.findByGodinaAndPreduzece(fakturaXML.getPoslovnaGodina(), faktura.getDuznik()));
-            faktura.setDatum(new Date());
-            faktura.setDatumValute(new Date());
             faktura.setValuta(valutaService.findOne(1L));
             Faktura novaFaktura = fakturaService.save(faktura);
             if(novaFaktura == null){
@@ -178,10 +187,22 @@ public class BankEndpoint {
         dnevnoStanje.setRezervisano(0.00);
         dnevnoStanje.setPrometKorist(dnevniIzvodXML.getUkupnoUKorist());
         dnevnoStanje.setPrometTeret(dnevniIzvodXML.getUkupnoNaTeret());
+        DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+        try {
+            dnevnoStanje.setDatum(df.parse(dnevniIzvodXML.getDatumNaloga()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         DnevnoStanje novoDnevno = dnevnoStanjeService.save(dnevnoStanje);
         for(StavkaDnevnogIzvodaXML stavka: dnevniIzvodXML.getStavkaDnevnogIzvodaList().getStavkaDnevnogIzvoda()){
             StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
-            //datumNaloga
+            DateFormat d = new SimpleDateFormat("dd-mm-yyyy");
+            try {
+                stavkaIzvoda.setDatumNaloga(d.parse(stavka.getDatumNaloga()));
+                stavkaIzvoda.setDatumValute(d.parse(stavka.getDatumValute()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             //datum valute
             stavkaIzvoda.setIznos(stavka.getIznos());
             stavkaIzvoda.setKupac(preduzeceService.findByNaziv(stavka.getKupac()));
