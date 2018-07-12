@@ -21,7 +21,10 @@ import { PrijedlogPlacanjaComponent } from './prijedlog-placanja/prijedlog-placa
 import { ProfilComponent } from './profil/profil.component';
 import { MojeFaktureComponent } from './moje-fakture/moje-fakture.component';
 import { PartneriComponent } from './partneri/partneri.component';
-
+import { PdvComponent } from './pdv/pdv.component';
+import {PdvService} from './service/pdv.service';
+import { StopaPdvComponent } from './stopa-pdv/stopa-pdv.component';
+import {StopaPdvService} from './service/stopa-pdv.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { PartneriComponent } from './partneri/partneri.component';
     PrijedlogPlacanjaComponent,
     ProfilComponent,
     MojeFaktureComponent,
-    PartneriComponent
+    PartneriComponent,
+    PdvComponent,
+    StopaPdvComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ import { PartneriComponent } from './partneri/partneri.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [KorisnikServiceService, FakturaService],
+  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

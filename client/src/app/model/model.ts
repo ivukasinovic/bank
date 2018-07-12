@@ -51,3 +51,21 @@ export class StaSePlaca {
   iznos: number;
 }
 
+export class StopaPDV {
+  id: number;
+  datumVazenja: string;
+  stopa: number;
+  pdv: PDV ;
+}
+export class PDV {
+  id: number;
+  naziv: string;
+  stopaPDV: StopaPDV[];
+}
+
+export class GrupaProizvoda {
+  id: number;
+  naziv: string;
+  opis: string;
+  pdv: string; //id pdv kom pripada
+}
