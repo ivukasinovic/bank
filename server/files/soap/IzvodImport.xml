@@ -24,7 +24,7 @@
                         <model>97</model>
                         <pozivNaBroj>100</pozivNaBroj>
                         <racunProdavca>123-9876543211234-48</racunProdavca>
-                        <iznos>150.00</iznos>
+                        <iznos>200.00</iznos>
                     </stavkaDnevnogIzvoda>
                     <stavkaDnevnogIzvoda>
                         <id>[long]</id>

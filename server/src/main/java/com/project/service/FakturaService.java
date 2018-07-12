@@ -14,6 +14,8 @@ public interface FakturaService {
 
     Faktura findOne(Long id);
 
+    Faktura findByBroj(Long broj);
+
     void delete(Faktura faktura);
 
     Faktura save(Faktura faktura);
@@ -23,4 +25,5 @@ public interface FakturaService {
     List<Faktura> findByDuznik(Preduzece duznik);
 
     List<Faktura> findByPrimalac(Preduzece primalac);
+
 }
