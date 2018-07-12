@@ -60,7 +60,7 @@ export class StopaPDV {
 export class PDV {
   id: number;
   naziv: string;
-  stopaPDV: StopaPDV[];
+  stopaPDVList: StopaPDV[];
 }
 
 export class GrupaProizvoda {
