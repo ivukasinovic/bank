@@ -88,6 +88,9 @@ export class PdvComponent implements OnInit {
   prikaziModal() {
 
   }
+
+  dodajPdv() {
+  }
   stopaPdv() {
     this.router.navigateByUrl('stopa-pdv');
   }

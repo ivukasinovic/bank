@@ -57,4 +57,14 @@ public class PDVController {
         return new ResponseEntity<>(noviPdv, HttpStatus.OK);
     }
 
+    @RequestMapping(
+            value  = "/dodavanje",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PDV> dodavanje(@RequestBody PDV pdv){
+        //pdv.setStopaPDVList(null);
+
+        PDV noviPdv = pdvService.save(pdv);
+        return new ResponseEntity<>(noviPdv, HttpStatus.OK);
+    }
 }

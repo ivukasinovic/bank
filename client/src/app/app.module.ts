@@ -31,6 +31,7 @@ import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.co
 import {CenovnikService} from './service/cenovnik.service';
 import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {ModalModule} from 'ngx-bootstrap';
+import { DodajPdvComponent } from './pdv/dodaj-pdv/dodaj-pdv.component';
 import { NalogComponent } from './nalog/nalog.component';
 
 @NgModule({
@@ -53,6 +54,7 @@ import { NalogComponent } from './nalog/nalog.component';
     CenovniciComponent,
     StavkeCenovnikaComponent,
     NoviCenovnikComponent,
+    DodajPdvComponent,
     NalogComponent
   ],
   imports: [
@@ -64,7 +66,7 @@ import { NalogComponent } from './nalog/nalog.component';
     FormsModule,
     ModalModule.forRoot()
   ],
-  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService],
+  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService, CenovnikService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
