@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bac70c5-76dd-4e96-91d4-1cb2fb8c8664">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Platni promet preduzeca"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="331"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="658"/>
+	<queryString>
+		<![CDATA[SELECT poslovna.partnerstvo.id,
+	poslovna.partnerstvo.datum,
+	poslovna.partnerstvo.preduzece1_id,
+	poslovna.partnerstvo.preduzece2_id
+FROM poslovna.partnerstvo
+WHERE 
+	 poslovna.partnerstvo.datum > "2017-12-31" 
+	 AND poslovna.partnerstvo.datum < "2018-07-15"
+	 AND poslovna.partnerstvo.preduzece2_id = '3']]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="partnerstvo"/>
+	</field>
+	<field name="datum" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="datum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="partnerstvo"/>
+	</field>
+	<field name="preduzece1_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="preduzece1_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="partnerstvo"/>
+	</field>
+	<field name="preduzece2_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="preduzece2_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="partnerstvo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="186" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="40" height="20" uuid="1ca1b571-0e0e-4ae9-b0ef-dfe43faedeea"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="20" width="100" height="20" uuid="a5a986ec-d9b3-4592-b427-3b01dfc04d7b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="20" width="40" height="15" uuid="411853da-7604-47ca-aa96-5f03851d0c78"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="520" y="20" width="30" height="15" uuid="ffc92b94-ea09-4bf8-9d87-b1e5beada645"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="40" width="340" height="58" uuid="dc6dbc71-613c-41cd-bced-b0b9420491b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="26"/>
+				</textElement>
+				<text><![CDATA[Kartica partnera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="240" height="19" uuid="32f671e6-f9ee-42e3-9fb6-6829a505bd42"/>
+				<text><![CDATA[Poslovna informatika: Platni promet preduzeca, tim 9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="140" height="20" uuid="474e4649-c149-421b-b2b3-782355666cf5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID partnerstva:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="165" width="590" height="2" uuid="31c44091-b9c3-4bf8-8c73-6eb1ebfdc64b"/>
+			</line>
+			<staticText>
+				<reportElement x="140" y="98" width="340" height="30" uuid="6ac6003e-2414-43cc-813e-9a91f564010b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16"/>
+				</textElement>
+				<text><![CDATA[01.01.2018. - 14.07.2018.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="145" width="130" height="20" uuid="e95a4c6b-6bac-41bc-bc2a-2e1762d480f0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Preduzece vlasnik:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="145" width="150" height="20" uuid="e356752f-d245-477e-a4e7-0da3810354ba"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Datum sklapanja partnerstva:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="145" width="130" height="20" uuid="a0b45698-2f79-4bd4-b17a-99f7d2b2eb42"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Preduzece partner:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="12" width="140" height="16" uuid="37f8f36c-9196-4700-a6b2-e131a413a092"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="12" width="150" height="16" uuid="717a719d-766f-4276-bce0-88e4683d7d38"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{datum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="12" width="130" height="16" uuid="212fdd72-641a-419d-b666-31b5b3db4e25"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{preduzece1_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="12" width="130" height="16" uuid="4967f1c4-2e43-405d-bff1-2eb70fbcabef"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{preduzece2_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

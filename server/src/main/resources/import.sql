@@ -101,7 +101,7 @@ INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALU
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (9,12,4,4);
 INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALUES (10,3,4,1);
 --ako narudzbenica nije null ona se po njoj gleda ko su preduzece i poslovni partner ? PROVERI
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id, valuta_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'FAZAFORMIRANJA',25,10,200,1,5,1,2,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id, valuta_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'OBRACUNATA',25,10,200,1,5,1,2,1);
 INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (2,20,101,'2018-07-05','2018-07-14',400,'FAZAFORMIRANJA',26,100,400,2,4,2,1,1);
 INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (3,21,102,'2018-07-06','2018-07-19',122,'FAZAFORMIRANJA',27,80,122,3,5,5,2,1);
 INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (4,22,103,'2018-07-07','2018-07-04',20,'FAZAFORMIRANJA',28,0,40,4,5,4,3,1);
