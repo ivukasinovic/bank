@@ -21,13 +21,16 @@ import { PrijedlogPlacanjaComponent } from './prijedlog-placanja/prijedlog-placa
 import { ProfilComponent } from './profil/profil.component';
 import { MojeFaktureComponent } from './moje-fakture/moje-fakture.component';
 import { PartneriComponent } from './partneri/partneri.component';
+import { PdvComponent } from './pdv/pdv.component';
+import {PdvService} from './service/pdv.service';
+import { StopaPdvComponent } from './stopa-pdv/stopa-pdv.component';
+import {StopaPdvService} from './service/stopa-pdv.service';
 import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.component';
 import { CenovniciComponent } from './cenovnici/cenovnici.component';
 import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.component';
 import {CenovnikService} from './service/cenovnik.service';
 import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {ModalModule} from 'ngx-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import {ModalModule} from 'ngx-bootstrap';
     ProfilComponent,
     MojeFaktureComponent,
     PartneriComponent,
+    PdvComponent,
+    StopaPdvComponent,
     StavkeFaktureComponent,
     CenovniciComponent,
     StavkeCenovnikaComponent,
@@ -57,7 +62,7 @@ import {ModalModule} from 'ngx-bootstrap';
     FormsModule,
     ModalModule.forRoot()
   ],
-  providers: [KorisnikServiceService, FakturaService, CenovnikService],
+  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

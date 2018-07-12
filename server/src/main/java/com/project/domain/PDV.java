@@ -14,7 +14,7 @@ public class PDV implements Serializable {
     private String naziv;
 
 
-    @OneToMany(mappedBy = "pdv")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pdv")
     private  List<StopaPDV> stopaPDVList;
 
     public PDV() {}

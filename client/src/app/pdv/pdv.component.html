@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+
+<div #mydiv>
+
+  <br>
+  <div align="center"><h1> PDV </h1></div>
+  <br>
+  <div>
+    <button class="btn btn-primary"
+            id="stopaPdv1" (click)="stopaPdv()">Stopa PDV-a
+    </button>
+  </div>
+  <br>
+  <table border="2" style="..." align="center" class="table">
+    <tr>
+
+      <th>Naziv</th>
+      <td></td>
+    </tr>
+    <tr *ngFor="let p of pdv" >
+      <td> {{ p.naziv }}</td>
+      <div>
+        <td>
+
+          <button (click)="brisiPdv(p.id, p.naziv)" class="btn btn-danger"> Obrisi</button>
+          <!--<button (click)="izmeniPdv(p)" class="btn btn-warning"> Izmeni</button>-->
+          <button (click)="izmeniPdv(p, p.naziv, izmeniPdvPolje.value)" class="btn btn-warning"> Izmeni</button>
+          <input #izmeniPdvPolje id="izmeniPdvPolje" name = "izmeniPdvPolje" type ="text" value="" placeholder="Izmeni PDV">
+        </td>
+      </div>
+    </tr>
+
+  </table>
+
+  <!-- nananan !!!!-->
+  <br>
+
+  <br>
+
+</div>

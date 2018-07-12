@@ -10,6 +10,8 @@ import {PrijedlogPlacanjaComponent} from './prijedlog-placanja/prijedlog-placanj
 import {ProfilComponent} from './profil/profil.component';
 import {MojeFaktureComponent} from './moje-fakture/moje-fakture.component';
 import {PartneriComponent} from './partneri/partneri.component';
+import {PdvComponent} from './pdv/pdv.component';
+import {StopaPdvComponent} from './stopa-pdv/stopa-pdv.component';
 import {StavkeFaktureComponent} from './stavke-fakture/stavke-fakture.component';
 import {CenovniciComponent} from './cenovnici/cenovnici.component';
 import {StavkaCenovnika} from './model/model';
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: 'moje-fakture', component: MojeFaktureComponent},
   {path: 'partneri', component: PartneriComponent},
   {path: 'prijedlog-placanja', component: PrijedlogPlacanjaComponent},
+  {path: 'pdv', component: PdvComponent},
+  {path: 'stopa-pdv', component: StopaPdvComponent},
   {path: 'stavke-fakture', component: StavkeFaktureComponent},
   {path: 'cenovnici', component: CenovniciComponent},
   {path: 'stavke-cenovnika', component: StavkeCenovnikaComponent},

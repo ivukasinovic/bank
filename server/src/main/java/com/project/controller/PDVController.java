@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/pdv")
 public class PDVController {
-
+// ubaciti servis grupe i proveriti u kontroleru prilikom brisanja da li pripada grupi ako pripada onda ga ne brisati
     @Autowired
     private PDVService pdvService;
 
@@ -34,6 +34,7 @@ public class PDVController {
         return new ResponseEntity<>(pdv, HttpStatus.OK);
     }
 
+
     @RequestMapping(
             value  = "/{id}",
             method = RequestMethod.DELETE,
@@ -48,7 +49,11 @@ public class PDVController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PDV> save(@RequestBody PDV pdv){
-        PDV noviPdv = pdvService.save(pdv);
+        //pdv.setStopaPDVList(null);
+        System.out.println("\nId:" + pdv.getId());
+        PDV p = pdvService.findOne(pdv.getId());
+        p.setNaziv(pdv.getNaziv());
+        PDV noviPdv = pdvService.save(p);
         return new ResponseEntity<>(noviPdv, HttpStatus.OK);
     }
 

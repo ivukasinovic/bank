@@ -15,12 +15,14 @@ export class PartneriComponent implements OnInit {
   constructor(private  fakturaService: FakturaService) { }
 
   ngOnInit() {
+
     this.preduzece = JSON.parse(localStorage.getItem('trenutnoPreduzece'));
     this.fakturaService.getPartnerstvo(this.preduzece.id).subscribe(
       (response: Partnerstvo []) => {
         this.partnerstvo = response;
       }
     );
+
   }
 
 
