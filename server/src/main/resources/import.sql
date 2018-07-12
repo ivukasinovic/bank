@@ -49,7 +49,7 @@ INSERT INTO grupa_proizvoda (id, naziv, opis, pdv_id) VALUES (8, 'Gradjevinski',
 INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (1, 'sdd@email.com','sdd','12121212120', 'SDD Technology Group',6,'123-9876543211234-45');
 INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (2, 'v@v.com','v','12121212121', 'Victoria Oil',2,'123-9876543211234-48');
 INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (3, 'i@i.com','i','12121212122', 'TIM Izolirka',3,'123-9876543211234-49');
-INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (4, 'flora@flora.com','flora','12121212123', 'Flora',1,'123-9876543211234-45');
+INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (4, 'flora@flora.com','flora','12121212123', 'Flora',1,'123-9876543218234-45');
 INSERT INTO preduzece (id, email, lozinka, pib, naziv, adresa_id,broj_racuna) VALUES (5, 'a@a.com','a','12121212125', 'Arcus Health',5,'123-9876543211234-11');
 
 INSERT INTO proizvod (id, naziv, opis, grupa_proizvoda_id, jedinica_mere_id, preduzece_id) VALUES (1, 'Papir','A4 format',2, 3, 1);
@@ -104,9 +104,9 @@ INSERT INTO stavka_narudzbenice (id, kolicina, narudzbenica_id,proizvod_id) VALU
 INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id, valuta_id) VALUES (1,25,100,'2018-07-02','2018-07-24',200,'FAZAFORMIRANJA',25,10,200,1,5,1,2,1);
 INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (2,20,101,'2018-07-05','2018-07-14',400,'FAZAFORMIRANJA',26,100,400,2,4,2,1,1);
 INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (3,21,102,'2018-07-06','2018-07-19',122,'FAZAFORMIRANJA',27,80,122,3,5,5,2,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (4,22,103,'2018-07-07','2018-07-04',40,'FAZAFORMIRANJA',28,0,40,4,5,4,3,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (5,23,104,'2018-07-08','2018-07-22',510,'POSLATA',29,0,510,null,5,5,3,1);
-INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (6,24,105,'2018-07-09','2018-07-23',480,'POSLATA',30,12,480,null,9,3,1,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (4,22,103,'2018-07-07','2018-07-04',20,'FAZAFORMIRANJA',28,0,40,4,5,4,3,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (5,23,104,'2018-07-08','2018-07-22',410,'POSLATA',29,0,510,null,5,5,3,1);
+INSERT INTO faktura (id, bezpdv, broj, datum, datum_valute,preostali_iznos,status,ukupanpdv, ukupan_rabat,ukupno_za_placanje,narudzbenica_id,poslovna_godina_id,duznik_id,primalac_id,valuta_id) VALUES (6,24,105,'2018-07-09','2018-07-23',380,'POSLATA',30,12,480,null,9,3,1,1);
 
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (1,20,22,2,5,50,12,10,200,1,1);
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (2,21,21,60,5,50,12,10,200,1,3);

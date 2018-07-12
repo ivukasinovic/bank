@@ -46,16 +46,18 @@ export class MojeFaktureComponent implements OnInit {
     this.router.navigateByUrl('/stavke-fakture');
   }
 
-  // activate(br: number) {
-  //   this.authService.activate(br)
-  //     .subscribe(response => {
-  //         alert('Uspesno ste aktivirali!!!');
-  //         window.location.reload();
-  //       },
-  //       err => {
-  //         alert('Niste uspeli (Doslo je do greske)');
-  //       });
-  // }
+  activate(broj: number) {
+    this.fakturaService.storniraj(broj).subscribe(
+      response => {
+                alert(' !!!');
+                window.location.reload();
+              },
+              err => {
+                alert('Niste uspeli stornirati');
+              }
+    );
+  }
+
   //
   // block(br: number) {
   //   this.authService.block(br)

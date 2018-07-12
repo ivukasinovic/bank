@@ -63,6 +63,10 @@ public class Preduzece  implements Serializable {
     @OneToMany(mappedBy = "preduzece")
     private List<PoslovnaGodina> poslovnaGodinaList;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "preduzece")
+    private List<DnevnoStanje> dnevnoStanjes;
+
     public Preduzece(){}
 
 
@@ -171,5 +175,11 @@ public class Preduzece  implements Serializable {
         this.listaPrimalacFaktura = listaPrimalacFaktura;
     }
 
+    public List<DnevnoStanje> getDnevnoStanjes() {
+        return dnevnoStanjes;
+    }
 
+    public void setDnevnoStanjes(List<DnevnoStanje> dnevnoStanjes) {
+        this.dnevnoStanjes = dnevnoStanjes;
+    }
 }
