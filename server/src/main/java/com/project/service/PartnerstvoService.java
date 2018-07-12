@@ -17,7 +17,7 @@ public interface PartnerstvoService  {
 
     Partnerstvo findOne(Long id);
 
-    void delete(Partnerstvo partnerstvo);
+    void delete(Long partnerstvo);
 
     Partnerstvo save(Partnerstvo partnerstvo);
 }

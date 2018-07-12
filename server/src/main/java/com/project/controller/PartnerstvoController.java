@@ -48,18 +48,17 @@ public class PartnerstvoController {
 
     @RequestMapping(
             value  = "/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.DELETE)
     public ResponseEntity<Partnerstvo> delete(@PathVariable Long id){
-        Partnerstvo partnerstvo = partnerstvoService.findOne(id);
-        partnerstvoService.delete(partnerstvo);
+        //Partnerstvo partnerstvo = partnerstvoService.findOne(id);
+        partnerstvoService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Partnerstvo> delete(@RequestBody Partnerstvo partnerstvo){
+    public ResponseEntity<Partnerstvo> kreiraj(@RequestBody Partnerstvo partnerstvo){
         Partnerstvo noviPartnerstvo = partnerstvoService.save(partnerstvo);
         return new ResponseEntity<>(noviPartnerstvo, HttpStatus.OK);
     }

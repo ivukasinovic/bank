@@ -25,5 +25,17 @@ export class PartneriComponent implements OnInit {
 
   }
 
+  obrisii(broj: number) {
+    this.fakturaService.brisiPartnesrstvo(broj)
+      .subscribe(response => {
+          alert('Uspesno ste obrisali korisnika!!!');
+          window.location.reload();
+        },
+        err => {
+          alert('Niste uspeli obrisati (Doslo je do greske)');
+        }
+    );
+  }
+
 
 }

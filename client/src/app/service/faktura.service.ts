@@ -42,4 +42,8 @@ export class FakturaService {
     return this.http.get('api/faktura/stornirana/' + fakturaId);
   }
 
+  brisiPartnesrstvo(fakturaId: number) {
+    return this.http.delete('api/partnerstvo/' + fakturaId);
+  }
+
 }

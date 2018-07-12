@@ -21,11 +21,11 @@ public class Partnerstvo {
     @Temporal(TemporalType.DATE)
     private Date datum;
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.DETACH)
     @JoinColumn(name="preduzece1_id", referencedColumnName="id" )
     private Preduzece preduzece1;
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.DETACH)
     @JoinColumn(name="preduzece2_id", referencedColumnName="id")
     private Preduzece preduzece2;
 
