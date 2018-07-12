@@ -30,6 +30,9 @@ export class PdvService {
     return this.http.post('api/pdv', pdv);
   }
   postStopu(stopa: StopaPDV,  idPDV: number) {
-    return this.http.post('api/stopaPDV/'+ idPDV, stopa);
+    return this.http.post('api/stopaPDV/' + idPDV, stopa);
+  }
+  postPDVDodaj(pdv: PDV) {
+    return this.http.post('api/pdv/dodavanje', pdv);
   }
 }

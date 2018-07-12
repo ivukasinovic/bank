@@ -17,9 +17,11 @@ export class DodajPdvComponent implements OnInit {
   pomStopa: StopaPDV;
   stopaSlanje: StopaPDV;
   naziv: string;
+  stopaFrontLista: StopaPDV[] = [];
   constructor(private pdvService: PdvService, private modalService: BsModalService) {
     this.pdv = new PDV();
     this.pdv.stopaPDVList = [];
+    this.pdv.naziv = '';
     this.stopaSelected = new StopaPDV();
     this.pomStopa = new StopaPDV();
     this.stopaSlanje = new StopaPDV();
@@ -50,15 +52,16 @@ export class DodajPdvComponent implements OnInit {
   kreiraj(naziv: string) {
     this.pdv.naziv = naziv;
     console.log('tu sam 0');
-    this.pdvService.postPDV(this.pdv).subscribe(
+    this.pdv.stopaPDVList = null;
+    this.pdvService.postPDVDodaj(this.pdv).subscribe(
         (response: PDV ) => {
           let i, vel, idPDV;
           console.log('tu sam');
-          vel = this.pdv.stopaPDVList.length;
+          vel = this.stopaFrontLista.length;
           for (i = 0; i < vel; i++) {
-            this.stopaSlanje = this.pdv.stopaPDVList.pop();
+            this.stopaSlanje = this.stopaFrontLista.pop();
             this.stopaSlanje.pdv = null;
-            console.log('ID OD PDVA: ' , this.stopaSlanje.pdv.id, 'i ', response.id)
+            //console.log('ID OD PDVA: ' , this.stopaSlanje.pdv.id, 'i ', response.id)
             //idPDV = this.stopaSlanje.pdv.id;
             this.pdvService.postStopu(this.stopaSlanje, response.id).subscribe();
           }
@@ -69,7 +72,7 @@ export class DodajPdvComponent implements OnInit {
         });
   }
   ukloniStopu(stavka: StopaPDV) {
-    this.pdv.stopaPDVList.forEach( function (value, index, array) {
+    this.stopaFrontLista.forEach( function (value, index, array) {
       if ( value = stavka) {
         array.splice(index, 1);
       }
@@ -86,7 +89,7 @@ export class DodajPdvComponent implements OnInit {
       }
     }
     console.log('aaa', this.pomStopa);
-    this.pdv.stopaPDVList.push(this.pomStopa);
+    this.stopaFrontLista.push(this.pomStopa);
     this.stopaSelected = new StopaPDV();
     this.modalRef.hide();
 
