@@ -31,6 +31,7 @@ import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.co
 import {CenovnikService} from './service/cenovnik.service';
 import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {ModalModule} from 'ngx-bootstrap';
+import { DodajPdvComponent } from './pdv/dodaj-pdv/dodaj-pdv.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {ModalModule} from 'ngx-bootstrap';
     StavkeFaktureComponent,
     CenovniciComponent,
     StavkeCenovnikaComponent,
-    NoviCenovnikComponent
+    NoviCenovnikComponent,
+    DodajPdvComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,7 @@ import {ModalModule} from 'ngx-bootstrap';
     FormsModule,
     ModalModule.forRoot()
   ],
-  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService],
+  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService, CenovnikService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

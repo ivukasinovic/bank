@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<div class="container">
+     <span class="pull-right">
+
+      <button class="btn" (click)="kreiraj(nnaziv.value)" >Kreiraj</button>
+    </span>
+  <form>
+    <label>Naziv *</label>
+    <input #nnaziv class="form-control" required="required" name="naziv" [ngModel]="naziv"  type="text">
+    <br>
+    <br>
+
+    <button class="btn-primary" (click)="openModal(template)">
+      Dodaj stopu PDV-a
+    </button>
+
+  </form>
+
+  <table *ngIf="pdv.stopaPDVList.length > 0" border="2" style="..." align="center" class="table">
+    <tr>
+
+      <th>Stopa</th>
+      <th>Datum vazenja</th>
+
+      <th></th>
+    </tr>
+
+    <tr *ngFor="let s of pdv.stopaPDVList">
+      <td> {{ s.stopa}}</td>
+      <td>{{s.datumVazenja}}</td>
+      <td><button class="btn-link" (click)="ukloniStopu(s)">Ukloni</button></td>
+    </tr>
+
+  </table>
+
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj stopu</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label for="sel2">Stopa</label>
+    <div>
+    <select required="required" class="form-control" id="sel2"  [(ngModel)]="stopaSelected.id" >
+      <option *ngFor="let st of stopaModal" value="{{st.id}}">{{st.stopa}}%  , datum: {{st.datumVazenja}}</option>
+    </select>
+    </div>
+    <br>
+
+    <button class="btn-warning" (click)="dodajStopu()">Dodaj</button>
+  </div>
+</ng-template>
+
