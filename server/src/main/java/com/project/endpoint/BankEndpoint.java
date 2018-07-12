@@ -39,6 +39,9 @@ public class BankEndpoint {
     @Autowired
     private DnevnoStanjeService dnevnoStanjeService;
 
+    @Autowired
+    private ValutaService valutaService;
+
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importFakturaRequest")
     @ResponsePayload
     public ImportFakturaResponse importFakturaRequest(@RequestPayload ImportFakturaRequest importFakturaRequest){
@@ -57,10 +60,10 @@ public class BankEndpoint {
             //KRITICNO
             faktura.setDuznik(preduzeceService.findByNaziv(fakturaXML.getKupac().getNaziv()));
             faktura.setPrimalac(preduzeceService.findByNaziv(fakturaXML.getProdavac().getNaziv()));
-            //poslovna godina
             faktura.setPoslovnaGodina(poslovnaGodinaService.findByGodinaAndPreduzece(fakturaXML.getPoslovnaGodina(), faktura.getDuznik()));
             faktura.setDatum(new Date());
             faktura.setDatumValute(new Date());
+            faktura.setValuta(valutaService.findOne(1L));
             Faktura novaFaktura = fakturaService.save(faktura);
             if(novaFaktura == null){
                 resp.setFakturaStatus("Doslo je do greske, neke fakture mozda nisu importovane. ");
@@ -175,6 +178,7 @@ public class BankEndpoint {
         dnevnoStanje.setRezervisano(0.00);
         dnevnoStanje.setPrometKorist(dnevniIzvodXML.getUkupnoUKorist());
         dnevnoStanje.setPrometTeret(dnevniIzvodXML.getUkupnoNaTeret());
+        DnevnoStanje novoDnevno = dnevnoStanjeService.save(dnevnoStanje);
         for(StavkaDnevnogIzvodaXML stavka: dnevniIzvodXML.getStavkaDnevnogIzvodaList().getStavkaDnevnogIzvoda()){
             StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
             //datumNaloga
@@ -184,9 +188,11 @@ public class BankEndpoint {
             stavkaIzvoda.setProdavac(preduzeceService.findByNaziv(stavka.getProdavac()));
             stavkaIzvoda.setSvrha(stavka.getSvrhaPlacanja());
             stavkaIzvoda.setIznos(stavka.getIznos());
+            stavkaIzvoda.setPozivNaBroj(Integer.parseInt(stavka.getPozivNaBroj()));
+            stavkaIzvoda.setModel(stavka.getModel());
+            stavkaIzvoda.setDnevnoStanje(dnevnoStanje);
             stavkaIzvodaService.save(stavkaIzvoda);
         }
-        DnevnoStanje novoDnevno = dnevnoStanjeService.save(dnevnoStanje);
         if(novoDnevno == null){
             response.setIzvodStatus("Doslo je do greske!");
         }

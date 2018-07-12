@@ -30,7 +30,7 @@
                         <id>[long]</id>
                         <kupac>Victoria Oil</kupac>
                         <svrhaPlacanja>uplata za robu1</svrhaPlacanja>
-                        <prodavac>SDD Technology Groupl</prodavac>
+                        <prodavac>SDD Technology Group</prodavac>
                         <datumNaloga>[dateTime]</datumNaloga>
                         <datumValute>[dateTime]</datumValute>
                         <racunKupca>123-9876543211234-48</racunKupca>

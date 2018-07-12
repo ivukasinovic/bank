@@ -11,7 +11,7 @@ public class DnevnoStanje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     @Temporal(TemporalType.DATE)
     private Date datum;
 
