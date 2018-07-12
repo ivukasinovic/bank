@@ -1,6 +1,7 @@
 package com.project.service.impl;
 
 import com.project.domain.Cenovnik;
+import com.project.domain.Preduzece;
 import com.project.repository.CenovnikRepository;
 import com.project.service.CenovnikService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,10 @@ public class CenovnikServiceImpl implements CenovnikService {
     @Override
     public Cenovnik save(Cenovnik cenovnik) {
         return cenovnikRepository.save(cenovnik);
+    }
+
+    @Override
+    public List<Cenovnik> findByPreduzece(Preduzece preduzece) {
+        return cenovnikRepository.findByPreduzece(preduzece);
     }
 }

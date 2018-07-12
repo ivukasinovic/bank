@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {KorisnikServiceService} from './service/korisnik-service.service';
 import { HomePageComponent } from './home-page/home-page.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { GenerisiNalogComponent } from './generisi-nalog/generisi-nalog.component';
 import {FakturaService} from './service/faktura.service';
@@ -25,6 +25,12 @@ import { PdvComponent } from './pdv/pdv.component';
 import {PdvService} from './service/pdv.service';
 import { StopaPdvComponent } from './stopa-pdv/stopa-pdv.component';
 import {StopaPdvService} from './service/stopa-pdv.service';
+import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.component';
+import { CenovniciComponent } from './cenovnici/cenovnici.component';
+import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.component';
+import {CenovnikService} from './service/cenovnik.service';
+import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
+import {ModalModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,11 @@ import {StopaPdvService} from './service/stopa-pdv.service';
     MojeFaktureComponent,
     PartneriComponent,
     PdvComponent,
-    StopaPdvComponent
+    StopaPdvComponent,
+    StavkeFaktureComponent,
+    CenovniciComponent,
+    StavkeCenovnikaComponent,
+    NoviCenovnikComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +59,8 @@ import {StopaPdvService} from './service/stopa-pdv.service';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService],
   bootstrap: [AppComponent]

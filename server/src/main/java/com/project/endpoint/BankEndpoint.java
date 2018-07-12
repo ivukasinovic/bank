@@ -12,6 +12,9 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class BankEndpoint {
 
     @Autowired
     private NalogZaPlacanjeService nalogZaPlacanjeService;
-  
+
     @Autowired
     private PoslovnaGodinaService poslovnaGodinaService;
 
@@ -38,6 +41,9 @@ public class BankEndpoint {
 
     @Autowired
     private DnevnoStanjeService dnevnoStanjeService;
+
+    @Autowired
+    private ValutaService valutaService;
 
     @PayloadRoot(namespace = "http://poslovna.com/soap-example", localPart = "importFakturaRequest")
     @ResponsePayload
@@ -53,14 +59,20 @@ public class BankEndpoint {
             faktura.setUkupanPDV(fakturaXML.getUkupanPDV());
             faktura.setUkupanRabat(fakturaXML.getUkupanRabat());
             faktura.setUkupnoZaPlacanje(fakturaXML.getUkupnoZaPlacanje());
-
+            DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+            try {
+                Date d = df.parse(fakturaXML.getDatum());
+                Date dv = df.parse(fakturaXML.getDatumValute());
+                faktura.setDatum(d);
+                faktura.setDatumValute(dv);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             //KRITICNO
             faktura.setDuznik(preduzeceService.findByNaziv(fakturaXML.getKupac().getNaziv()));
             faktura.setPrimalac(preduzeceService.findByNaziv(fakturaXML.getProdavac().getNaziv()));
-            //poslovna godina
             faktura.setPoslovnaGodina(poslovnaGodinaService.findByGodinaAndPreduzece(fakturaXML.getPoslovnaGodina(), faktura.getDuznik()));
-            faktura.setDatum(new Date());
-            faktura.setDatumValute(new Date());
+            faktura.setValuta(valutaService.findOne(1L));
             Faktura novaFaktura = fakturaService.save(faktura);
             if(novaFaktura == null){
                 resp.setFakturaStatus("Doslo je do greske, neke fakture mozda nisu importovane. ");
@@ -175,18 +187,34 @@ public class BankEndpoint {
         dnevnoStanje.setRezervisano(0.00);
         dnevnoStanje.setPrometKorist(dnevniIzvodXML.getUkupnoUKorist());
         dnevnoStanje.setPrometTeret(dnevniIzvodXML.getUkupnoNaTeret());
+        DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+        try {
+            dnevnoStanje.setDatum(df.parse(dnevniIzvodXML.getDatumNaloga()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        DnevnoStanje novoDnevno = dnevnoStanjeService.save(dnevnoStanje);
         for(StavkaDnevnogIzvodaXML stavka: dnevniIzvodXML.getStavkaDnevnogIzvodaList().getStavkaDnevnogIzvoda()){
             StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
-            //datumNaloga
+            DateFormat d = new SimpleDateFormat("dd-mm-yyyy");
+            try {
+                stavkaIzvoda.setDatumNaloga(d.parse(stavka.getDatumNaloga()));
+                stavkaIzvoda.setDatumValute(d.parse(stavka.getDatumValute()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             //datum valute
             stavkaIzvoda.setIznos(stavka.getIznos());
             stavkaIzvoda.setKupac(preduzeceService.findByNaziv(stavka.getKupac()));
             stavkaIzvoda.setProdavac(preduzeceService.findByNaziv(stavka.getProdavac()));
             stavkaIzvoda.setSvrha(stavka.getSvrhaPlacanja());
             stavkaIzvoda.setIznos(stavka.getIznos());
+            procesirajFakturu(stavka.getPozivNaBroj(), stavka.getIznos(), stavkaIzvoda.getProdavac());
+            stavkaIzvoda.setPozivNaBroj(Integer.parseInt(stavka.getPozivNaBroj()));
+            stavkaIzvoda.setModel(stavka.getModel());
+            stavkaIzvoda.setDnevnoStanje(dnevnoStanje);
             stavkaIzvodaService.save(stavkaIzvoda);
         }
-        DnevnoStanje novoDnevno = dnevnoStanjeService.save(dnevnoStanje);
         if(novoDnevno == null){
             response.setIzvodStatus("Doslo je do greske!");
         }
@@ -194,6 +222,19 @@ public class BankEndpoint {
         return response;
     }
 
+    private void procesirajFakturu(String pozivNaBroj, double iznos, Preduzece prodavac) {
+        //ako sam ja prodavac
+        if(!prodavac.getNaziv().equals("Victoria Oil")){
+            return;
+        }
+        Faktura faktura = fakturaService.findByBroj(Long.valueOf(pozivNaBroj));
+        if(faktura == null){
+            return;
+        }
+        faktura.setPreostaliIznos(faktura.getPreostaliIznos() - iznos);
+        if(faktura.getPreostaliIznos() <= 0){ faktura.setStatus(FakturaStatus.OBRACUNATA);}
+        fakturaService.save(faktura);
+    }
 
 
 }

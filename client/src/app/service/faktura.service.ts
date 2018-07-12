@@ -23,12 +23,19 @@ export class FakturaService {
     return this.http.get( 'api/preduzece/' + partnerstvo);
   }
 
-  getIzlaneFakture(){
+  getIzlaneFakture() {
     return this.http.get('api/faktura/izlazne');
   }
 
-  getUlazneFakture(){
+  getUlazneFakture() {
     return this.http.get('api/faktura/ulazne');
+  }
+  getFakture() {
+    return this.http.get('api/faktura');
+  }
+
+  storniraj(fakturaId: number) {
+    return this.http.get('api/faktura/stornirana/' + fakturaId);
   }
 
 }

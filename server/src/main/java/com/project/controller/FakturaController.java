@@ -69,8 +69,43 @@ public class FakturaController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Faktura> stornirati(@PathVariable Long id){       // @RequestBody Faktura faktura
+
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session= attr.getRequest().getSession(true);
+        Preduzece preduzeceF = (Preduzece)session.getAttribute("preduzece");
+
         Faktura faktura = fakturaService.findOne(id);
 
+        double preostaliIznosZaUplatu = (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos());
+
+        // kod izlaznih
+        if(!faktura.getPrimalac().getNaziv().equals(preduzeceF.getNaziv()) ) {
+
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometKorist(preostaliIznosZaUplatu);
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret(preostaliIznosZaUplatu * (-1));
+
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()  ));
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje())  );
+
+
+            faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()));
+            faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) );
+
+        }else {
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometKorist(preostaliIznosZaUplatu * (-1));
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret(preostaliIznosZaUplatu);
+
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()) * (-1));
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) * (-1) );
+
+            faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()));
+            faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) );
+
+        }
+//        faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getPreostaliIznos());
+//        faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje(faktura.getPreostaliIznos() * (-1));
+
+        faktura.setPreostaliIznos(faktura.getUkupnoZaPlacanje());
         faktura.setStatus(FakturaStatus.STORNIRANA);
 
         fakturaService.save(faktura);

@@ -4,7 +4,7 @@
             <izvod>
                 <id>[long]</id>
                 <brojRacuna>123-9876543211234-45</brojRacuna>
-                <datumNaloga>[dateTime]</datumNaloga>
+                <datumNaloga>09-07-2018</datumNaloga>
                 <brojPreseka>[int]</brojPreseka>
                 <prethodnoStanje>420.00</prethodnoStanje>
                 <brojPromenaUKorist>1</brojPromenaUKorist>
@@ -18,21 +18,21 @@
                         <kupac>SDD Technology Group</kupac>
                         <svrhaPlacanja>uplata za robu1</svrhaPlacanja>
                         <prodavac>Victoria Oil</prodavac>
-                        <datumNaloga>[dateTime]</datumNaloga>
-                        <datumValute>[dateTime]</datumValute>
+                        <datumNaloga>2-7-2018</datumNaloga>
+                        <datumValute>2-7-2018</datumValute>
                         <racunKupca>123-9876543211234-45</racunKupca>
                         <model>97</model>
                         <pozivNaBroj>100</pozivNaBroj>
                         <racunProdavca>123-9876543211234-48</racunProdavca>
-                        <iznos>150.00</iznos>
+                        <iznos>200.00</iznos>
                     </stavkaDnevnogIzvoda>
                     <stavkaDnevnogIzvoda>
                         <id>[long]</id>
                         <kupac>Victoria Oil</kupac>
                         <svrhaPlacanja>uplata za robu1</svrhaPlacanja>
-                        <prodavac>SDD Technology Groupl</prodavac>
-                        <datumNaloga>[dateTime]</datumNaloga>
-                        <datumValute>[dateTime]</datumValute>
+                        <prodavac>SDD Technology Group</prodavac>
+                        <datumNaloga>01-07-2018</datumNaloga>
+                        <datumValute>01-07-2018</datumValute>
                         <racunKupca>123-9876543211234-48</racunKupca>
                         <model>97</model>
                         <pozivNaBroj>101</pozivNaBroj>

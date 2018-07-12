@@ -4,8 +4,8 @@
             <faktura>
                 <id>[long]</id>
                 <broj>13</broj>
-                <datum>[dateTime]</datum>
-                <datumValute>[dateTime]</datumValute>
+                <datum>07-07-2018</datum>
+                <datumValute>07-07-2018</datumValute>
                 <ukupanRabat>15.5</ukupanRabat>
                 <bezPDV>20.5</bezPDV>
                 <ukupanPDV>50.5</ukupanPDV>

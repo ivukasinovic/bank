@@ -44,6 +44,17 @@ export class Faktura {
   broj: number;
   preostaliIznos: number;
   ukupnoZaPlacanje: number;
+  status: string;
+  datum: string;
+  valuta: string;
+  ukupanRabat: number;
+  bezPDV: number;
+  ukupanPDV: number;
+  datumValute: string;
+  poslovnaGodina: string;
+  primalac: Preduzece;
+  duznik: Preduzece;
+  stavkaFaktureList: StavkaFakture[];
 }
 
 export class StaSePlaca {
@@ -69,3 +80,42 @@ export class GrupaProizvoda {
   opis: string;
   pdv: string; //id pdv kom pripada
 }
+
+export class StavkaFakture {
+  id: number;
+  osnovica: number;
+  iznosRabata: number;
+  procenatRabata: number;
+  stopaPdv: number;
+  iznosPdv: number;
+  jedinicnaCena: number;
+  kolicinaStavkeFakture: number;
+  ukupanIznos: number;
+  proizvod: string;
+}
+export class StavkaCenovnika {
+  id: number;
+  cena: number;
+  proizvod: string;
+}
+
+export class Cenovnik {
+  id: number;
+  datumVazenja: string;
+  valuta: string;
+  stavkaCenovnikaList: StavkaCenovnika[];
+}
+
+export class Valuta {
+  id: number;
+  oznaka: string;
+  naziv: string;
+}
+
+export class Proizvod {
+  id: number;
+  naziv: string;
+  opis: string;
+  jedinicaMere: string;
+}
+
