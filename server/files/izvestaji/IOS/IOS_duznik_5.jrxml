@@ -2,12 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bac70c5-76dd-4e96-91d4-1cb2fb8c8664">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Platni promet preduzeca"/>
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[cG9zbG92bmEuZmFrdHVyYSAsMjAyLDE1LDI2YmY0OTJkLTc3OGYtNGFlMi1iYTU2LWZjZTk3NTc1
-ZDA3Mztwb3Nsb3ZuYS5zdGF2a2FfZmFrdHVyZSAsMTUsNTUsYzJlYmNjOTItYjhjYS00M2M4LWE5
-NjAtOTk4NGJkYTJiYWQwOw==
-]]>
-	</property>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="331"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="658"/>
 	<queryString>
@@ -24,8 +19,11 @@ NjAtOTk4NGJkYTJiYWQwOw==
 FROM poslovna.stavka_fakture
 	INNER JOIN poslovna.faktura ON 
 	 poslovna.stavka_fakture.faktura_id = poslovna.faktura.id 
+	INNER JOIN poslovna.preduzece ON 
+	 poslovna.faktura.duznik_id = poslovna.preduzece.id 
 WHERE 
-	 poslovna.faktura.status = 'fazaformiranja']]>
+	 poslovna.faktura.datum > "2017-12-31" and poslovna.faktura.datum < "2018-07-15"
+	 and poslovna.faktura.duznik_id = '5' and poslovna.faktura.status = 'fazaformiranja']]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
