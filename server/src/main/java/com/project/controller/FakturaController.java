@@ -5,11 +5,13 @@ import com.project.domain.FakturaStatus;
 import com.project.domain.Preduzece;
 import com.project.repository.PreduzeceRepository;
 import com.project.service.FakturaService;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.util.JRSaver;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
+import net.sf.jasperreports.export.SimplePdfReportConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -22,8 +24,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -179,21 +181,45 @@ public class FakturaController {
 
     @RequestMapping(value = "/kuf", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> getKuf(HttpServletResponse response) {
-        byte[] ret = null;
-        try {
-            Class.forName(dbDriver);
-            JasperCompileManager.compileReportToFile("files/izvestaji/KUF/KUF_primalac_5.jrxml", "files/izvestaji/KUF/KUF_primalac_5.jasper");
-            Connection conn = DriverManager.getConnection(dbUrl, username, password);
-            JasperPrint jprint = (JasperPrint) JasperFillManager.fillReport("files/izvestaji/KUF/KUF_primalac_5.jasper", null, conn);
-            ret = JasperExportManager.exportReportToPdf(jprint);
-            JRPdfExporter exporter = new JRPdfExporter();
+    public ResponseEntity<?> getKuf(HttpServletResponse response) throws JRException, SQLException {
+        InputStream kufReport = getClass().getResourceAsStream("/KUF_primalac_5.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(kufReport);
+        JRSaver.saveObject(jasperReport, "employeeReport.jasper");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource.getConnection());
 
-            System.out.println(ret);
-            return new ResponseEntity<>(ret, HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        JRPdfExporter exporter = new JRPdfExporter();
+
+        exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+        exporter.setExporterOutput(
+                new SimpleOutputStreamExporterOutput("employeeReport.pdf"));
+
+        SimplePdfReportConfiguration reportConfig
+                = new SimplePdfReportConfiguration();
+        reportConfig.setSizePageToContent(true);
+        reportConfig.setForceLineBreakPolicy(false);
+
+        SimplePdfExporterConfiguration exportConfig
+                = new SimplePdfExporterConfiguration();
+        exportConfig.setMetadataAuthor("baeldung");
+        exportConfig.setEncrypted(true);
+        exportConfig.setAllowedPermissionsHint("PRINTING");
+
+        exporter.setConfiguration(reportConfig);
+        exporter.setConfiguration(exportConfig);
+
+        exporter.exportReport();
+
+//        byte[] ret = null;
+//        try {
+//            Class.forName(dbDriver);
+//            JasperCompileManager.compileReportToFile("files/izvestaji/KUF/KUF_primalac_5.jrxml", "files/izvestaji/KUF/KUF_primalac_5.jasper");
+//            Connection conn = DriverManager.getConnection(dbUrl, username, password);
+//            JasperPrint jprint = (JasperPrint) JasperFillManager.fillReport("files/izvestaji/KUF/KUF_primalac_5.jasper", null, conn);
+//            ret = JasperExportManager.exportReportToPdf(jprint);
+//            return new ResponseEntity<>(ret, HttpStatus.OK);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
