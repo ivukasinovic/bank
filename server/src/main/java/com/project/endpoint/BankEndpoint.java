@@ -32,7 +32,7 @@ public class BankEndpoint {
 
     @Autowired
     private NalogZaPlacanjeService nalogZaPlacanjeService;
-  
+
     @Autowired
     private PoslovnaGodinaService poslovnaGodinaService;
 
@@ -209,6 +209,7 @@ public class BankEndpoint {
             stavkaIzvoda.setProdavac(preduzeceService.findByNaziv(stavka.getProdavac()));
             stavkaIzvoda.setSvrha(stavka.getSvrhaPlacanja());
             stavkaIzvoda.setIznos(stavka.getIznos());
+            procesirajFakturu(stavka.getPozivNaBroj(), stavka.getIznos(), stavkaIzvoda.getProdavac());
             stavkaIzvoda.setPozivNaBroj(Integer.parseInt(stavka.getPozivNaBroj()));
             stavkaIzvoda.setModel(stavka.getModel());
             stavkaIzvoda.setDnevnoStanje(dnevnoStanje);
@@ -221,6 +222,19 @@ public class BankEndpoint {
         return response;
     }
 
+    private void procesirajFakturu(String pozivNaBroj, double iznos, Preduzece prodavac) {
+        //ako sam ja prodavac
+        if(!prodavac.getNaziv().equals("Victoria Oil")){
+            return;
+        }
+        Faktura faktura = fakturaService.findByBroj(Long.valueOf(pozivNaBroj));
+        if(faktura == null){
+            return;
+        }
+        faktura.setPreostaliIznos(faktura.getPreostaliIznos() - iznos);
+        if(faktura.getPreostaliIznos() <= 0){ faktura.setStatus(FakturaStatus.OBRACUNATA);}
+        fakturaService.save(faktura);
+    }
 
 
 }

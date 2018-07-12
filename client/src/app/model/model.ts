@@ -62,6 +62,25 @@ export class StaSePlaca {
   iznos: number;
 }
 
+export class StopaPDV {
+  id: number;
+  datumVazenja: string;
+  stopa: number;
+  pdv: PDV ;
+}
+export class PDV {
+  id: number;
+  naziv: string;
+  stopaPDVList: StopaPDV[];
+}
+
+export class GrupaProizvoda {
+  id: number;
+  naziv: string;
+  opis: string;
+  pdv: string; // id pdv kom pripada
+}
+
 export class StavkaFakture {
   id: number;
   osnovica: number;
@@ -100,3 +119,18 @@ export class Proizvod {
   jedinicaMere: string;
 }
 
+export class NalogZaPlacanje {
+  id: number;
+  duzink: string;
+  primalac: string;
+  svrha: string;
+  datumNaloga: string;
+  datumValute: string;
+  modelZaduzenja: number;
+  pozivNaBrojZaduzenja: string;
+  modelOdobrenja: number;
+  pozivNaBrojOdobrenja: string;
+  oznakaValute: string;
+  hitno: boolean;
+  iznos: number;
+}

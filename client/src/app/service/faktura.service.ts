@@ -11,6 +11,10 @@ export class FakturaService {
     return this.http.get('api/faktura/neplacene');
   }
 
+  getNalozi() {
+    return this.http.get('api/nalog-za-placanje');
+  }
+
   generisiNalog( idFakture: number, iznos: number) {
     return this.http.get( 'api/nalog-za-placanje/generisi/' + idFakture + '/' + iznos);
   }

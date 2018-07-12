@@ -28,6 +28,11 @@ public class FakturaServiceImpl implements FakturaService {
     }
 
     @Override
+    public Faktura findByBroj(Long broj) {
+        return fakturaRepository.findByBroj(broj);
+    }
+
+    @Override
     public void delete(Faktura faktura) {
         fakturaRepository.delete(faktura);
     }

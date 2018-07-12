@@ -20,7 +20,7 @@ public class GrupaProizvoda implements Serializable {
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "naziv")
     @JsonIdentityReference(alwaysAsId = true)
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pdv_id", nullable = false)
     private PDV pdv;
 

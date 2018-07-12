@@ -17,4 +17,6 @@ public interface FakturaRepository extends JpaRepository<Faktura, Long> {
 
     List<Faktura> findByPrimalac(Preduzece primalac);
 
+    Faktura findByBroj(Long Broj);
+
 }
