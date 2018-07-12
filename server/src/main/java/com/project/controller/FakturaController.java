@@ -5,7 +5,13 @@ import com.project.domain.FakturaStatus;
 import com.project.domain.Preduzece;
 import com.project.repository.PreduzeceRepository;
 import com.project.service.FakturaService;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +19,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.List;
 
 /**
@@ -28,6 +38,18 @@ public class FakturaController {
 
     @Autowired
     private PreduzeceRepository preduzeceRepository;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
+    @Value("${spring.datasource.driver-class-name}")
+    private String dbDriver;
+    @Value("${spring.datasource.url}")
+    private String dbUrl;
 
     @RequestMapping(
             method = RequestMethod.GET,
@@ -153,6 +175,26 @@ public class FakturaController {
 
 
         return new ResponseEntity<>(fakture,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/kuf", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<?> getKuf(HttpServletResponse response) {
+        byte[] ret = null;
+        try {
+            Class.forName(dbDriver);
+            JasperCompileManager.compileReportToFile("files/izvestaji/KUF/KUF_primalac_5.jrxml", "files/izvestaji/KUF/KUF_primalac_5.jasper");
+            Connection conn = DriverManager.getConnection(dbUrl, username, password);
+            JasperPrint jprint = (JasperPrint) JasperFillManager.fillReport("files/izvestaji/KUF/KUF_primalac_5.jasper", null, conn);
+            ret = JasperExportManager.exportReportToPdf(jprint);
+            JRPdfExporter exporter = new JRPdfExporter();
+
+            System.out.println(ret);
+            return new ResponseEntity<>(ret, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
 }
