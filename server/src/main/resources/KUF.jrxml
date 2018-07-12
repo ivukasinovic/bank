@@ -16,10 +16,8 @@
 	poslovna.faktura.duznik_id,
 	poslovna.faktura.primalac_id
 FROM poslovna.faktura
-WHERE 
-	 poslovna.faktura.datum > "2017-12-31" 
-	 AND poslovna.faktura.datum < "2018-07-15" 
-	 AND poslovna.faktura.primalac_id = '3']]>
+WHERE poslovna.faktura.datum > "2017-12-31" and poslovna.faktura.datum < "2018-07-15" 
+and poslovna.faktura.status = 'poslata']]>
 	</queryString>
 	<field name="bezpdv" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.label" value="bezpdv"/>

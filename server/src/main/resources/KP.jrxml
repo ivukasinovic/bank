@@ -13,8 +13,7 @@
 FROM poslovna.partnerstvo
 WHERE 
 	 poslovna.partnerstvo.datum > "2017-12-31" 
-	 AND poslovna.partnerstvo.datum < "2018-07-15"
-	 AND poslovna.partnerstvo.preduzece2_id = '3']]>
+	 AND poslovna.partnerstvo.datum < "2018-07-15"]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>

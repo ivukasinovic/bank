@@ -19,11 +19,9 @@
 FROM poslovna.stavka_fakture
 	INNER JOIN poslovna.faktura ON 
 	 poslovna.stavka_fakture.faktura_id = poslovna.faktura.id 
-	INNER JOIN poslovna.preduzece ON 
-	 poslovna.faktura.duznik_id = poslovna.preduzece.id 
 WHERE 
-	 poslovna.faktura.datum > "2017-12-31" and poslovna.faktura.datum < "2018-07-15"
-	 and poslovna.faktura.duznik_id = '5' and poslovna.faktura.status = 'fazaformiranja']]>
+	 poslovna.faktura.status = 'fazaformiranja'
+	 and poslovna.faktura.datum > "2017-12-31" and poslovna.faktura.datum < "2018-07-15"]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
