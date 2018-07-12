@@ -28,7 +28,7 @@ export class Preduzece {
   pib: string;
   lozinka: string;
   email: string;
-  adresa: number;   // samo broj
+  adresa: Adresa;   // samo broj
   // activated: boolean;
 }
 
