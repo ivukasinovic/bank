@@ -28,7 +28,7 @@ export class Preduzece {
   pib: string;
   lozinka: string;
   email: string;
-  adresa: number;   // samo broj
+  adresa: Adresa;   // samo broj
   // activated: boolean;
 }
 
@@ -78,7 +78,7 @@ export class GrupaProizvoda {
   id: number;
   naziv: string;
   opis: string;
-  pdv: string; //id pdv kom pripada
+  pdv: string; // id pdv kom pripada
 }
 
 export class StavkaFakture {
@@ -96,14 +96,14 @@ export class StavkaFakture {
 export class StavkaCenovnika {
   id: number;
   cena: number;
-  proizvod: string;
+  proizvod: Proizvod;
 }
+
 
 export class Cenovnik {
   id: number;
-  datumVazenja: string;
+  datumVazenja: Date;
   valuta: string;
-  stavkaCenovnikaList: StavkaCenovnika[];
 }
 
 export class Valuta {
@@ -119,3 +119,18 @@ export class Proizvod {
   jedinicaMere: string;
 }
 
+export class NalogZaPlacanje {
+  id: number;
+  duzink: string;
+  primalac: string;
+  svrha: string;
+  datumNaloga: string;
+  datumValute: string;
+  modelZaduzenja: number;
+  pozivNaBrojZaduzenja: string;
+  modelOdobrenja: number;
+  pozivNaBrojOdobrenja: string;
+  oznakaValute: string;
+  hitno: boolean;
+  iznos: number;
+}

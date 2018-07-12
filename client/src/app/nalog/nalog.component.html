@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+
+<div #mydiv>
+
+  <ngb-tabset>
+    <ngb-tab >
+      <ng-template ngbTabContent>
+        <br>
+
+<table border="2" style="..." align="center" class="table">
+
+  <tr>
+    <th>ID naloga</th>
+    <th>Duznik</th>
+    <th>Primalac</th>
+    <th>svrha</th>
+    <th> Datum izdanja naloga </th>
+    <th> Datum valute </th>
+    <th> Model Zaduzenja </th>
+    <th> Poziv na Broj Zaduzenja </th>
+    <th> Model odobrenja </th>
+    <th>Poziv na broj odobrenja</th>
+    <th>Oznaka valute</th>
+    <th> Hitno </th>
+    <th> Iznos </th>
+  </tr>
+
+  <tr *ngFor="let n of nalozi">
+    <td> {{ n.id }}</td>
+    <td>{{n.duznik}}</td>
+    <td>{{n.primalac}}</td>
+    <td>{{n.svrha}}</td>
+    <td>{{n.datumNaloga}}</td>
+    <td>{{n.datumValute}}</td>
+    <td>{{n.modelZaduzenja}}</td>
+    <td>{{n.pozivNaBrojZaduzenja}}</td>
+    <td>{{n.modelOdobrenja}}</td>
+    <td>{{n.pozivNaBrojOdobrenja}}</td>
+    <td>{{n.oznakaValute}}</td>
+    <td>{{n.hitno}}</td>
+    <td>{{n.iznos}}</td>
+    <!--<td> <button class="btn-link" (click)="setStavke(faktura.stavkaFaktureList)">Stavke</button></td>-->
+  </tr>
+
+  </table>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
+</div>

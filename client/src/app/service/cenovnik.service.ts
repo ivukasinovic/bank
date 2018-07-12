@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Cenovnik} from '../model/model';
+import {Cenovnik, StavkaCenovnika} from '../model/model';
+
 
 @Injectable()
 export class CenovnikService {
@@ -22,8 +23,12 @@ export class CenovnikService {
     return this.http.delete('api/cenovnik/' + id);
   }
 
-  postCenovnik (cenovnik: Cenovnik) {
-    return this.http.post( 'api/cenovnik', cenovnik);
+  postCenovnik (cenovnik: Cenovnik, idValute: number) {
+    return this.http.post( 'api/cenovnik/' + idValute, cenovnik);
+  }
+
+  postStavku (stavka: StavkaCenovnika, idCenovnika: number, idProizvoda) {
+    return this.http.post( 'api/stavkaCenovnika/' + idCenovnika + '/' + idProizvoda, stavka);
   }
 
 }

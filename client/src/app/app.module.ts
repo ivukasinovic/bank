@@ -32,6 +32,7 @@ import {CenovnikService} from './service/cenovnik.service';
 import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {ModalModule} from 'ngx-bootstrap';
 import { DodajPdvComponent } from './pdv/dodaj-pdv/dodaj-pdv.component';
+import { NalogComponent } from './nalog/nalog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DodajPdvComponent } from './pdv/dodaj-pdv/dodaj-pdv.component';
     CenovniciComponent,
     StavkeCenovnikaComponent,
     NoviCenovnikComponent,
-    DodajPdvComponent
+    DodajPdvComponent,
+    NalogComponent
   ],
   imports: [
     BrowserModule,

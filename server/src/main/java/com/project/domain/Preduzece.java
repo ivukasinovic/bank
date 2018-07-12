@@ -34,9 +34,10 @@ public class Preduzece  implements Serializable {
     @Column(nullable = false)
     private String lozinka;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @JsonIdentityReference(alwaysAsId = true)
-    @ManyToOne
+//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//    @JsonIdentityReference(alwaysAsId = true @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(fetch=FetchType.EAGER)
     private Adresa adresa;
 
     @JsonIgnore
