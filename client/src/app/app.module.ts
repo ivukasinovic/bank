@@ -31,6 +31,7 @@ import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.co
 import {CenovnikService} from './service/cenovnik.service';
 import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {ModalModule} from 'ngx-bootstrap';
+import { NalogComponent } from './nalog/nalog.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {ModalModule} from 'ngx-bootstrap';
     StavkeFaktureComponent,
     CenovniciComponent,
     StavkeCenovnikaComponent,
-    NoviCenovnikComponent
+    NoviCenovnikComponent,
+    NalogComponent
   ],
   imports: [
     BrowserModule,

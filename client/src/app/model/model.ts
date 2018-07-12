@@ -78,7 +78,7 @@ export class GrupaProizvoda {
   id: number;
   naziv: string;
   opis: string;
-  pdv: string; //id pdv kom pripada
+  pdv: string; // id pdv kom pripada
 }
 
 export class StavkaFakture {
@@ -119,3 +119,18 @@ export class Proizvod {
   jedinicaMere: string;
 }
 
+export class NalogZaPlacanje {
+  id: number;
+  duzink: string;
+  primalac: string;
+  svrha: string;
+  datumNaloga: string;
+  datumValute: string;
+  modelZaduzenja: number;
+  pozivNaBrojZaduzenja: string;
+  modelOdobrenja: number;
+  pozivNaBrojOdobrenja: string;
+  oznakaValute: string;
+  hitno: boolean;
+  iznos: number;
+}
