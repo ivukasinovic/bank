@@ -1,6 +1,9 @@
 package com.project.controller;
 
+import com.project.domain.Cenovnik;
 import com.project.domain.StavkaCenovnika;
+import com.project.service.CenovnikService;
+import com.project.service.ProizvodService;
 import com.project.service.StavkaCenovnikaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,12 @@ public class StavkaCenovnikaController {
 
     @Autowired
     private StavkaCenovnikaService stavkaCenovnikaService;
+
+    @Autowired
+    private CenovnikService cenovnikService;
+
+    @Autowired
+    private ProizvodService proizvodService;
 
     @RequestMapping(
             method = RequestMethod.GET,
@@ -45,11 +54,21 @@ public class StavkaCenovnikaController {
     }
 
     @RequestMapping(
+            value = "/{idCenovnika}/{idProizvoda}",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<StavkaCenovnika> save(@RequestBody StavkaCenovnika stavkaCenovnika){
+    public ResponseEntity<StavkaCenovnika> save(@RequestBody StavkaCenovnika stavkaCenovnika,@PathVariable("idCenovnika")Long idCenovnika,
+                                                @PathVariable("idProizvoda")Long idProizvoda){
+
+        Cenovnik cenovnik = cenovnikService.findOne(idCenovnika);
+        stavkaCenovnika.setCenovnik(cenovnik);
+        stavkaCenovnika.setProizvod(proizvodService.findOne(idProizvoda));
+
         StavkaCenovnika novaStavkaCenovnika = stavkaCenovnikaService.save(stavkaCenovnika);
+
         return new ResponseEntity<>(novaStavkaCenovnika, HttpStatus.OK);
     }
+
+
 
 }

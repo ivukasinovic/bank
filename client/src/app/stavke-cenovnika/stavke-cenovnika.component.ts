@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StavkaCenovnika} from '../model/model';
 
 @Component({
   selector: 'app-stavke-cenovnika',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StavkeCenovnikaComponent implements OnInit {
 
+  stavkeList: StavkaCenovnika[];
+
   constructor() { }
 
   ngOnInit() {
+    this.stavkeList = JSON.parse(localStorage.getItem('stavke'));
   }
 
 }

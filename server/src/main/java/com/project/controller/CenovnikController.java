@@ -2,7 +2,9 @@ package com.project.controller;
 
 import com.project.domain.Cenovnik;
 import com.project.domain.Preduzece;
+import com.project.domain.Valuta;
 import com.project.service.CenovnikService;
+import com.project.service.ValutaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,8 +25,10 @@ public class CenovnikController {
 
     @Autowired
     private CenovnikService cenovnikService;
+    @Autowired
+    private ValutaService valutaService;
 
-    @RequestMapping(
+        @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Cenovnik>> getAll(){
@@ -57,9 +61,18 @@ public class CenovnikController {
     }
 
     @RequestMapping(
+            value = "/{idValute}",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Cenovnik> delete(@RequestBody Cenovnik cenovnik){
+    public ResponseEntity<Cenovnik> delete(@RequestBody Cenovnik cenovnik, @PathVariable("idValute")Long idValute){
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(true);
+        Preduzece preduzece = (Preduzece) session.getAttribute("preduzece");
+        cenovnik.setPreduzece(preduzece);
+
+        Valuta valuta = valutaService.findOne(idValute);
+        cenovnik.setValuta(valuta);
+
         Cenovnik noviCenovnik = cenovnikService.save(cenovnik);
         return new ResponseEntity<>(noviCenovnik, HttpStatus.OK);
     }
