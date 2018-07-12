@@ -74,4 +74,29 @@ export class StavkaFakture {
   ukupanIznos: number;
   proizvod: string;
 }
+export class StavkaCenovnika {
+  id: number;
+  cena: number;
+  proizvod: string;
+}
+
+export class Cenovnik {
+  id: number;
+  datumVazenja: string;
+  valuta: string;
+  stavkaCenovnikaList: StavkaCenovnika[];
+}
+
+export class Valuta {
+  id: number;
+  oznaka: string;
+  naziv: string;
+}
+
+export class Proizvod {
+  id: number;
+  naziv: string;
+  opis: string;
+  jedinicaMere: string;
+}
 

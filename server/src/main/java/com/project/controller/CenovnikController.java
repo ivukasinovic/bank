@@ -1,13 +1,17 @@
 package com.project.controller;
 
 import com.project.domain.Cenovnik;
+import com.project.domain.Preduzece;
 import com.project.service.CenovnikService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -24,7 +28,12 @@ public class CenovnikController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Cenovnik>> getAll(){
-        List<Cenovnik> cenovnici = cenovnikService.findAll();
+
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(true);
+        Preduzece preduzece = (Preduzece) session.getAttribute("preduzece");
+
+        List<Cenovnik> cenovnici = cenovnikService.findByPreduzece(preduzece);
         return new ResponseEntity<>(cenovnici, HttpStatus.OK);
     }
 

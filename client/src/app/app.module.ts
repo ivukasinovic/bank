@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {KorisnikServiceService} from './service/korisnik-service.service';
 import { HomePageComponent } from './home-page/home-page.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { GenerisiNalogComponent } from './generisi-nalog/generisi-nalog.component';
 import {FakturaService} from './service/faktura.service';
@@ -22,6 +22,11 @@ import { ProfilComponent } from './profil/profil.component';
 import { MojeFaktureComponent } from './moje-fakture/moje-fakture.component';
 import { PartneriComponent } from './partneri/partneri.component';
 import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.component';
+import { CenovniciComponent } from './cenovnici/cenovnici.component';
+import { StavkeCenovnikaComponent } from './stavke-cenovnika/stavke-cenovnika.component';
+import {CenovnikService} from './service/cenovnik.service';
+import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
+import {ModalModule} from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -38,7 +43,10 @@ import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.componen
     ProfilComponent,
     MojeFaktureComponent,
     PartneriComponent,
-    StavkeFaktureComponent
+    StavkeFaktureComponent,
+    CenovniciComponent,
+    StavkeCenovnikaComponent,
+    NoviCenovnikComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +54,10 @@ import { StavkeFaktureComponent } from './stavke-fakture/stavke-fakture.componen
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
-  providers: [KorisnikServiceService, FakturaService],
+  providers: [KorisnikServiceService, FakturaService, CenovnikService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

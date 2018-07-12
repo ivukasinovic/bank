@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Faktura, StaSePlaca} from '../model/model';
+import {Faktura, StaSePlaca, StavkaFakture} from '../model/model';
 import {FakturaService} from '../service/faktura.service';
 import {Router} from '@angular/router';
 
@@ -48,4 +48,11 @@ export class GenerisiNalogComponent implements OnInit {
     localStorage.setItem('prijedlogplacanja', JSON.stringify( this.prijedlogPlacanja));
     this.router.navigateByUrl('prijedlog-placanja');
   }
+
+  setStavke(stavke: StavkaFakture[]) {
+    console.log('stavke su ' + stavke);
+    localStorage.setItem('stavke', JSON.stringify(stavke));
+    this.router.navigateByUrl('/stavke-fakture');
+  }
+
 }
