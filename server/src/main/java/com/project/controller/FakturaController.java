@@ -7,7 +7,6 @@ import com.project.repository.PreduzeceRepository;
 import com.project.service.FakturaService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
-import net.sf.jasperreports.engine.util.JRSaver;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
@@ -27,6 +26,7 @@ import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Ivan V. on 07-Jul-18
@@ -178,20 +178,76 @@ public class FakturaController {
 
         return new ResponseEntity<>(fakture,HttpStatus.OK);
     }
+    @RequestMapping(value = "/ios", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<?> getIOS(HttpServletResponse response) throws JRException, SQLException {
+        InputStream kifReport = getClass().getResourceAsStream("/IOS.jrxml");
+        JasperPrint jasperPrint = generateJasperPring(kifReport);
+
+        String naziv = "ios";
+        boolean success = exportToDesktop(jasperPrint,naziv);
+        if(success) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @RequestMapping(value = "/kif", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<?> getKIF(HttpServletResponse response) throws JRException, SQLException {
+        InputStream kifReport = getClass().getResourceAsStream("/KIF.jrxml");
+        JasperPrint jasperPrint = generateJasperPring(kifReport);
+
+        String naziv = "kif";
+        boolean success = exportToDesktop(jasperPrint,naziv);
+        if(success) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @RequestMapping(value = "/kp", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<?> getKp(HttpServletResponse response) throws JRException, SQLException {
+        InputStream kufReport = getClass().getResourceAsStream("/KP.jrxml");
+        JasperPrint jasperPrint = generateJasperPring(kufReport);
+
+        String naziv = "kp";
+        boolean success = exportToDesktop(jasperPrint,naziv);
+        if(success) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
 
     @RequestMapping(value = "/kuf", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> getKuf(HttpServletResponse response) throws JRException, SQLException {
-        InputStream kufReport = getClass().getResourceAsStream("/KUF_primalac_5.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(kufReport);
-        JRSaver.saveObject(jasperReport, "employeeReport.jasper");
+        InputStream kufReport = getClass().getResourceAsStream("/KUF.jrxml");
+        JasperPrint jasperPrint = generateJasperPring(kufReport);
+
+        String naziv = "kuf";
+        boolean success = exportToDesktop(jasperPrint,naziv);
+        if(success) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    private JasperPrint generateJasperPring(InputStream jReport) throws JRException, SQLException {
+        JasperReport jasperReport = JasperCompileManager.compileReport(jReport);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource.getConnection());
+        return jasperPrint;
+    }
 
+    private boolean exportToDesktop(JasperPrint jasperPrint, String naziv) throws JRException {
         JRPdfExporter exporter = new JRPdfExporter();
-
+        Random rand = new Random();
+        int  n = rand.nextInt(1000) + 1;
+        String desktop = System.getProperty("user.home") + "/Desktop/" + naziv + n + ".pdf";
         exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
         exporter.setExporterOutput(
-                new SimpleOutputStreamExporterOutput("employeeReport.pdf"));
+                new SimpleOutputStreamExporterOutput(desktop));
 
         SimplePdfReportConfiguration reportConfig
                 = new SimplePdfReportConfiguration();
@@ -208,19 +264,7 @@ public class FakturaController {
         exporter.setConfiguration(exportConfig);
 
         exporter.exportReport();
-
-//        byte[] ret = null;
-//        try {
-//            Class.forName(dbDriver);
-//            JasperCompileManager.compileReportToFile("files/izvestaji/KUF/KUF_primalac_5.jrxml", "files/izvestaji/KUF/KUF_primalac_5.jasper");
-//            Connection conn = DriverManager.getConnection(dbUrl, username, password);
-//            JasperPrint jprint = (JasperPrint) JasperFillManager.fillReport("files/izvestaji/KUF/KUF_primalac_5.jasper", null, conn);
-//            ret = JasperExportManager.exportReportToPdf(jprint);
-//            return new ResponseEntity<>(ret, HttpStatus.OK);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return true;
     }
 
 }
