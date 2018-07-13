@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<form class="col-md-6">
+<div class="form-group">
+    <label>Naziv </label>
+    <input type="text" name="naziv" [(ngModel)]="proizvod.naziv">
+</div>
+  <div class="form-group">
+    <label>Opis </label>
+    <input type="text" name="opis" [(ngModel)]="proizvod.opis">
+  </div>
+  <div class="form-group">
+      <label>Grupa </label>
+        <select required="required" name="sel" [(ngModel)] = "grupaId" class="form-control" id="sel">
+          <option *ngFor="let grupa of grupe" value="{{grupa.id}}">{{grupa.naziv}}</option>
+        </select>
+  </div>
+  <div class="form-group">
+  <label>Jedinica mere </label>
+    <select required="required" name="sel" [(ngModel)] = "jedinicaId" class="form-control" id="sel2">
+      <option *ngFor="let jedinica of jediniceList" value="{{jedinica.id}}">{{jedinica.naziv}} ({{jedinica.skracenica}})</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="submit" (click)="dodaj()" class="btn-primary" value="Dodaj">
+  </div>
+</form>

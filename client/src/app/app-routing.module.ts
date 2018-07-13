@@ -21,6 +21,8 @@ import {DodajPdvComponent} from './pdv/dodaj-pdv/dodaj-pdv.component';
 import {NalogComponent} from './nalog/nalog.component';
 import {JedinicaMereComponent} from './jedinica-mere/jedinica-mere.component';
 import {ValuteComponent} from './valute/valute.component';
+import {ProizvodiComponent} from './proizvodi/proizvodi.component';
+import {NoviProizvodComponent} from './proizvodi/novi-proizvod/novi-proizvod.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full' },
@@ -43,7 +45,9 @@ const routes: Routes = [
   {path: 'nalog-za-placanje', component: NalogComponent},
   {path: 'cenovnik', component: NoviCenovnikComponent},
   {path: 'jedinica-mere', component: JedinicaMereComponent},
-  {path: 'valute', component: ValuteComponent}
+  {path: 'valute', component: ValuteComponent},
+  {path: 'proizvodi', component: ProizvodiComponent},
+  {path: 'novi-proizvod', component: NoviProizvodComponent}
 ];
 
 @NgModule({
