@@ -10,9 +10,16 @@ import {Adresa, Partnerstvo, Preduzece} from '../model/model';
 export class PartneriComponent implements OnInit {
 
   private partnerstvo: Partnerstvo [];
+  sviPartneri: Preduzece[];
+
   private preduzece: Preduzece;
 
-  constructor(private  fakturaService: FakturaService) { }
+  private partner: Partnerstvo;
+
+  constructor(private  fakturaService: FakturaService) {
+    this.partner = new Partnerstvo();
+
+  }
 
   ngOnInit() {
 
@@ -23,7 +30,38 @@ export class PartneriComponent implements OnInit {
       }
     );
 
+    this.fakturaService.getSviPartnei(this.preduzece.id)
+      .subscribe(
+        (response: Preduzece[]) => {
+          this.sviPartneri = response;
+        });
+
   }
 
+  obrisii(broj: number) {
+    this.fakturaService.brisiPartnesrstvo(broj)
+      .subscribe(response => {
+          alert('Uspesno ste obrisali partnera!!!');
+          window.location.reload();
+        },
+        err => {
+          alert('Niste uspeli obrisati (Doslo je do greske)');
+        }
+    );
+  }
+
+  dodajPartnera(broj: Partnerstvo) {
+    this.fakturaService.dodajPartnerstvoo(this.partner).subscribe(
+      (data: Partnerstvo) => {
+
+        alert('Uspesno te dodali partnera!');
+        window.location.reload();
+      },
+      error1 => {
+        alert('Error!');
+      }
+    );
+
+  }
 
 }

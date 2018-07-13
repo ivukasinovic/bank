@@ -2,6 +2,8 @@ package com.project.service;
 
 import com.project.domain.Preduzece;
 
+import java.util.List;
+
 /**
  * Created by Dejan Stojkic (Smek) on 7/6/2018.
  */
@@ -20,5 +22,7 @@ public interface PreduzeceService {
     Preduzece save(Preduzece user);
 
     void delete(Long id);
+
+    List<Preduzece> findAll();
 
 }

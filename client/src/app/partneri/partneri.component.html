@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div #mydiv>
+<div >
 
   <br>
   <div align="center"><h1> Svi nasi partneri </h1></div>
@@ -43,5 +43,47 @@
     </tr>
 
   </table>
+<hr>
+  <!--<div align="center" #mydiv>-->
+
+    <!--<div class="col-md-6 col-md-offset-3">-->
+      <!--<h2> Create new partner </h2>-->
+      <!--&lt;!&ndash;<form name="form" (ngSubmit)="f.form.valid && register(email.value, lozinka.value, lozinka2.value, ime.value, prezime.value, grad.value, broj.value)" #f validate>&ndash;&gt;-->
+      <!--<div class="form-group">-->
+        <!--<label>Naziv</label>-->
+        <!--<input #naziv type="text" class="form-control" required/>-->
+      <!--</div>-->
+
+      <!--<div class="form-group">-->
+        <!--<label>E-mail</label>-->
+        <!--<input #email type="email" class="form-control" required/>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="lozinka1">Lozinka:</label>-->
+        <!--<input #lozinka name="lozinka" type="password" class="form-control" id="lozinka1" required/>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="lozinka2">Ponovite lozinku:</label>-->
+        <!--<input #lozinka2 type="password" (change)="provjeriLozinke(lozinka.value, lozinka2.value)" class="form-control"-->
+               <!--id="lozinka2" required/>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="ime">Pib:</label>-->
+        <!--<input #pib name="ime" type="text" class="form-control" id="ime" required/>-->
+      <!--</div>-->
+
+    <!--<button class="btn btn-success" (click)="dodajPartnera()" > Dodaj </button>-->
+  <!--</div>-->
+
+  <!--</div>-->
+  <div align="center">
+  <label> <b>  Postojece preduzeca: </b> </label>
+  <div class="form-group">
+    <select  class="form-control"   [(ngModel)]="partner" name="adresa" #adresa >  <!--  name = "typeOfLodging" formControlName="typeOfLodging" -->
+      <option *ngFor="let p of sviPartneri" [value]="p.id"  >{{ p.naziv}}</option>
+    </select>
+  </div>
+    <button class="btn btn-success" (click)="dodajPartnera(adresa)" > Dodaj </button>
+  </div>
 
 </div>

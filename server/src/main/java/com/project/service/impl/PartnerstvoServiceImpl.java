@@ -39,7 +39,7 @@ public class PartnerstvoServiceImpl implements PartnerstvoService {
     }
 
     @Override
-    public void delete(Partnerstvo partnerstvo) {
+    public void delete(Long partnerstvo) {
         partnerstvoRepository.delete(partnerstvo);
     }
 
