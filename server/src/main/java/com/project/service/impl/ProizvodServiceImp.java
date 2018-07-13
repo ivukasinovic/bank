@@ -1,5 +1,6 @@
 package com.project.service.impl;
 
+import com.project.domain.Preduzece;
 import com.project.domain.Proizvod;
 import com.project.repository.ProizvodRepository;
 import com.project.service.ProizvodService;
@@ -19,6 +20,11 @@ public class ProizvodServiceImp implements ProizvodService {
     @Override
     public List<Proizvod> findAll() {
         return proizvodRepository.findAll();
+    }
+
+    @Override
+    public List<Proizvod> findByPreduzece(Preduzece preduzece) {
+        return proizvodRepository.findByPreduzece(preduzece);
     }
 
     @Override

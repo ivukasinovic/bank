@@ -86,7 +86,6 @@ import {ProizvodService} from './service/proizvod.service';
     StopaPdvService,
     CenovnikService,
     SifrarniciService,
-    GrupaProizvodaFront-CRUD,
     ProizvodService,
     GrupaProizvodaService],
   bootstrap: [AppComponent]
