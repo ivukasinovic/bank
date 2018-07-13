@@ -43,7 +43,9 @@ export class FakturaService {
   }
 
  dodajPartnerstvoo (fakturaId: Partnerstvo) {
-    return this.http.post('api/partnerstvo' , fakturaId);
+    console.log(fakturaId);
+    const url = 'api/partnerstvo/dodaj/' + fakturaId;
+    return this.http.get(url);
   }
 
   brisiPartnesrstvo(fakturaId: number) {

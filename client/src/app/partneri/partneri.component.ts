@@ -51,19 +51,10 @@ export class PartneriComponent implements OnInit {
   }
 
   dodajPartnera(broj: Partnerstvo) {
-
-    // this.partner.preduzece2.naziv = naziv;
-    // this.partner.preduzece2.email = email;
-    // this.partner.preduzece2.lozinka = lozinka1;
-    // this.partner.preduzece2.lozinka = lozinka2;
-    // this.partner.preduzece2.pib = pib;
-    // this.partner.preduzece2.adresa.id = adresa;
-
-
     this.fakturaService.dodajPartnerstvoo(this.partner).subscribe(
       (data: Partnerstvo) => {
 
-        alert(' Succes !' + broj.preduzece2);
+        alert('Uspesno te dodali partnera!');
         window.location.reload();
       },
       error1 => {

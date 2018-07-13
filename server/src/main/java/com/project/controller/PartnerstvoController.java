@@ -93,18 +93,19 @@ public class PartnerstvoController {
     }
 
     @RequestMapping(
-            method = RequestMethod.POST,
+            value = "/dodaj/{id}",
+            method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Partnerstvo> kreiraj(@RequestBody Partnerstvo partnerstvo){
+    public ResponseEntity<Partnerstvo> kreiraj(@PathVariable String id){
 
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session= attr.getRequest().getSession(true);
         Preduzece preduzeceF = (Preduzece)session.getAttribute("preduzece");
 
-
+        Partnerstvo partnerstvo = new Partnerstvo();
         partnerstvo.setDatum(new Date());
         partnerstvo.setPreduzece1(preduzeceF);
-        partnerstvo.setPreduzece2(partnerstvo.getPreduzece2());
+        partnerstvo.setPreduzece2(preduzeceService.findOne(Long.valueOf(id)));
 
         Partnerstvo noviPartnerstvo = partnerstvoService.save(partnerstvo);
         return new ResponseEntity<>(noviPartnerstvo, HttpStatus.OK);
