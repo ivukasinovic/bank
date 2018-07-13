@@ -28,8 +28,8 @@ export class Preduzece {
   pib: string;
   lozinka: string;
   email: string;
-  adresa: Adresa;   // samo broj
-  // activated: boolean;
+  adresa: Adresa;
+  brojRacuna: string;
 }
 
 export class Partnerstvo {

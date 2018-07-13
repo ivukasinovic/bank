@@ -24,12 +24,10 @@ export class GenerisiNalogComponent implements OnInit {
         for (i = 0; i < this.neplacene.length; i++ ) {
           this.iznos[i] = this.neplacene[i].preostaliIznos;
           this.isCh[i] = false;
-          console.log('iznos je ' + this.iznos[i]);
         }
-        console.log('done');
       },
       error1 => {
-        alert('Doslo je do greske');
+        alert('Došlo je do greške!');
       });
   }
 
@@ -40,7 +38,6 @@ export class GenerisiNalogComponent implements OnInit {
         const temp: StaSePlaca = new StaSePlaca();
         temp.faktura = this.neplacene[i];
         temp.iznos = this.iznos[i];
-        console.log('iznos ' , this.iznos[i], ' faktura', this.neplacene[i]);
         this.prijedlogPlacanja.push(temp);
       }
     }
@@ -50,7 +47,6 @@ export class GenerisiNalogComponent implements OnInit {
   }
 
   setStavke(stavke: StavkaFakture[]) {
-    console.log('stavke su ' + stavke);
     localStorage.setItem('stavke', JSON.stringify(stavke));
     this.router.navigateByUrl('/stavke-fakture');
   }
