@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.InputStream;
@@ -180,21 +179,21 @@ public class FakturaController {
     }
     @RequestMapping(value = "/ios", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> getIOS(HttpServletResponse response) throws JRException, SQLException {
+    public ResponseEntity<?> getIOS() throws JRException, SQLException {
         InputStream kifReport = getClass().getResourceAsStream("/IOS.jrxml");
         JasperPrint jasperPrint = generateJasperPring(kifReport);
 
         String naziv = "ios";
         boolean success = exportToDesktop(jasperPrint,naziv);
         if(success) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(success, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(success, HttpStatus.FORBIDDEN);
     }
 
     @RequestMapping(value = "/kif", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> getKIF(HttpServletResponse response) throws JRException, SQLException {
+    public ResponseEntity<?> getKIF() throws JRException, SQLException {
         InputStream kifReport = getClass().getResourceAsStream("/KIF.jrxml");
         JasperPrint jasperPrint = generateJasperPring(kifReport);
 
@@ -208,7 +207,7 @@ public class FakturaController {
 
     @RequestMapping(value = "/kp", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> getKp(HttpServletResponse response) throws JRException, SQLException {
+    public ResponseEntity<?> getKp() throws JRException, SQLException {
         InputStream kufReport = getClass().getResourceAsStream("/KP.jrxml");
         JasperPrint jasperPrint = generateJasperPring(kufReport);
 
@@ -222,7 +221,7 @@ public class FakturaController {
 
     @RequestMapping(value = "/kuf", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> getKuf(HttpServletResponse response) throws JRException, SQLException {
+    public ResponseEntity<?> getKuf() throws JRException, SQLException {
         InputStream kufReport = getClass().getResourceAsStream("/KUF.jrxml");
         JasperPrint jasperPrint = generateJasperPring(kufReport);
 

@@ -1,104 +1,108 @@
 <app-header></app-header>
-
-
-<div #mydiv>
-
-  <ngb-tabset>
-
+<div class="container">
+  <div #mydiv>
+    <div>
+      <button class="btn btn-success" (click)="getKUF()">KUF</button>
+      <button class="btn btn-success" (click)="getKIF()">KIF</button>
+      <button class="btn btn-success" (click)="getKP()">KP</button>
+      <button class="btn btn-success" (click)="getIOS()">IOS</button>
+    </div>
+    <br>
+    <ngb-tabset>
       <ngb-tab title="Ulazne fakture">
-       <ng-template ngbTabContent>
-         <br>
-         <table border="2" style="..." align="center" class="table">
+        <ng-template ngbTabContent>
+          <br>
+          <table border="2" style="..." align="center" class="table">
 
-           <tr>
-             <th>Broj fakture</th>
-             <th>Duguje</th>
-             <th>Datum</th>
-             <th>Valuta</th>
-             <th>Datum valute</th>
-             <th>Preostali iznos</th>
-             <th> Ukupno za placanje </th>
-             <th>Ukupan rabat</th>
-             <th>Bez PDV-a</th>
-             <th>Ukupan PDV</th>
-             <th>Poslovna godina</th>
-             <th>Status</th>
-             <th> Stavke</th>
-           </tr>
+            <tr>
+              <th>Broj fakture</th>
+              <th>Duguje</th>
+              <th>Datum</th>
+              <th>Valuta</th>
+              <th>Datum valute</th>
+              <th>Preostali iznos</th>
+              <th> Ukupno za placanje </th>
+              <th>Ukupan rabat</th>
+              <th>Bez PDV-a</th>
+              <th>Ukupan PDV</th>
+              <th>Poslovna godina</th>
+              <th>Status</th>
+              <th> Stavke</th>
+            </tr>
 
-           <tr *ngFor="let faktura of ulazne">
-             <td> {{ faktura.broj }}</td>
-             <td>{{faktura.duznik.naziv}}</td>
-             <td>{{faktura.datum}}</td>
-             <td>{{faktura.valuta}}</td>
-             <td>{{faktura.datumValute}}</td>
-             <td>{{faktura.preostaliIznos}}</td>
-             <td>{{faktura.ukupnoZaPlacanje}}</td>
-             <td>{{faktura.ukupanRabat}}</td>
-             <td>{{faktura.bezPDV}}</td>
-             <td>{{faktura.ukupanPDV}}</td>
-             <td>{{faktura.poslovnaGodina}}</td>
-             <td>
-               {{ faktura.status }}
-               <button class="btn-link pull-right" *ngIf="faktura.status != 'STORNIRANA'" (click)="activate(faktura.id)" >Storniraj</button>
-             </td>
-             <td> <button class="btn-link" (click)="setStavke(faktura.stavkaFaktureList)">Stavke</button></td>
-           </tr>
+            <tr *ngFor="let faktura of ulazne">
+              <td> {{ faktura.broj }}</td>
+              <td>{{faktura.duznik.naziv}}</td>
+              <td>{{faktura.datum}}</td>
+              <td>{{faktura.valuta}}</td>
+              <td>{{faktura.datumValute}}</td>
+              <td>{{faktura.preostaliIznos}}</td>
+              <td>{{faktura.ukupnoZaPlacanje}}</td>
+              <td>{{faktura.ukupanRabat}}</td>
+              <td>{{faktura.bezPDV}}</td>
+              <td>{{faktura.ukupanPDV}}</td>
+              <td>{{faktura.poslovnaGodina}}</td>
+              <td>
+                {{ faktura.status }}
+                <button class="btn-link pull-right" *ngIf="faktura.status != 'STORNIRANA'" (click)="activate(faktura.id)" >Storniraj</button>
+              </td>
+              <td> <button class="btn-link" (click)="setStavke(faktura.stavkaFaktureList)">Stavke</button></td>
+            </tr>
 
-         </table>
+          </table>
         </ng-template>
       </ngb-tab>
 
       <ngb-tab title="Izlazne fakture">
-       <ng-template ngbTabContent>
-         <br/>
+        <ng-template ngbTabContent>
+          <br/>
 
-         <table border="2" style="..." align="center" class="table">
+          <table border="2" style="..." align="center" class="table">
 
-           <tr>
-             <th>Broj fakture</th>
-             <th>Potrazuje</th>
-             <th>Datum</th>
-             <th>Valuta</th>
-             <th>Datum valute</th>
-             <th>Preostali iznos</th>
-             <th> Ukupno za placanje </th>
-             <th>Ukupan rabat</th>
-             <th>Bez PDV-a</th>
-             <th>Ukupan PDV</th>
-             <th>Poslovna godina</th>
-             <th>Status</th>
-             <th>Stavke</th>
-           </tr>
+            <tr>
+              <th>Broj fakture</th>
+              <th>Potrazuje</th>
+              <th>Datum</th>
+              <th>Valuta</th>
+              <th>Datum valute</th>
+              <th>Preostali iznos</th>
+              <th> Ukupno za placanje </th>
+              <th>Ukupan rabat</th>
+              <th>Bez PDV-a</th>
+              <th>Ukupan PDV</th>
+              <th>Poslovna godina</th>
+              <th>Status</th>
+              <th>Stavke</th>
+            </tr>
 
-           <tr *ngFor="let faktura of izlazne">
-             <td> {{ faktura.broj }}</td>
-             <td>{{faktura.primalac.naziv}}</td>
-             <td>{{faktura.datum}}</td>
-             <td>{{faktura.valuta}}</td>
-             <td>{{faktura.datumValute}}</td>
-             <td>{{faktura.preostaliIznos}}</td>
-             <td>{{faktura.ukupnoZaPlacanje}}</td>
-             <td>{{faktura.ukupanRabat}}</td>
-             <td>{{faktura.bezPDV}}</td>
-             <td>{{faktura.ukupanPDV}}</td>
-             <td>{{faktura.poslovnaGodina}}</td>
+            <tr *ngFor="let faktura of izlazne">
+              <td> {{ faktura.broj }}</td>
+              <td>{{faktura.primalac.naziv}}</td>
+              <td>{{faktura.datum}}</td>
+              <td>{{faktura.valuta}}</td>
+              <td>{{faktura.datumValute}}</td>
+              <td>{{faktura.preostaliIznos}}</td>
+              <td>{{faktura.ukupnoZaPlacanje}}</td>
+              <td>{{faktura.ukupanRabat}}</td>
+              <td>{{faktura.bezPDV}}</td>
+              <td>{{faktura.ukupanPDV}}</td>
+              <td>{{faktura.poslovnaGodina}}</td>
 
-             <td>
-               {{ faktura.status }}
-               <button class="btn-link pull-right" *ngIf="faktura.status != 'STORNIRANA'" (click)="activate(faktura.id)" >Storniraj</button>
-             </td>
+              <td>
+                {{ faktura.status }}
+                <button class="btn-link pull-right" *ngIf="faktura.status != 'STORNIRANA'" (click)="activate(faktura.id)" >Storniraj</button>
+              </td>
 
-             <td><button class="btn-link" (click)="setStavke(faktura.stavkaFaktureList)">Stavke</button></td>
-           </tr>
+              <td><button class="btn-link" (click)="setStavke(faktura.stavkaFaktureList)">Stavke</button></td>
+            </tr>
 
-         </table>
+          </table>
         </ng-template>
       </ngb-tab>
-
-
     </ngb-tabset>
 
 
 
+  </div>
 </div>
+

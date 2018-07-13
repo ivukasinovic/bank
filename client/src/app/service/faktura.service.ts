@@ -41,5 +41,9 @@ export class FakturaService {
   storniraj(fakturaId: number) {
     return this.http.get('api/faktura/stornirana/' + fakturaId);
   }
+  getIzvestaj(tip: string) {
+    const url = 'api/faktura/' + tip;
+    return this.http.get(url);
+  }
 
 }

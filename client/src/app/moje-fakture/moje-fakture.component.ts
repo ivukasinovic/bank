@@ -57,29 +57,41 @@ export class MojeFaktureComponent implements OnInit {
               }
     );
   }
-
-  //
-  // block(br: number) {
-  //   this.authService.block(br)
-  //     .subscribe(response => {
-  //         alert('Deaktivirali ste !!!');
-  //         window.location.reload();
-  //       },
-  //       err => {
-  //         alert('Niste uspeli obrisati (Doslo je do greske)');
-  //       });
-  // }
-  //
-  // obrisii(br: number) {
-  //   this.authService.deleteUser(br)
-  //     .subscribe(response => {
-  //         alert('Uspesno ste obrisali korisnika!!!');
-  //         window.location.reload();
-  //       },
-  //       err => {
-  //         alert('Niste uspeli obrisati (Doslo je do greske)');
-  //       });
-  //
-  // }
+  getKUF() {
+    this.fakturaService.getIzvestaj('kuf')
+      .subscribe(() => {
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+      },
+        error1 => {
+          alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
+        });
+  }
+  getKIF() {
+    this.fakturaService.getIzvestaj('kif')
+      .subscribe(() => {
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+        },
+        error1 => {
+          alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
+        });
+  }
+  getKP() {
+    this.fakturaService.getIzvestaj('kp')
+      .subscribe(() => {
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+        },
+        error1 => {
+          alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
+        });
+  }
+  getIOS() {
+    this.fakturaService.getIzvestaj('ios')
+      .subscribe(() => {
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+        },
+        error1 => {
+          alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
+        });
+  }
 
 }
