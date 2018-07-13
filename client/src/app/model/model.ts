@@ -66,7 +66,7 @@ export class StopaPDV {
   id: number;
   datumVazenja: string;
   stopa: number;
-  pdv: PDV ;
+  pdv: string ;
 }
 export class PDV {
   id: number;

@@ -35,4 +35,7 @@ export class PdvService {
   postPDVDodaj(pdv: PDV) {
     return this.http.post('api/pdv/dodavanje', pdv);
   }
+  updatePdvStopaWithPDVId(pdvStopa: StopaPDV, pdvId: number ) {
+    return this.http.post('api/stopaPDV/izmena/' + pdvId, pdvStopa);
+  }
 }

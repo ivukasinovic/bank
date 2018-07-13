@@ -25,6 +25,7 @@ export class DodajPdvComponent implements OnInit {
     this.stopaSelected = new StopaPDV();
     this.pomStopa = new StopaPDV();
     this.stopaSlanje = new StopaPDV();
+    this.stopaSelected.stopa= 0;
   }
 
   ngOnInit() {
@@ -51,7 +52,7 @@ export class DodajPdvComponent implements OnInit {
   // }
   kreiraj(naziv: string) {
     this.pdv.naziv = naziv;
-    console.log('tu sam 0');
+
     this.pdv.stopaPDVList = null;
     this.pdvService.postPDVDodaj(this.pdv).subscribe(
         (response: PDV ) => {
@@ -61,6 +62,7 @@ export class DodajPdvComponent implements OnInit {
           for (i = 0; i < vel; i++) {
             this.stopaSlanje = this.stopaFrontLista.pop();
             this.stopaSlanje.pdv = null;
+            console.log('tu sam 0', this.stopaSlanje);
             //console.log('ID OD PDVA: ' , this.stopaSlanje.pdv.id, 'i ', response.id)
             //idPDV = this.stopaSlanje.pdv.id;
             this.pdvService.postStopu(this.stopaSlanje, response.id).subscribe();
@@ -80,17 +82,20 @@ export class DodajPdvComponent implements OnInit {
   }
   dodajStopu() {
     console.log('jovanaa bravo', this.stopaSelected.id, this.stopaSelected, ' duzina ', this.stopaModal.length);
-    for (let i = 0; i < this.stopaModal.length; i++) {
-      console.log('poredi ',  +this.stopaSelected.id, 'i', this.stopaModal[i].id  );
-      if (this.stopaModal[i].id === +this.stopaSelected.id) {
-        console.log('nasao id :' + this.stopaModal[i].id);
-        this.pomStopa = this.stopaModal[i];
-        break;
-      }
-    }
+    // for (let i = 0; i < this.stopaModal.length; i++) {
+    //   console.log('poredi ',  +this.stopaSelected.id, 'i', this.stopaModal[i].id  );
+    //   if (this.stopaModal[i].id === +this.stopaSelected.id) {
+    //     console.log('nasao id :' + this.stopaModal[i].id);
+    //     this.pomStopa = this.stopaModal[i];
+    //     break;
+    //   }
+    // }
+    this.pomStopa.datumVazenja = this.stopaSelected.datumVazenja;
+    this.pomStopa.stopa = this.stopaSelected.stopa;
     console.log('aaa', this.pomStopa);
     this.stopaFrontLista.push(this.pomStopa);
     this.stopaSelected = new StopaPDV();
+    this.pomStopa = new StopaPDV();
     this.modalRef.hide();
 
   }
