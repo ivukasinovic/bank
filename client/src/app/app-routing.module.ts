@@ -17,6 +17,7 @@ import {CenovniciComponent} from './cenovnici/cenovnici.component';
 import {StavkaCenovnika} from './model/model';
 import {StavkeCenovnikaComponent} from './stavke-cenovnika/stavke-cenovnika.component';
 import {NoviCenovnikComponent} from './cenovnici/novi-cenovnik/novi-cenovnik.component';
+import {DodajPdvComponent} from './pdv/dodaj-pdv/dodaj-pdv.component';
 import {NalogComponent} from './nalog/nalog.component';
 import {JedinicaMereComponent} from './jedinica-mere/jedinica-mere.component';
 import {ValuteComponent} from './valute/valute.component';
@@ -37,6 +38,8 @@ const routes: Routes = [
   {path: 'stavke-fakture', component: StavkeFaktureComponent},
   {path: 'cenovnici', component: CenovniciComponent},
   {path: 'stavke-cenovnika', component: StavkeCenovnikaComponent},
+  {path: 'novi-cenovnik', component: NoviCenovnikComponent},
+  {path: 'dodaj-pdv', component: DodajPdvComponent},
   {path: 'nalog-za-placanje', component: NalogComponent},
   {path: 'cenovnik', component: NoviCenovnikComponent},
   {path: 'jedinica-mere', component: JedinicaMereComponent},

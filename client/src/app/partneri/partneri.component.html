@@ -7,15 +7,30 @@
   <br>
   <table border="2" style="..." align="center" class="table">
     <tr>
+      <th>Mi</th>
       <th>Datum</th>
       <th>Partneri</th>
-      <th>Mi</th>
+      <th>Partner pib</th>
+      <th>Partner email</th>
+      <th>Partner broj racuna</th>
+      <th>Drzava</th>
+      <th>Grad</th>
+      <th>Ulica</th>
+      <th>broj</th>
+
       <td></td>
     </tr>
     <tr *ngFor="let p of partnerstvo">
+      <td>{{ p.preduzece1.naziv }}</td>
       <td> {{ p.datum }}</td>
       <td> {{ p.preduzece2.naziv }}</td>
-      <td>{{ p.preduzece1.naziv }}</td>
+      <td> {{ p.preduzece2.pib }}</td>
+      <td> {{ p.preduzece2.email }}</td>
+      <td> {{ p.preduzece2.brojRacuna}}</td>
+      <td> {{ p.preduzece2.adresa.drzava }}</td>
+      <td> {{ p.preduzece2.adresa.grad }}</td>
+      <td> {{ p.preduzece2.adresa.ulica }}</td>
+      <td> {{ p.preduzece2.adresa.broj }}</td>
       <div>
         <td>
 
