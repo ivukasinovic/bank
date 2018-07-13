@@ -1,0 +1,43 @@
+<app-header>
+</app-header>
+<h3>Jedinice mere</h3>
+<p>
+  <button class="btn-primary" (click)="openModal(template)">Dodaj jedinicu mere</button>
+</p>
+<table *ngIf="jediniceList.length > 0" border="2" style="..." align="center" class="table">
+  <tr>
+
+    <th>Skraćenica</th>
+    <th>Naziv</th>
+    <th></th>
+  </tr>
+
+  <tr *ngFor="let jm of jediniceList">
+    <td> {{jm.skracenica}}</td>
+    <td>{{jm.naziv}}</td>
+    <td><button class="btn-link" (click)="obrisi(jm.id)">Obriši</button></td>
+  </tr>
+
+</table>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj jedinicu mere</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <label for="oznaka">Skraćenica</label>
+      <input id="oznaka" [(ngModel)]= "jedMere.skracenica" type="text">
+    </p>
+    <p>
+      <label for="naziv">Naziv</label>
+      <input id="naziv" [(ngModel)]= "jedMere.naziv" type="text">
+    </p>
+    <p>
+      <button class="btn-warning" (click)="dodaj()">Dodaj</button>
+    </p>
+  </div>
+</ng-template>

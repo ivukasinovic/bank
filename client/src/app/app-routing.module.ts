@@ -18,6 +18,8 @@ import {StavkaCenovnika} from './model/model';
 import {StavkeCenovnikaComponent} from './stavke-cenovnika/stavke-cenovnika.component';
 import {NoviCenovnikComponent} from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {NalogComponent} from './nalog/nalog.component';
+import {JedinicaMereComponent} from './jedinica-mere/jedinica-mere.component';
+import {ValuteComponent} from './valute/valute.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full' },
@@ -36,7 +38,9 @@ const routes: Routes = [
   {path: 'cenovnici', component: CenovniciComponent},
   {path: 'stavke-cenovnika', component: StavkeCenovnikaComponent},
   {path: 'nalog-za-placanje', component: NalogComponent},
-  {path: 'cenovnik', component: NoviCenovnikComponent}
+  {path: 'cenovnik', component: NoviCenovnikComponent},
+  {path: 'jedinica-mere', component: JedinicaMereComponent},
+  {path: 'valute', component: ValuteComponent}
 ];
 
 @NgModule({

@@ -32,6 +32,9 @@ import {CenovnikService} from './service/cenovnik.service';
 import { NoviCenovnikComponent } from './cenovnici/novi-cenovnik/novi-cenovnik.component';
 import {ModalModule} from 'ngx-bootstrap';
 import { NalogComponent } from './nalog/nalog.component';
+import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
+import { ValuteComponent } from './valute/valute.component';
+import {SifrarniciService} from './service/sifrarnici.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { NalogComponent } from './nalog/nalog.component';
     CenovniciComponent,
     StavkeCenovnikaComponent,
     NoviCenovnikComponent,
-    NalogComponent
+    NalogComponent,
+    JedinicaMereComponent,
+    ValuteComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,12 @@ import { NalogComponent } from './nalog/nalog.component';
     FormsModule,
     ModalModule.forRoot()
   ],
-  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService, CenovnikService],
+  providers: [KorisnikServiceService,
+    FakturaService,
+    PdvService,
+    StopaPdvService,
+    CenovnikService,
+    SifrarniciService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

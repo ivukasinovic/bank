@@ -36,20 +36,28 @@ public class ValutaController {
 
     @RequestMapping(
             value  = "/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Valuta> delete(@PathVariable Long id){
+            method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable Long id) {
         Valuta valuta = valutaService.findOne(id);
-        valutaService.delete(valuta);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            valutaService.delete(valuta);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Valuta> save(@RequestBody Valuta valuta){
-        Valuta novaValuta = valutaService.save(valuta);
-        return new ResponseEntity<>(novaValuta, HttpStatus.OK);
+        try {
+            Valuta novaValuta = valutaService.save(valuta);
+            return new ResponseEntity<>(novaValuta, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
     }
 
 }

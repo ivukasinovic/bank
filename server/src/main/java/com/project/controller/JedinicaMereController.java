@@ -40,7 +40,12 @@ public class JedinicaMereController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JedinicaMere> delete(@PathVariable Long id){
         JedinicaMere jedinicaMere = jedinicaMereService.findOne(id);
-        jedinicaMereService.delete(jedinicaMere);
+        try {
+            jedinicaMereService.delete(jedinicaMere);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -48,8 +53,14 @@ public class JedinicaMereController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JedinicaMere> save(@RequestBody JedinicaMere jedinicaMere){
-        JedinicaMere novaJedinicaMere = jedinicaMereService.save(jedinicaMere);
-        return new ResponseEntity<>(novaJedinicaMere, HttpStatus.OK);
+        try {
+            JedinicaMere novaJedinicaMere = jedinicaMereService.save(jedinicaMere);
+            return new ResponseEntity<>(novaJedinicaMere, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+
+
     }
 
 }

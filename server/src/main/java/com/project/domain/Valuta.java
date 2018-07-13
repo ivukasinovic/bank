@@ -11,7 +11,7 @@ public class Valuta implements Serializable {
     @Column(length = 20)
     private String naziv;
 
-    @Column(length = 3)
+    @Column(length = 3, unique = true)
     private String oznaka;
 
     public Valuta() {
