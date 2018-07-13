@@ -128,24 +128,6 @@ public class FakturaController {
 
             faktura.getDuznik().getDnevnoStanjes().get(0).setUkupnostanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret());
 
-            StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
-            stavkaIzvoda.setProdavac(faktura.getPrimalac());
-            stavkaIzvoda.setSvrha("storniranje");
-            stavkaIzvoda.setDatumNaloga(new Date());
-            stavkaIzvoda.setDatumValute(new Date());
-            stavkaIzvoda.setModel(97);     // ? model broj
-
-            try {
-                Integer jkl = Integer.parseInt( faktura.getPrimalac().getBrojRacuna() );
-            } catch (Exception e){}
-
-            stavkaIzvoda.setIznos(preostaliIznosZaUplatu);
-            stavkaIzvoda.setDnevnoStanje( faktura.getPrimalac().getDnevnoStanjes().get(0) );
-            // stavkaIzvoda.setPozivNaBroj(  );
-            stavkaIzvoda.setKupac(faktura.getDuznik());
-
-            stavkaIzvodaService.save(stavkaIzvoda);
-
         }else {
             faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret( abs(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrethodnoStanje()) + preostaliIznosZaUplatu );
             faktura.getDuznik().getDnevnoStanjes().get(0).setPrometKorist(faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje() +  preostaliIznosZaUplatu);
@@ -162,9 +144,30 @@ public class FakturaController {
             faktura.getDuznik().getDnevnoStanjes().get(0).setUkupnostanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret());
 
 
+
         }
 //        faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getPreostaliIznos());
 //        faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje(faktura.getPreostaliIznos() * (-1));
+
+
+        StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
+        stavkaIzvoda.setProdavac(faktura.getPrimalac());
+        stavkaIzvoda.setSvrha("storniranje");
+        stavkaIzvoda.setDatumNaloga(new Date());
+        stavkaIzvoda.setDatumValute(new Date());
+        stavkaIzvoda.setModel(97);     // ? model broj
+
+        try {
+            Integer jkl = Integer.parseInt( faktura.getPrimalac().getBrojRacuna() );
+        } catch (Exception e){}
+
+        stavkaIzvoda.setIznos(preostaliIznosZaUplatu);
+        stavkaIzvoda.setDnevnoStanje( faktura.getPrimalac().getDnevnoStanjes().get(0) );
+        // stavkaIzvoda.setPozivNaBroj(  );
+        stavkaIzvoda.setKupac(faktura.getDuznik());
+
+        stavkaIzvodaService.save(stavkaIzvoda);
+
 
         faktura.setPreostaliIznos(faktura.getUkupnoZaPlacanje());
         faktura.setStatus(FakturaStatus.STORNIRANA);
