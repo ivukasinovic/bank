@@ -6,6 +6,8 @@ import com.project.service.PreduzeceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Dejan Stojkic (Smek) on 7/6/2018.
  */
@@ -52,6 +54,11 @@ public class PreduzeceServiceImpl implements PreduzeceService {
     @Override
     public void delete(Long id) {
         preduzeceRepository.delete(id);
+    }
+
+    @Override
+    public List<Preduzece> findAll() {
+        return preduzeceRepository.findAll();
     }
 
 
