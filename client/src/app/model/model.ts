@@ -119,7 +119,9 @@ export class Proizvod {
   id: number;
   naziv: string;
   opis: string;
+  grupaProizvoda: any;
   jedinicaMere: string;
+  preduzece: Preduzece;
 }
 
 export class NalogZaPlacanje {
@@ -140,6 +142,6 @@ export class NalogZaPlacanje {
 
 export class JedinicaMere {
   id: number;
-  naziv: number;
-  skracenica: number;
+  naziv: string;
+  skracenica: string;
 }
