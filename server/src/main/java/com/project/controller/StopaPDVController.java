@@ -71,4 +71,19 @@ public class StopaPDVController {
         novaStopaPDV = stopaPDVService.save(stopaPDV);
         return new ResponseEntity<>(novaStopaPDV, HttpStatus.OK);
     }
+    @RequestMapping(
+            value  = "/izmena/{id}",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<StopaPDV> izmena(@RequestBody StopaPDV stopaPDV, @PathVariable Long id){
+        StopaPDV novaStopaPDV = new StopaPDV();
+
+        PDV pdv  = new PDV();
+        pdv = pdvService.findOne(id);
+        stopaPDV.setPdv(pdv);
+        //stopaPDV.setId(null);
+        novaStopaPDV = stopaPDVService.save(stopaPDV);
+        return new ResponseEntity<>(novaStopaPDV, HttpStatus.OK);
+    }
+
 }

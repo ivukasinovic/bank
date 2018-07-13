@@ -7,7 +7,7 @@
     </span>
   <form>
     <label>Naziv *</label>
-    <input #nnaziv class="form-control" required="required" name="naziv" [ngModel]="naziv"  type="text">
+    <input #nnaziv class="form-control" required="required" name="naziv" [ngModel]="naziv"  type="text" required="required" >
     <br>
     <br>
 
@@ -44,11 +44,19 @@
     </button>
   </div>
   <div class="modal-body">
-    <label for="sel2">Stopa</label>
+    <!--<label for="sel2">Stopa</label>-->
     <div>
-    <select required="required" class="form-control" id="sel2"  [(ngModel)]="stopaSelected.id" >
-      <option *ngFor="let st of stopaModal" value="{{st.id}}">{{st.stopa}}%  , datum: {{st.datumVazenja}}</option>
-    </select>
+    <!--<select required="required" class="form-control" id="sel2"  [(ngModel)]="stopaSelected.id" >-->
+      <!--<option *ngFor="let st of stopaModal" value="{{st.id}}">{{st.stopa}}%  , datum: {{st.datumVazenja}}</option>-->
+    <!--</select>-->
+      <!--<br>-->
+      <label>Vrednost stope:</label>
+      <input [(ngModel)]= "stopaSelected.stopa" type="number" maxlength="3" max="100"min="0" required="required" placeholder="Vrednost stope...">
+      <br>
+      <label>Datum vazenja * </label>
+      <input class="form-control" required="required" name="datumVazenja" [ngModel]="stopaSelected.datumVazenja |  date:'yyyy-MM-dd'" (ngModelChange)="stopaSelected.datumVazenja = $event" type="date">
+      <br>
+      <br>
     </div>
     <br>
 
