@@ -21,6 +21,7 @@ import {DodajPdvComponent} from './pdv/dodaj-pdv/dodaj-pdv.component';
 import {NalogComponent} from './nalog/nalog.component';
 import {JedinicaMereComponent} from './jedinica-mere/jedinica-mere.component';
 import {ValuteComponent} from './valute/valute.component';
+import {GrupaProizvodaComponent} from './grupa-proizvoda/grupa-proizvoda.component';
 import {ProizvodiComponent} from './proizvodi/proizvodi.component';
 import {NoviProizvodComponent} from './proizvodi/novi-proizvod/novi-proizvod.component';
 
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'cenovnik', component: NoviCenovnikComponent},
   {path: 'jedinica-mere', component: JedinicaMereComponent},
   {path: 'valute', component: ValuteComponent},
+  {path: 'grupa-proizvoda', component: GrupaProizvodaComponent},
   {path: 'proizvodi', component: ProizvodiComponent},
   {path: 'novi-proizvod', component: NoviProizvodComponent}
 ];

@@ -36,6 +36,8 @@ import { NalogComponent } from './nalog/nalog.component';
 import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
 import { ValuteComponent } from './valute/valute.component';
 import {SifrarniciService} from './service/sifrarnici.service';
+import { GrupaProizvodaComponent } from './grupa-proizvoda/grupa-proizvoda.component';
+import {GrupaProizvodaService} from './service/grupa-proizvoda.service';
 import { ProizvodiComponent } from './proizvodi/proizvodi.component';
 import { NoviProizvodComponent } from './proizvodi/novi-proizvod/novi-proizvod.component';
 import {ProizvodService} from './service/proizvod.service';
@@ -65,6 +67,7 @@ import {ProizvodService} from './service/proizvod.service';
     ValuteComponent,
     DodajPdvComponent,
     NalogComponent,
+    GrupaProizvodaComponent,
     ProizvodiComponent,
     NoviProizvodComponent
   ],
@@ -83,8 +86,9 @@ import {ProizvodService} from './service/proizvod.service';
     StopaPdvService,
     CenovnikService,
     SifrarniciService,
-    ProizvodService
-    ],
+    GrupaProizvodaFront-CRUD,
+    ProizvodService,
+    GrupaProizvodaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

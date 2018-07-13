@@ -1,0 +1,120 @@
+<app-header></app-header>
+
+
+<div #mydiv>
+
+  <br>
+  <div align="center"><h1>Grupa proizvoda </h1></div>
+  <br>
+  <button class="btn btn-primary"
+          id="dodajPdv1" (click)="openModalDodaj(templateDodaj)" >Dodaj novu grupu proizvoda
+  </button>
+  <br>
+  <table border="2" style="..." align="center" class="table">
+    <tr>
+
+      <th>Naziv</th>
+      <th>Opis</th>
+      <th>PDV</th>
+      <td></td>
+    </tr>
+    <tr *ngFor="let p of grupeProizvoda" >
+      <td> {{ p.naziv }}</td>
+      <td> {{ p.opis }}</td>
+      <td> {{ p.pdv }}</td>
+      <div>
+        <td>
+
+          <!--<button (click)="brisiPdvStopa(p.id)" class="btn btn-danger"> Obrisi</button>-->
+
+          <button (click)="openModal(template,p)" class="btn btn-warning"> Izmeni</button>
+          <button (click)="brisiGrupu(p)" class="btn btn-danger"> Obrisi</button>
+          <!--<input #izmeniPdvPolje id="izmeniPdvPolje" name = "izmeniPdvPolje" type ="text" value="" placeholder="Izmeni PDV">-->
+        </td>
+      </div>
+    </tr>
+
+  </table>
+
+  <!-- nananan !!!!-->
+  <br>
+
+  <br>
+
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Izmeni grupu</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!--<label for="sel2">Stopa</label>-->
+      <div>
+        <!--<select required="required" class="form-control" id="sel2"  [(ngModel)]="stopaSelected.id" >-->
+        <!--<option *ngFor="let st of stopaModal" value="{{st.id}}">{{st.stopa}}%  , datum: {{st.datumVazenja}}</option>-->
+        <!--</select>-->
+        <!--<br>-->
+        <label>Naziv</label>
+        <br>
+        <input  class="form-control" [(ngModel)]= "grupaProizvoda.naziv" type="text" maxlength="50" required="required" placeholder="Naziv">
+        <br>
+        <label>Opis</label>
+        <br>
+        <input  class="form-control" [(ngModel)]= "grupaProizvoda.opis" type="text" required="required" placeholder="Opis">
+        <br>
+        <label>PDV</label>
+        <br>
+        <select required="required" class="form-control" id="sel2"  [(ngModel)]="grupaProizvoda.pdv" >
+        <option *ngFor="let st of sviPDV" value="{{st.naziv}}">{{st.naziv}}</option>
+        </select>
+        <br>
+        <br>
+      </div>
+      <br>
+
+      <button class="btn-warning" (click)="izmeniGrupu()">Prihvati</button>
+    </div>
+  </ng-template>
+
+  <ng-template #templateDodaj>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Dodaj grupu</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <br>
+    </div>
+    <div class="modal-body">
+      <!--<label for="sel2">Stopa</label>-->
+      <div>
+        <!--<select required="required" class="form-control" id="sel2"  [(ngModel)]="stopaSelected.id" >-->
+        <!--<option *ngFor="let st of stopaModal" value="{{st.id}}">{{st.stopa}}%  , datum: {{st.datumVazenja}}</option>-->
+        <!--</select>-->
+        <!--<br>-->
+        <label>Naziv</label>
+        <br>
+        <input  class="form-control" [(ngModel)]= "grupaProizvoda.naziv" type="text" maxlength="50" required="required" placeholder="Naziv">
+        <br>
+        <label>Opis</label>
+        <br>
+        <input  class="form-control" [(ngModel)]= "grupaProizvoda.opis" type="text"  required="required" placeholder="Opis">
+        <br>
+        <label>PDV</label>
+        <br>
+        <select required="required" class="form-control" id="sel3"  [(ngModel)]="grupaProizvoda.pdv" >
+          <option *ngFor="let st of sviPDV" value="{{st.naziv}}">{{st.naziv}}</option>
+        </select>
+        <br>
+        <br>
+      </div>
+      <br>
+
+      <button class="btn-primary" (click)="DodajGrupu()">Prihvati</button>
+    </div>
+  </ng-template>
+
+
+</div>
+
