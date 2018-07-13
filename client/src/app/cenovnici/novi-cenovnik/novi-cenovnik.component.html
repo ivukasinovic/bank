@@ -3,7 +3,8 @@
 <div class="container">
      <span class="pull-right">
 
-      <button class="btn" (click)="kreiraj()" >Kreiraj</button>
+      <button class="btn" *ngIf="!update" (click)="kreiraj()" >Kreiraj</button>
+       <button class="btn" *ngIf="update" (click)="updateCen()" >Update</button>
     </span>
   <form>
     <label>Datum vazenja * </label>
@@ -31,7 +32,7 @@
     </tr>
 
     <tr *ngFor="let stavka of stavkeList">
-      <td> {{stavka.proizvod.naziv}}</td>
+      <td> {{stavka.proizvod.naziv || stavka.proizvod}}</td>
       <td>{{stavka.cena}}</td>
       <td><button class="btn-link" (click)="ukloniStavku(stavka)">Ukloni</button></td>
     </tr>

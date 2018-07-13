@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'novi-cenovnik', component: NoviCenovnikComponent},
   {path: 'dodaj-pdv', component: DodajPdvComponent},
   {path: 'nalog-za-placanje', component: NalogComponent},
-  {path: 'novi-cenovnik', component: NoviCenovnikComponent}
+  {path: 'cenovnik', component: NoviCenovnikComponent}
 ];
 
 @NgModule({
