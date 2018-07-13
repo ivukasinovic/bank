@@ -64,7 +64,7 @@ import { NalogComponent } from './nalog/nalog.component';
     FormsModule,
     ModalModule.forRoot()
   ],
-  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService],
+  providers: [KorisnikServiceService, FakturaService, PdvService, StopaPdvService, CenovnikService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,21 +1,23 @@
 <app-header></app-header>
-<button routerLink="/novi-cenovnik" class="btn-warning">Dodaj novi cenovnik</button>
+<button routerLink="/cenovnik" class="btn-warning">Dodaj novi cenovnik</button>
 <br>
 <br>
 <table border="2" style="..." align="center" class="table">
   <tr>
 
-    <th>Datum vazenja</th>
+    <th>Datum važenja</th>
     <th>Valuta</th>
-    <th> Stavke</th>
     <th></th>
   </tr>
 
   <tr *ngFor="let cenovnik of cenovnici">
     <td> {{ cenovnik.datumVazenja }}</td>
     <td>{{cenovnik.valuta}}</td>
-    <td> <button class="btn-link" (click)="setStavke(cenovnik.stavkaCenovnikaList)">Stavke</button></td>
-    <td> <button class="btn-link" (click)="obrisi(cenovnik.id)">Obriši</button></td>
+    <td>
+      <button class="btn-link" (click)="setStavke(cenovnik.stavkaCenovnikaList)">Stavke</button>
+      <button class="btn-link" (click)="obrisi(cenovnik.id)">Obriši</button>
+      <button class="btn-link" (click)="update(cenovnik)">Update</button>
+    </td>
   </tr>
 
 </table>

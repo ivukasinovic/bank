@@ -61,6 +61,15 @@ public class CenovnikController {
     }
 
     @RequestMapping(
+            method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity update(@RequestBody Cenovnik cenovnik) {
+
+        cenovnikService.save(cenovnik);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(
             value = "/{idValute}",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)

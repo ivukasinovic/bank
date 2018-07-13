@@ -26,9 +26,13 @@ export class CenovniciComponent implements OnInit {
   }
 
   setStavke(stavke: StavkaCenovnika[]) {
-    console.log('stavke su ' + stavke);
     localStorage.setItem('stavke', JSON.stringify(stavke));
     this.router.navigateByUrl('/stavke-cenovnika');
+  }
+
+  update(cenovnik: Cenovnik) {
+    localStorage.setItem('cenUpdate', JSON.stringify(cenovnik));
+    this.router.navigateByUrl('/cenovnik');
   }
 
   obrisi(id: number) {
@@ -45,4 +49,6 @@ export class CenovniciComponent implements OnInit {
       }
     );
   }
+
+
 }

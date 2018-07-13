@@ -22,6 +22,9 @@ export class CenovnikService {
   obrisi( id: number) {
     return this.http.delete('api/cenovnik/' + id);
   }
+ obrisiStavku( id: number) {
+    return this.http.delete('api/stavkaCenovnika/' + id);
+  }
 
   postCenovnik (cenovnik: Cenovnik, idValute: number) {
     return this.http.post( 'api/cenovnik/' + idValute, cenovnik);

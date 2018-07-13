@@ -97,6 +97,7 @@ export class StavkaCenovnika {
   id: number;
   cena: number;
   proizvod: Proizvod;
+  cenovnik: Cenovnik;
 }
 
 
@@ -104,6 +105,8 @@ export class Cenovnik {
   id: number;
   datumVazenja: Date;
   valuta: string;
+  stavkaCenovnikaList: StavkaCenovnika[];
+  preduzece: Preduzece;
 }
 
 export class Valuta {

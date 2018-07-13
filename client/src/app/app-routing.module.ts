@@ -36,7 +36,7 @@ const routes: Routes = [
   {path: 'cenovnici', component: CenovniciComponent},
   {path: 'stavke-cenovnika', component: StavkeCenovnikaComponent},
   {path: 'nalog-za-placanje', component: NalogComponent},
-  {path: 'novi-cenovnik', component: NoviCenovnikComponent}
+  {path: 'cenovnik', component: NoviCenovnikComponent}
 ];
 
 @NgModule({
