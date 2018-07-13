@@ -1,0 +1,43 @@
+<app-header>
+</app-header>
+<h3>Valute</h3>
+<p>
+<button class="btn-primary" (click)="openModal(template)">Dodaj valutu</button>
+</p>
+<table *ngIf="valute.length > 0" border="2" style="..." align="center" class="table">
+  <tr>
+
+    <th>Oznaka</th>
+    <th>Naziv</th>
+    <th></th>
+  </tr>
+
+  <tr *ngFor="let valuta of valute">
+    <td> {{valuta.oznaka}}</td>
+    <td>{{valuta.naziv}}</td>
+    <td><button class="btn-link" (click)="obrisi(valuta.id)">Obriši</button></td>
+  </tr>
+
+</table>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Dodaj valutu</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   <p>
+    <label for="oznaka">Oznaka (3 karaktera)</label>
+    <input id="oznaka" [(ngModel)]= "val.oznaka" type="text">
+   </p>
+    <p>
+    <label for="naziv">Naziv</label>
+    <input id="naziv" [(ngModel)]= "val.naziv" type="text">
+    </p>
+    <p>
+    <button class="btn-warning" (click)="dodajValutu()">Dodaj</button>
+    </p>
+  </div>
+</ng-template>

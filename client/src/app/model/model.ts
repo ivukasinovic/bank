@@ -137,3 +137,9 @@ export class NalogZaPlacanje {
   hitno: boolean;
   iznos: number;
 }
+
+export class JedinicaMere {
+  id: number;
+  naziv: number;
+  skracenica: number;
+}

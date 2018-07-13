@@ -11,7 +11,7 @@ public class JedinicaMere implements Serializable {
     @Column(length = 30)
     private String naziv;
 
-    @Column(length = 10)
+    @Column(length = 10, unique = true)
     private String skracenica;
 
     public JedinicaMere(){}
