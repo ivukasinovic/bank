@@ -36,6 +36,8 @@ import { NalogComponent } from './nalog/nalog.component';
 import { JedinicaMereComponent } from './jedinica-mere/jedinica-mere.component';
 import { ValuteComponent } from './valute/valute.component';
 import {SifrarniciService} from './service/sifrarnici.service';
+import { GrupaProizvodaComponent } from './grupa-proizvoda/grupa-proizvoda.component';
+import {GrupaProizvodaService} from './service/grupa-proizvoda.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import {SifrarniciService} from './service/sifrarnici.service';
     JedinicaMereComponent,
     ValuteComponent,
     DodajPdvComponent,
-    NalogComponent
+    NalogComponent,
+    GrupaProizvodaComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import {SifrarniciService} from './service/sifrarnici.service';
     PdvService,
     StopaPdvService,
     CenovnikService,
-    SifrarniciService],
+    SifrarniciService,
+    GrupaProizvodaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

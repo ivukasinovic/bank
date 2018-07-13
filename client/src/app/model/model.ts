@@ -78,7 +78,7 @@ export class GrupaProizvoda {
   id: number;
   naziv: string;
   opis: string;
-  pdv: string; // id pdv kom pripada
+  pdv: string; // naziv pdv kom pripada
 }
 
 export class StavkaFakture {
