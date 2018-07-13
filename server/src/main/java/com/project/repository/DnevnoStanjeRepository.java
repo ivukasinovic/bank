@@ -13,4 +13,7 @@ public interface DnevnoStanjeRepository extends JpaRepository<DnevnoStanje, Long
     DnevnoStanje findByPreduzeceAndDatum(Preduzece preduzece, Date date);
 
     DnevnoStanje save(DnevnoStanje dnevnoStanje);
+
+    DnevnoStanje findByPreduzece_Id(Long id);
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Faktura, StavkaFakture} from '../model/model';
+import {Faktura, StavkaFakture, StavkaIzvoda} from '../model/model';
 import {FakturaService} from '../service/faktura.service';
 import {Router} from '@angular/router';
 
@@ -12,6 +12,7 @@ export class MojeFaktureComponent implements OnInit {
 
   ulazne: Faktura[];
   izlazne: Faktura[];
+  stavkaIzvoda: StavkaIzvoda;
 
   constructor(private fakturaService: FakturaService, private router: Router) {
 

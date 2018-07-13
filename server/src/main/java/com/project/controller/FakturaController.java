@@ -3,8 +3,10 @@ package com.project.controller;
 import com.project.domain.Faktura;
 import com.project.domain.FakturaStatus;
 import com.project.domain.Preduzece;
+import com.project.domain.StavkaIzvoda;
 import com.project.repository.PreduzeceRepository;
 import com.project.service.FakturaService;
+import com.project.service.StavkaIzvodaService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
@@ -24,8 +26,11 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import static java.lang.Math.abs;
 
 /**
  * Created by Ivan V. on 07-Jul-18
@@ -39,6 +44,9 @@ public class FakturaController {
 
     @Autowired
     private PreduzeceRepository preduzeceRepository;
+
+    @Autowired
+    private StavkaIzvodaService stavkaIzvodaService;
 
     @Autowired
     private DataSource dataSource;
@@ -106,25 +114,53 @@ public class FakturaController {
         // kod izlaznih
         if(!faktura.getPrimalac().getNaziv().equals(preduzeceF.getNaziv()) ) {
 
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometKorist(preostaliIznosZaUplatu);
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret(preostaliIznosZaUplatu * (-1));
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret(abs(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrethodnoStanje()) + preostaliIznosZaUplatu);
+            faktura.getDuznik().getDnevnoStanjes().get(0).setPrometKorist(faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje() +  preostaliIznosZaUplatu);
 
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()  ));
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje())  );
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometTeret()); // Menjati !
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setNovoStanje(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometKorist());          //faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometTeret());          //(faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje())  );
+
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setUkupnostanje(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometTeret());
 
 
-            faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()));
-            faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) );
+            faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret()); //(faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()));
+            faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist()); //- faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret() ); //(faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) );
+
+            faktura.getDuznik().getDnevnoStanjes().get(0).setUkupnostanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret());
+
+            StavkaIzvoda stavkaIzvoda = new StavkaIzvoda();
+            stavkaIzvoda.setProdavac(faktura.getPrimalac());
+            stavkaIzvoda.setSvrha("storniranje");
+            stavkaIzvoda.setDatumNaloga(new Date());
+            stavkaIzvoda.setDatumValute(new Date());
+            stavkaIzvoda.setModel(97);     // ? model broj
+
+            try {
+                Integer jkl = Integer.parseInt( faktura.getPrimalac().getBrojRacuna() );
+            } catch (Exception e){}
+
+            stavkaIzvoda.setIznos(preostaliIznosZaUplatu);
+            stavkaIzvoda.setDnevnoStanje( faktura.getPrimalac().getDnevnoStanjes().get(0) );
+            // stavkaIzvoda.setPozivNaBroj(  );
+            stavkaIzvoda.setKupac(faktura.getDuznik());
+
+            stavkaIzvodaService.save(stavkaIzvoda);
 
         }else {
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometKorist(preostaliIznosZaUplatu * (-1));
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret(preostaliIznosZaUplatu);
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrometTeret( abs(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrethodnoStanje()) + preostaliIznosZaUplatu );
+            faktura.getDuznik().getDnevnoStanjes().get(0).setPrometKorist(faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje() +  preostaliIznosZaUplatu);
 
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()) * (-1));
-            faktura.getPrimalac().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) * (-1) );
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometTeret() );     //(faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()) * (-1));
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setNovoStanje(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometKorist() );//faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometTeret());           //  (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) * (-1) );
 
-            faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje((faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje()));
-            faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje( (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) );
+            faktura.getPrimalac().getDnevnoStanjes().get(0).setUkupnostanje(faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getPrimalac().getDnevnoStanjes().get(0).getPrometTeret());
+
+
+            faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret() );                             // (faktura.getDuznik().getDnevnoStanjes().get(0).getNovoStanje() );
+            faktura.getDuznik().getDnevnoStanjes().get(0).setNovoStanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist() );    //faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret()); // (faktura.getUkupnoZaPlacanje() - faktura.getPreostaliIznos() + faktura.getDuznik().getDnevnoStanjes().get(0).getPrethodnoStanje()) );
+
+            faktura.getDuznik().getDnevnoStanjes().get(0).setUkupnostanje(faktura.getDuznik().getDnevnoStanjes().get(0).getPrometKorist() - faktura.getDuznik().getDnevnoStanjes().get(0).getPrometTeret());
+
 
         }
 //        faktura.getDuznik().getDnevnoStanjes().get(0).setPrethodnoStanje(faktura.getPreostaliIznos());

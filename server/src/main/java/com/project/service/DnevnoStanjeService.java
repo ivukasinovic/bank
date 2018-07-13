@@ -14,4 +14,6 @@ public interface DnevnoStanjeService {
 
     DnevnoStanje save(DnevnoStanje dnevnoStanje);
 
+    DnevnoStanje findByPreduzece_Id(Long id);
+
 }

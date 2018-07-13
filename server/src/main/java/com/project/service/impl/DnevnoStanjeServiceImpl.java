@@ -33,4 +33,9 @@ public class DnevnoStanjeServiceImpl implements DnevnoStanjeService {
     public DnevnoStanje save(DnevnoStanje dnevnoStanje) {
         return dnevnoStanjeRepository.save(dnevnoStanje);
     }
+
+    @Override
+    public DnevnoStanje findByPreduzece_Id(Long id) {
+        return dnevnoStanjeRepository.findByPreduzece_Id(id);
+    }
 }

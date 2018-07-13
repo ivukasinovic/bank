@@ -145,3 +145,25 @@ export class JedinicaMere {
   naziv: string;
   skracenica: string;
 }
+
+
+export class DnevnoStanje {
+  id: number;
+  datum: Date;
+  prometKorist: number;
+  prometTeret: number;
+  ukupnostanje: number;
+
+}
+
+export class StavkaIzvoda {
+  id: number;
+  prodavac: Preduzece;
+  svrha: string;
+  datumNaloga: string;
+  datumValute: string;
+  model: number;
+  pozivNaBroj: number;
+  iznos: number;
+  dnevnoStanjes: DnevnoStanje;
+}

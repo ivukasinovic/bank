@@ -35,6 +35,15 @@ public class DnevnoStanjeController {
     }
 
     @RequestMapping(
+            value  = "/pred/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DnevnoStanje> getOnePreduzece(@PathVariable Long id){
+        DnevnoStanje dnevnoStanje = dnevnoStanjeService.findByPreduzece_Id(id);
+        return new ResponseEntity<>(dnevnoStanje, HttpStatus.OK);
+    }
+
+    @RequestMapping(
             value  = "/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)

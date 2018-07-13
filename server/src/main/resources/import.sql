@@ -117,11 +117,11 @@ INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicin
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (7,10,19,30,3,43,15,21,120,6,1);
 INSERT INTO stavka_fakture (id, iznos_pdv, iznos_rabata, jedinicna_cena, kolicina_stavke_fakture,osnovica,procenat_rabata, stopa_pdv, ukupan_iznos,faktura_id,proizvod_id) VALUES (8,14,15,20,2,140,14,11,420,6,3);
 
-INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (1,CURRENT_DATE ,0,0,0,0,0,1);
-INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (2,CURRENT_DATE ,0,0,0,0,0,2);
-INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (3,CURRENT_DATE ,0,0,0,0,0,3);
-INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (4,CURRENT_DATE ,0,0,0,0,0,4);
-INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id) VALUES (5,CURRENT_DATE ,0,0,0,0,0,5);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id,ukupnostanje) VALUES (1,CURRENT_DATE ,0,0,0,0,0,1,0);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id,ukupnostanje) VALUES (2,CURRENT_DATE ,0,0,0,0,0,2,0);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id,ukupnostanje) VALUES (3,CURRENT_DATE ,0,0,0,0,0,3,0);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id,ukupnostanje) VALUES (4,CURRENT_DATE ,0,0,0,0,0,4,0);
+INSERT INTO dnevno_stanje(id, datum, novo_stanje, prethodno_stanje, promet_korist, promet_teret, rezervisano, preduzece_id,ukupnostanje) VALUES (5,CURRENT_DATE ,0,0,0,0,0,5,0);
 
 INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik_id, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac_id, svrha, iznos) values (1, '2018-07-07', '2018-07-07', 1, true, 10, 20, 'RSD', '11', '222-1234567890123-22', 2, 'naplata duga',102);
 INSERT INTO nalog_za_placanje (id, datum_naloga, datum_valute, duznik_id, hitno, model_odobrenja, model_zaduzenja, oznaka_valute, poziv_na_broj_odobrenja, poziv_na_broj_zaduzenja, primalac_id, svrha, iznos) values (2, '2018-06-06', '2018-06-06', 2, false, 30, 40, 'RSD', '22', '333-1234567890123-33', 3, 'naplata duga',103);

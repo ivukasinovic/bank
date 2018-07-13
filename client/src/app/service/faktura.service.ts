@@ -59,4 +59,8 @@ export class FakturaService {
   getSviPartnei(asd: number) {
     return this.http.get('api/partnerstvo/ostali/' + asd);
   }
+
+  getDnevnoStanje(sd: number) {
+    return this.http.get('api/dnevnoStanje/pred/' + sd);
+  }
 }

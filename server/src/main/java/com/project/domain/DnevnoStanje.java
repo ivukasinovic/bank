@@ -15,7 +15,7 @@ public class DnevnoStanje {
     @Temporal(TemporalType.DATE)
     private Date datum;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double prethodnoStanje;
 
     @Column(nullable = false)
@@ -24,10 +24,13 @@ public class DnevnoStanje {
     @Column(nullable = false)
     private double prometTeret;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double novoStanje;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
+    private double ukupnostanje;
+
+    @Column(nullable = true)
     private double rezervisano;
 
     @ManyToOne(optional = false)
@@ -108,5 +111,13 @@ public class DnevnoStanje {
 
     public void setStavkeIzvoda(List<StavkaIzvoda> stavkeIzvoda) {
         this.stavkeIzvoda = stavkeIzvoda;
+    }
+
+    public double getUkupnostanje() {
+        return ukupnostanje;
+    }
+
+    public void setUkupnostanje(double ukupnostanje) {
+        this.ukupnostanje = ukupnostanje;
     }
 }
