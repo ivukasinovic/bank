@@ -53,7 +53,9 @@ public class StopaPDVController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StopaPDV> save(@RequestBody StopaPDV stopaPDV){
-        StopaPDV novaStopaPDV = stopaPDVService.save(stopaPDV);
+        StopaPDV novaStopaPDV = null;
+        if(stopaPDV != null)
+         novaStopaPDV = stopaPDVService.save(stopaPDV);
         return new ResponseEntity<>(novaStopaPDV, HttpStatus.OK);
     }
 
