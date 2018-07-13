@@ -51,7 +51,10 @@ public class StavkaFaktureController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StavkaFakture> delete(@RequestBody StavkaFakture stavkaFakture){
-        StavkaFakture noviStavkaFakture = stavkaFaktureService.save(stavkaFakture);
+        StavkaFakture noviStavkaFakture = null;
+        if(stavkaFakture != null)
+            noviStavkaFakture = stavkaFaktureService.save(stavkaFakture);
         return new ResponseEntity<>(noviStavkaFakture, HttpStatus.OK);
     }
+
 }

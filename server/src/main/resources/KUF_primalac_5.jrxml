@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bac70c5-76dd-4e96-91d4-1cb2fb8c8664">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Platni promet preduzeca"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="331"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="658"/>
+	<queryString>
+		<![CDATA[SELECT poslovna.faktura.bezpdv,
+	poslovna.faktura.broj,
+	poslovna.faktura.datum,
+	poslovna.faktura.preostali_iznos,
+	poslovna.faktura.ukupanpdv,
+	poslovna.faktura.ukupan_rabat,
+	poslovna.faktura.ukupno_za_placanje,
+	poslovna.faktura.duznik_id,
+	poslovna.faktura.primalac_id
+FROM poslovna.faktura
+WHERE 
+	 poslovna.faktura.datum > "2017-12-31" 
+	 AND poslovna.faktura.datum < "2018-07-15" 
+	 AND poslovna.faktura.primalac_id = '5']]>
+	</queryString>
+	<field name="bezpdv" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="bezpdv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="broj" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="broj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="datum" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="datum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="preostali_iznos" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="preostali_iznos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="ukupanpdv" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ukupanpdv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="ukupan_rabat" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ukupan_rabat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="ukupno_za_placanje" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ukupno_za_placanje"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="duznik_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="duznik_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="primalac_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="primalac_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="188" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="40" height="20" uuid="1ca1b571-0e0e-4ae9-b0ef-dfe43faedeea"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="20" width="100" height="20" uuid="a5a986ec-d9b3-4592-b427-3b01dfc04d7b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="480" y="20" width="40" height="15" uuid="411853da-7604-47ca-aa96-5f03851d0c78"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="520" y="20" width="30" height="15" uuid="ffc92b94-ea09-4bf8-9d87-b1e5beada645"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="40" width="340" height="58" uuid="dc6dbc71-613c-41cd-bced-b0b9420491b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="26"/>
+				</textElement>
+				<text><![CDATA[Knjiga ulaznih faktura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="240" height="19" uuid="32f671e6-f9ee-42e3-9fb6-6829a505bd42"/>
+				<text><![CDATA[Poslovna informatika: Platni promet preduzeca, tim 9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="145" width="80" height="20" uuid="de7da4b8-12b4-436c-986f-dfe721f6e46e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Datum kreiranja:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="145" width="100" height="20" uuid="116e009b-f8ce-47cb-a774-29eed35e95d4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ukupno za placanje:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="145" width="40" height="20" uuid="3d3304a7-c439-409b-811a-8a8707b03196"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Duznik:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="145" width="50" height="20" uuid="108b58cf-fb48-4c7e-ad33-2479580dd9b1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Primalac:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="60" height="20" uuid="474e4649-c149-421b-b2b3-782355666cf5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Broj fakture:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="145" width="40" height="20" uuid="54d57c84-3430-4bb0-a7af-d303338d48c6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Rabat:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="145" width="60" height="20" uuid="fe596d1d-13e9-4293-bcda-20c25687e6b8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Sa PDV-om:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="145" width="60" height="20" uuid="ba6353ea-f0de-4d90-a27d-9ac17896e33a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Bez PDV-a:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-10" y="165" width="580" height="2" uuid="31c44091-b9c3-4bf8-8c73-6eb1ebfdc64b"/>
+			</line>
+			<staticText>
+				<reportElement x="140" y="98" width="340" height="30" uuid="6ac6003e-2414-43cc-813e-9a91f564010b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="16"/>
+				</textElement>
+				<text><![CDATA[01.01.2018. - 14.07.2018.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="145" width="70" height="20" uuid="10c89430-81a5-44f1-bbbd-7c8b6eeba133"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Preostali iznos:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="12" width="50" height="18" uuid="c0556f9d-9ba8-47d1-b0da-37ba018d0c73"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{primalac_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="12" width="60" height="19" uuid="50e106d4-5705-4c38-912d-989ad2f21c46"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ukupanpdv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="12" width="100" height="19" uuid="b8136716-2017-483c-aa52-92d90ad68af3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ukupno_za_placanje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="12" width="60" height="18" uuid="a447446d-1785-49f4-925e-38a542cb8acf"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{broj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="12" width="40" height="18" uuid="5d98d69a-4c82-4529-9364-8d59aeedc551"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{duznik_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="12" width="40" height="19" uuid="4342ce2b-b435-4aaa-a9d8-a74b750e3a9f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ukupan_rabat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="12" width="60" height="19" uuid="565d8ead-b52d-4e54-9325-32cba771311e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{bezpdv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="12" width="80" height="18" uuid="8e2008af-7859-4463-bc67-df4b48df50f6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{datum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="12" width="70" height="19" uuid="4682ac2e-f81f-4a22-b426-cce22bffc6ad"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{preostali_iznos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

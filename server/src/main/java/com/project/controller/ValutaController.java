@@ -53,7 +53,9 @@ public class ValutaController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Valuta> save(@RequestBody Valuta valuta){
         try {
-            Valuta novaValuta = valutaService.save(valuta);
+            Valuta novaValuta = null;
+            if(valuta != null)
+                novaValuta = valutaService.save(valuta);
             return new ResponseEntity<>(novaValuta, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);

@@ -48,7 +48,9 @@ public class AdresaController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Adresa> createAdres (@RequestBody Adresa country) {
-        Adresa userNew = adresaService.save(country);
+        Adresa userNew = null;
+        if(country != null)
+            userNew = adresaService.save(country);
         return new ResponseEntity(userNew, HttpStatus.OK);
     }
 
@@ -73,6 +75,5 @@ public class AdresaController {
         adresaService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
 }

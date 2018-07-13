@@ -48,7 +48,9 @@ public class StavkaIzvodaController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StavkaIzvoda> save(@RequestBody StavkaIzvoda stavkaIzvoda){
-        StavkaIzvoda novaStavkaIzvoda = stavkaIzvodaService.save(stavkaIzvoda);
+        StavkaIzvoda novaStavkaIzvoda = null;
+        if(stavkaIzvoda != null)
+            novaStavkaIzvoda = stavkaIzvodaService.save(stavkaIzvoda);
         return new ResponseEntity<>(novaStavkaIzvoda, HttpStatus.OK);
     }
 

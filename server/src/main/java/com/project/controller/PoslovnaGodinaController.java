@@ -48,7 +48,9 @@ public class PoslovnaGodinaController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PoslovnaGodina> save(@RequestBody PoslovnaGodina poslovnaGodina){
-        PoslovnaGodina novaPoslovnaGodina = poslovnaGodinaService.save(poslovnaGodina);
+        PoslovnaGodina novaPoslovnaGodina = null;
+        if(poslovnaGodina != null)
+            novaPoslovnaGodina = poslovnaGodinaService.save(poslovnaGodina);
         return new ResponseEntity<>(novaPoslovnaGodina, HttpStatus.OK);
     }
 

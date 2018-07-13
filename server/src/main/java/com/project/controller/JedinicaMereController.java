@@ -54,13 +54,13 @@ public class JedinicaMereController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JedinicaMere> save(@RequestBody JedinicaMere jedinicaMere){
         try {
-            JedinicaMere novaJedinicaMere = jedinicaMereService.save(jedinicaMere);
+            JedinicaMere novaJedinicaMere = null;
+            if(jedinicaMere != null)
+                novaJedinicaMere = jedinicaMereService.save(jedinicaMere);
             return new ResponseEntity<>(novaJedinicaMere, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.CONFLICT);
         }
-
-
     }
 
 }

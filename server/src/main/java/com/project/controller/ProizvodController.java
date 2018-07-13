@@ -51,7 +51,10 @@ public class ProizvodController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Proizvod> delete(@RequestBody Proizvod proizvod){
-        Proizvod noviProizvod = proizvodService.save(proizvod);
+        Proizvod noviProizvod = null;
+        if(proizvod != null)
+            noviProizvod = proizvodService.save(proizvod);
         return new ResponseEntity<>(noviProizvod, HttpStatus.OK);
     }
+
 }

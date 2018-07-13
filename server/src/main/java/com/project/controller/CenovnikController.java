@@ -64,9 +64,12 @@ public class CenovnikController {
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity update(@RequestBody Cenovnik cenovnik) {
+        if(cenovnik != null) {
+            cenovnikService.save(cenovnik);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
 
-        cenovnikService.save(cenovnik);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(
@@ -82,11 +85,10 @@ public class CenovnikController {
         Valuta valuta = valutaService.findOne(idValute);
         cenovnik.setValuta(valuta);
 
-        Cenovnik noviCenovnik = cenovnikService.save(cenovnik);
+        Cenovnik noviCenovnik = null;
+        if(cenovnik != null)
+            noviCenovnik = cenovnikService.save(cenovnik);
         return new ResponseEntity<>(noviCenovnik, HttpStatus.OK);
     }
-
-
-
 
 }

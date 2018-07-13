@@ -48,7 +48,9 @@ public class DnevnoStanjeController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<DnevnoStanje> delete(@RequestBody DnevnoStanje dnevnoStanje){
-        DnevnoStanje novoDnevnoStanje = dnevnoStanjeService.save(dnevnoStanje);
+        DnevnoStanje novoDnevnoStanje = null;
+        if(dnevnoStanje != null)
+            novoDnevnoStanje = dnevnoStanjeService.save(dnevnoStanje);
         return new ResponseEntity<>(novoDnevnoStanje, HttpStatus.OK);
     }
 
