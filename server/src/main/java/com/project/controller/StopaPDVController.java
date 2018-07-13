@@ -81,7 +81,7 @@ public class StopaPDVController {
         PDV pdv  = new PDV();
         pdv = pdvService.findOne(id);
         stopaPDV.setPdv(pdv);
-        //stopaPDV.setId(null);
+
         novaStopaPDV = stopaPDVService.save(stopaPDV);
         return new ResponseEntity<>(novaStopaPDV, HttpStatus.OK);
     }

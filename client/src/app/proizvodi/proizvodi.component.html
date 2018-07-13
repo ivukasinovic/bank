@@ -1,0 +1,27 @@
+<app-header></app-header>
+<p>
+  <button class="btn-primary" routerLink="/novi-proizvod">Dodaj novi proizvod</button>
+</p>
+<table *ngIf="proizvodiList.length > 0" border="2" style="..." align="center" class="table">
+  <tr>
+
+    <th>Naziv</th>
+    <th>Opis</th>
+    <th>Grupa</th>
+    <th>Jedinica mere</th>
+    <th></th>
+  </tr>
+
+  <tr *ngFor="let proizvod of proizvodiList">
+    <td> {{proizvod.naziv}}</td>
+    <td>{{proizvod.opis}}</td>
+    <td>{{proizvod.grupaProizvoda}}</td>
+    <td>{{proizvod.jedinicaMere}}</td>
+    <th>
+      <button class="btn-link" (click)="obrisi(proizvod.id)">Obriši</button>
+      <button class="btn-link" (click)="update(proizvod)">Update</button>
+    </th>
+  </tr>
+
+</table>
+

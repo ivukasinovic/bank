@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.project.domain.Preduzece;
 import com.project.domain.Proizvod;
 
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.List;
  */
 public interface ProizvodService {
     List<Proizvod> findAll();
+
+    List<Proizvod> findByPreduzece(Preduzece preduzece);
 
     Proizvod findOne(Long id);
 
