@@ -83,7 +83,9 @@ public class FakturaController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Faktura> delete(@RequestBody Faktura faktura){
-        Faktura noviFaktura = fakturaService.save(faktura);
+        Faktura noviFaktura = null;
+        if(faktura != null)
+            noviFaktura = fakturaService.save(faktura);
         return new ResponseEntity<>(noviFaktura, HttpStatus.OK);
     }
 
@@ -177,6 +179,7 @@ public class FakturaController {
 
         return new ResponseEntity<>(fakture,HttpStatus.OK);
     }
+
     @RequestMapping(value = "/ios", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> getIOS() throws JRException, SQLException {

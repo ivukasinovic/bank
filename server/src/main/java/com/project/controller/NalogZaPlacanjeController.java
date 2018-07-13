@@ -52,7 +52,9 @@ public class NalogZaPlacanjeController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<NalogZaPlacanje> delete(@RequestBody NalogZaPlacanje nalogZaPlacanje){
-        NalogZaPlacanje noviNalogZaPlacanje = nalogZaPlacanjeService.save(nalogZaPlacanje);
+        NalogZaPlacanje noviNalogZaPlacanje = null;
+        if(nalogZaPlacanje != null)
+            noviNalogZaPlacanje = nalogZaPlacanjeService.save(nalogZaPlacanje);
         return new ResponseEntity<>(noviNalogZaPlacanje, HttpStatus.OK);
     }
 
@@ -60,7 +62,7 @@ public class NalogZaPlacanjeController {
             value = "/generisi/{idFakture}/{iznos}",
             method = RequestMethod.GET)
     public ResponseEntity generisiIzPrijedloga(@PathVariable("idFakture") Long idFakture, @PathVariable("iznos") Double iznos) {
-
+        //dodati proveru za iznos
         nalogZaPlacanjeService.generisiNalog(idFakture, iznos);
         return new ResponseEntity<>(HttpStatus.OK);
     }

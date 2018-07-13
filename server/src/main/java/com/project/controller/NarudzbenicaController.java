@@ -52,7 +52,9 @@ public class    NarudzbenicaController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Narudzbenica> delete(@RequestBody Narudzbenica narudzbenica){
-        Narudzbenica noviNarudzbenica = narudzbenicaService.save(narudzbenica);
+        Narudzbenica noviNarudzbenica = null;
+        if(narudzbenica != null)
+            noviNarudzbenica = narudzbenicaService.save(narudzbenica);
         return new ResponseEntity<>(noviNarudzbenica, HttpStatus.OK);
     }
     

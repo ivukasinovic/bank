@@ -64,11 +64,10 @@ public class StavkaCenovnikaController {
         stavkaCenovnika.setCenovnik(cenovnik);
         stavkaCenovnika.setProizvod(proizvodService.findOne(idProizvoda));
 
-        StavkaCenovnika novaStavkaCenovnika = stavkaCenovnikaService.save(stavkaCenovnika);
-
+        StavkaCenovnika novaStavkaCenovnika = null;
+        if(stavkaCenovnika != null)
+            novaStavkaCenovnika = stavkaCenovnikaService.save(stavkaCenovnika);
         return new ResponseEntity<>(novaStavkaCenovnika, HttpStatus.OK);
     }
-
-
 
 }

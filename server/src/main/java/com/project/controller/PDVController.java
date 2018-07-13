@@ -51,9 +51,13 @@ public class PDVController {
     public ResponseEntity<PDV> save(@RequestBody PDV pdv){
         //pdv.setStopaPDVList(null);
         System.out.println("\nId:" + pdv.getId());
+
         PDV p = pdvService.findOne(pdv.getId());
         p.setNaziv(pdv.getNaziv());
-        PDV noviPdv = pdvService.save(p);
+
+        PDV noviPdv = null;
+        if(p != null)
+            noviPdv = pdvService.save(p);
         return new ResponseEntity<>(noviPdv, HttpStatus.OK);
     }
 
@@ -64,7 +68,10 @@ public class PDVController {
     public ResponseEntity<PDV> dodavanje(@RequestBody PDV pdv){
         //pdv.setStopaPDVList(null);
 
-        PDV noviPdv = pdvService.save(pdv);
+        PDV noviPdv = null;
+        if(pdv != null)
+            noviPdv = pdvService.save(pdv);
         return new ResponseEntity<>(noviPdv, HttpStatus.OK);
     }
+
 }
