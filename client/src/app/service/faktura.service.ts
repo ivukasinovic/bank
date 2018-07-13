@@ -42,8 +42,15 @@ export class FakturaService {
     return this.http.get('api/faktura/stornirana/' + fakturaId);
   }
 
+ dodajPartnerstvoo (fakturaId: Partnerstvo) {
+    return this.http.post('api/partnerstvo' , fakturaId);
+  }
+
   brisiPartnesrstvo(fakturaId: number) {
     return this.http.delete('api/partnerstvo/' + fakturaId);
   }
 
+  getSviPartnei(asd: number) {
+    return this.http.get('api/partnerstvo/ostali/' + asd);
+  }
 }
