@@ -47,7 +47,9 @@ public class PreduzeceController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Preduzece> delete(@RequestBody Preduzece preduzece){
-        Preduzece noviPartnerstvo = preduzeceService.save(preduzece);
+        Preduzece noviPartnerstvo = null;
+        if(preduzece != null)
+           noviPartnerstvo = preduzeceService.save(preduzece);
         return new ResponseEntity<>(noviPartnerstvo, HttpStatus.OK);
     }
 

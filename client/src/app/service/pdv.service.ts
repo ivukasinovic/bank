@@ -38,4 +38,9 @@ export class PdvService {
   updatePdvStopaWithPDVId(pdvStopa: StopaPDV, pdvId: number ) {
     return this.http.post('api/stopaPDV/izmena/' + pdvId, pdvStopa);
   }
+  exportNaloga(idDuznik: number) {
+    return this.http.get('api/xml/export/' + idDuznik);
+
+  }
 }
+
