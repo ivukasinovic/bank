@@ -120,6 +120,8 @@ public class StavkaIzvoda {
         return iznos;
     }
 
+
+
     public void setIznos(Double iznos) {
         this.iznos = iznos;
     }

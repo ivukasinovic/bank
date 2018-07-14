@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Faktura, StavkaFakture} from '../model/model';
+import {Faktura, StavkaFakture, StavkaIzvoda} from '../model/model';
 import {FakturaService} from '../service/faktura.service';
 import {Router} from '@angular/router';
 
@@ -12,6 +12,7 @@ export class MojeFaktureComponent implements OnInit {
 
   ulazne: Faktura[];
   izlazne: Faktura[];
+  stavkaIzvoda: StavkaIzvoda;
 
   constructor(private fakturaService: FakturaService, private router: Router) {
 
@@ -20,7 +21,7 @@ export class MojeFaktureComponent implements OnInit {
         this.ulazne = response;
         this.ulazne.forEach(function (value, index, array) {
           console.log(value.stavkaFaktureList);
-        })
+        });
       },
       error1 => {
         alert('Nije uspjelo ucitavanje ulaznih faktura!');
@@ -60,7 +61,7 @@ export class MojeFaktureComponent implements OnInit {
   getKUF() {
     this.fakturaService.getIzvestaj('kuf')
       .subscribe(() => {
-          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!');
       },
         error1 => {
           alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
@@ -69,7 +70,7 @@ export class MojeFaktureComponent implements OnInit {
   getKIF() {
     this.fakturaService.getIzvestaj('kif')
       .subscribe(() => {
-          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!');
         },
         error1 => {
           alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
@@ -78,7 +79,7 @@ export class MojeFaktureComponent implements OnInit {
   getKP() {
     this.fakturaService.getIzvestaj('kp')
       .subscribe(() => {
-          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!');
         },
         error1 => {
           alert('Doslo je do greske, nije uspelo generisanje izvestaja!');
@@ -87,7 +88,7 @@ export class MojeFaktureComponent implements OnInit {
   getIOS() {
     this.fakturaService.getIzvestaj('ios')
       .subscribe(() => {
-          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!')
+          alert('Uspesno ste generisali izvestaj, sacuvan je na desktopu!');
         },
         error1 => {
           alert('Doslo je do greske, nije uspelo generisanje izvestaja!');

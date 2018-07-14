@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Adresa, Preduzece} from '../model/model';
+import {DnevnoStanje, Partnerstvo, Preduzece} from '../model/model';
+import {Adresa} from '../model/model';
 import {FakturaService} from '../service/faktura.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class ProfilComponent implements OnInit {
 
   preduzece: Preduzece;
   preduzece22: Preduzece;
+
+  dnevnoStanje: DnevnoStanje;
 
   constructor(private  fakturaService: FakturaService) {
     this.preduzece = new Preduzece();
@@ -25,6 +28,15 @@ export class ProfilComponent implements OnInit {
         this.preduzece = response;
       }
     );
+
+    this.fakturaService.getDnevnoStanje(this.preduzece22.id).subscribe(
+      (response: DnevnoStanje) => {
+        this.dnevnoStanje = response;
+      }
+    );
   }
+
+
+
 
 }

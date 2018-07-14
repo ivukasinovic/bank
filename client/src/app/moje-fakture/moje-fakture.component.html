@@ -90,8 +90,8 @@
 
               <td>
                 {{ faktura.status }}
-                <button class="btn-link pull-right" *ngIf="faktura.status != 'STORNIRANA'" (click)="activate(faktura.id)" >Storniraj</button>
-              </td>
+                <button class="btn-link pull-right" *ngIf="faktura.status != 'POSLATA'" (click)="activate(faktura.id)" >Storniraj</button>
+              </td>                                                   <!-- 'STORNIRANA' -->
 
               <td><button class="btn-link" (click)="setStavke(faktura.stavkaFaktureList)">Stavke</button></td>
             </tr>

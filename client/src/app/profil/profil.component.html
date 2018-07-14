@@ -1,4 +1,45 @@
 <app-header></app-header>
+
+<div #mydiv>
+
+  <br>
+  <div align="center"><h1> Profil </h1></div>
+  <br>
+<!--   <table border="2" style="..." align="center" class="table">
+    <tr>
+      <th>Naziv</th>
+      <th>Pib</th>
+      <th>E-mail</th>
+    </tr>
+    <tr >
+      <td> {{ preduzece.naziv}}</td>
+      <td> {{ preduzece.pib }}</td>
+      <td>{{ preduzece.email }}</td>
+    </tr>
+
+  </table> -->
+
+  <hr>
+  <br>
+    <div align="center"><h1> Dnevno stanje preduzeca </h1></div>
+  <br>
+  <hr>
+
+  <table  border="3" style="..." align="center" class="table">
+    <tr>
+      <th>Danasnji datum</th>
+      <th>Korist (dobir)</th>
+      <th>Teret</th>
+      <th>Ukupno dnevno stanje</th>
+    </tr>
+    <tr >
+      <td> {{ dnevnoStanje.datum}}</td>
+      <td> {{ dnevnoStanje.prometKorist }}</td>
+      <td>{{ dnevnoStanje.prometTeret }}</td>
+      <td>{{ dnevnoStanje.ukupnostanje }}</td>
+    </tr>
+  </table>
+
 <div class="panel panel-info">
 
   <div class="panel-body">
@@ -8,4 +49,5 @@
     <p><b>Broj računa:</b> {{preduzece.brojRacuna}}</p>
     <p><b>Adresa:</b> {{preduzece.adresa.ulica}} {{preduzece.adresa.broj}},{{preduzece.adresa.postanski_broj}} {{preduzece.adresa.grad}}, {{preduzece.adresa.drzava}}</p>
   </div>
+
 </div>
