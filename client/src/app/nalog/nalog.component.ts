@@ -39,7 +39,7 @@ export class NalogComponent implements OnInit {
   export() {
     alert('Preduuzece :' + this.preduzece.naziv);
     this.pdvService.exportNaloga(this.preduzece.id)
-      .subscribe(response => {
+      .subscribe(() => {
           alert('Uspesno ste eksportovali!');
           window.location.reload();
         },
