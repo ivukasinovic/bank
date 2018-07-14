@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<exportNalogaResponse xmlns="http://poslovna.com/soap-example">
+    <nalozi>
+        <id>4</id>
+        <kupac>
+            <id>5</id>
+            <naziv>Arcus Health</naziv>
+            <pib>12121212125</pib>
+            <brojRacuna>123-9876543211234-11</brojRacuna>
+            <adresa>
+                <id>5</id>
+                <broj>14a</broj>
+                <ulica>Tolstojeva</ulica>
+                <grad>Novi Sad</grad>
+                <postanskiBroj>21000</postanskiBroj>
+                <drzava>Srbija</drzava>
+            </adresa>
+        </kupac>
+        <prodavac>
+            <id>1</id>
+            <naziv>SDD Technology Group</naziv>
+            <pib>12121212120</pib>
+            <brojRacuna>123-9876543211234-45</brojRacuna>
+            <adresa>
+                <id>6</id>
+                <broj>11a</broj>
+                <ulica>Karadjordjeva</ulica>
+                <grad>Beograd</grad>
+                <postanskiBroj>11000</postanskiBroj>
+                <drzava>Srbija</drzava>
+            </adresa>
+        </prodavac>
+        <svrha>naplata duga</svrha>
+        <datumNaloga>2018-04-04T00:00:00.000+02:00</datumNaloga>
+        <modelZaduzenja>80</modelZaduzenja>
+        <pozivNaBrojZaduzenja>555-1234567890123-55</pozivNaBrojZaduzenja>
+        <modelOdobrenja>70</modelOdobrenja>
+        <pozivNaBrojOdobrenja>44</pozivNaBrojOdobrenja>
+        <oznakaValute>USD</oznakaValute>
+        <hitno>true</hitno>
+        <iznos>500.0</iznos>
+    </nalozi>
+    <nalozi>
+        <id>7</id>
+        <kupac>
+            <id>5</id>
+            <naziv>Arcus Health</naziv>
+            <pib>12121212125</pib>
+            <brojRacuna>123-9876543211234-11</brojRacuna>
+            <adresa>
+                <id>5</id>
+                <broj>14a</broj>
+                <ulica>Tolstojeva</ulica>
+                <grad>Novi Sad</grad>
+                <postanskiBroj>21000</postanskiBroj>
+                <drzava>Srbija</drzava>
+            </adresa>
+        </kupac>
+        <prodavac>
+            <id>2</id>
+            <naziv>Victoria Oil</naziv>
+            <pib>12121212121</pib>
+            <brojRacuna>123-9876543211234-48</brojRacuna>
+            <adresa>
+                <id>2</id>
+                <broj>21</broj>
+                <ulica>Jelice Stanivukovic</ulica>
+                <grad>Sid</grad>
+                <postanskiBroj>22240</postanskiBroj>
+                <drzava>Srbija</drzava>
+            </adresa>
+        </prodavac>
+        <svrha>naplata duga</svrha>
+        <datumNaloga>2018-01-01T00:00:00.000+01:00</datumNaloga>
+        <modelZaduzenja>50</modelZaduzenja>
+        <pozivNaBrojZaduzenja>888-1234567890123-88</pozivNaBrojZaduzenja>
+        <modelOdobrenja>40</modelOdobrenja>
+        <pozivNaBrojOdobrenja>77</pozivNaBrojOdobrenja>
+        <oznakaValute>RSD</oznakaValute>
+        <hitno>true</hitno>
+        <iznos>233.0</iznos>
+    </nalozi>
+</exportNalogaResponse>

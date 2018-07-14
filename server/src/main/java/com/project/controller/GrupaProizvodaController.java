@@ -53,7 +53,9 @@ public class GrupaProizvodaController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GrupaProizvoda> save(@RequestBody GrupaProizvoda grupaProizvoda){
-        GrupaProizvoda novaGrupaProizvoda = grupaProizvodaService.save(grupaProizvoda);
+        GrupaProizvoda novaGrupaProizvoda = null;
+        if(grupaProizvoda != null)
+             novaGrupaProizvoda = grupaProizvodaService.save(grupaProizvoda);
         return new ResponseEntity<>(novaGrupaProizvoda, HttpStatus.OK);
     }
 

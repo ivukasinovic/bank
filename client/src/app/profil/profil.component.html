@@ -5,11 +5,11 @@
   <br>
   <div align="center"><h1> Profil </h1></div>
   <br>
-  <table border="2" style="..." align="center" class="table">
+<!--   <table border="2" style="..." align="center" class="table">
     <tr>
       <th>Naziv</th>
       <th>Pib</th>
-      <th>eamil</th>
+      <th>E-mail</th>
     </tr>
     <tr >
       <td> {{ preduzece.naziv}}</td>
@@ -17,7 +17,7 @@
       <td>{{ preduzece.email }}</td>
     </tr>
 
-  </table>
+  </table> -->
 
   <hr>
   <br>
@@ -40,5 +40,14 @@
     </tr>
   </table>
 
+<div class="panel panel-info">
+
+  <div class="panel-body">
+    <p><b>Naziv:</b> {{ preduzece.naziv}}</p>
+    <p><b>PIB: </b>  {{ preduzece.pib }}</p>
+    <p><b>E-mail: </b> {{ preduzece.email }}</p>
+    <p><b>Broj računa:</b> {{preduzece.brojRacuna}}</p>
+    <p><b>Adresa:</b> {{preduzece.adresa.ulica}} {{preduzece.adresa.broj}},{{preduzece.adresa.postanski_broj}} {{preduzece.adresa.grad}}, {{preduzece.adresa.drzava}}</p>
+  </div>
 
 </div>

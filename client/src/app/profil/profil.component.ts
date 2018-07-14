@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DnevnoStanje, Partnerstvo, Preduzece} from '../model/model';
+import {Adresa} from '../model/model';
 import {FakturaService} from '../service/faktura.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class ProfilComponent implements OnInit {
 
   constructor(private  fakturaService: FakturaService) {
     this.preduzece = new Preduzece();
+    this.preduzece.adresa = new Adresa();
   }
 
   ngOnInit() {

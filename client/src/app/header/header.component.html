@@ -3,32 +3,30 @@
     <div class="navbar-header">
       <span class="navbar-brand"  style="color: black"> Site </span>
     </div>
-    <ul class="nav navbar-nav">
-
+    <ul class="nav navbar-nav ">
       <li> <a class="btn btn-link" routerLink="/moje-fakture"> Fakture </a> </li>
-      <li> <a class="btn btn-link" routerLink="/proizvodi"> Proizvodi </a> </li>
       <li> <a class="btn btn-link" routerLink="/partneri">  Partneri </a> </li>
+      <li> <a class="btn btn-link" routerLink="/proizvodi"> Proizvodi </a> </li>
+      <li> <a class="btn btn-link" routerLink="/grupa-proizvoda"> Grupa proizvoda </a> </li>
+      <li> <a class="btn btn-link" routerLink="/jedinica-mere">  Jedinice mere </a> </li>
       <li> <a class="btn btn-link" routerLink="/cenovnici">  Cenovnici </a> </li>
-      <li> <a class="btn btn-link" routerLink="/generisi-nalog">  Generisi nalog za placanje </a> </li>
       <li> <a class="btn btn-link" routerLink="/pdv">  PDV </a> </li>
       <li> <a class="btn btn-link" routerLink="/valute">  Valute </a> </li>
-      <li> <a class="btn btn-link" routerLink="/jedinica-mere">  Jedinice mere </a> </li>
-      <li> <a class="btn btn-link" routerLink="/nalog-za-placanje"> Prikaz  naloga za placanje </a> </li>
-      <li> <a class="btn btn-link" routerLink="/grupa-proizvoda"> Grupa proizvoda </a> </li>
-
-
+      <li> <a class="btn btn-link" routerLink="/nalog-za-placanje"> Nalozi za plaćanje </a> </li>
+      <li> <a class="btn btn-link" routerLink="/generisi-nalog">  Generiši nalog za plaćanje </a> </li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-collapse pull-right">
+    <ul class="nav navbar-nav navbar-collapse navbar-right">
       <div class="row">
         <div class="col">
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-primary"
+            <button class="btn btn-primary btn-lg"
                     id="dropdownKorisnik" ngbDropdownToggle>Korisnik
             </button>
 
             <div ngbDropdownMenu>
-              <button (click)="logOut()"  class="btn btn-danger" style="font-size: large"> Odjava</button>
+              <li ><button href="/profil" class="btn-link btn-lg" > Profil</button></li>
+              <button (click)="logOut()"  class="btn-link btn-lg"> Odjava</button>
             </div>
 
           </div>
@@ -36,13 +34,8 @@
         </div>
       </div>
     </ul>
-
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/home-page" style="color: darkblue;"><p>Dato preduzece: <b> {{ preduzece.naziv }} </b></p></a></li>
-      <li ><a href="/profil" style="color: deepskyblue"> <b> Profil </b> </a></li>
-    </ul>
-
   </div>
 </nav>
+<br>
 
 

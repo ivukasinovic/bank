@@ -55,7 +55,7 @@ export class NoviCenovnikComponent implements OnInit {
         }
       },
       error2 => {
-        alert('Nisu ucitane valute!');
+        alert('Nisu učitane valute!');
       }
     );
     this.cenovnikService.getProizvodi().subscribe(
@@ -63,7 +63,7 @@ export class NoviCenovnikComponent implements OnInit {
         this.proizvodi = response;
       },
       error2 => {
-        alert('Nisu ucitane proizvodi!');
+        alert('Nisu učitani proizvodi!');
       }
     );
 
@@ -115,11 +115,11 @@ export class NoviCenovnikComponent implements OnInit {
             this.stavka.proizvod = null;
             this.cenovnikService.postStavku(this.stavka, response.id, idProizvoda).subscribe();
           }
-        alert('Done!');
+        alert('Kreiran!');
         this.router.navigateByUrl('/home-page');
       },
       error1 => {
-        alert('Nije uspjelo brisanje cenovnika!');
+        alert('Nije uspjelo kreiranje cenovnika!');
       });
   }
 
@@ -157,11 +157,11 @@ export class NoviCenovnikComponent implements OnInit {
           this.cenovnikService.postStavku(this.stavka, response.id, idProizvoda).subscribe();
 
         }
-        alert('Done!');
+        alert('Ažurirano!');
         this.router.navigateByUrl('/home-page');
       },
       error1 => {
-        alert('Nije uspjelo brisanje cenovnika!');
+        alert('Nije uspelo brisanje cenovnika!');
       });
   }
 

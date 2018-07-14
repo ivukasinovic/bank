@@ -24,12 +24,12 @@ export class PrijedlogPlacanjaComponent implements OnInit {
        (result: any) => {
 
         if (i === this.prijedlog.length ) {
-          alert('Uspijesno ste generisali naloge!');
+          alert('Uspiješno ste generisali naloge!');
           this.router.navigateByUrl('/home-page');
         }
       },
       error1 => {
-        alert('Doslo je do greske');
+        alert('Došlo je do greške!');
         return;
       });
     }
